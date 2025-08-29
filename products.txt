@@ -9,7 +9,7 @@ d:"$Sreact.suspense"
 f:I[7150,[],""]
 :HL["/uavos/_next/static/css/2d82b615fcca1590.css","style"]
 :HL["/uavos/_next/static/css/c1bfe99054c71b91.css","style"]
-0:{"P":null,"b":"hHZNH88j3hRywFKljGJnu","p":"/uavos","c":["","products"],"i":false,"f":[[["",{"children":[["mdxPath","products","oc"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/uavos/_next/static/css/2d82b615fcca1590.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/uavos/_next/static/css/c1bfe99054c71b91.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],"$L2"]}],{"children":[["mdxPath","products","oc"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+0:{"P":null,"b":"lsi98yCgDZTiTZkPgdwh7","p":"/uavos","c":["","products"],"i":false,"f":[[["",{"children":[["mdxPath","products","oc"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/uavos/_next/static/css/2d82b615fcca1590.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/uavos/_next/static/css/c1bfe99054c71b91.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],"$L2"]}],{"children":[["mdxPath","products","oc"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
 10:I[451,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"ThemeConfigProvider"]
 11:I[6149,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"LastUpdated"]
 12:I[2586,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","385","static/chunks/385-b84c2aad0d53dae2.js","177","static/chunks/app/layout-4fe6fedcfc630377.js"],"SearchWithCallback"]
@@ -31,43 +31,170 @@ f:I[7150,[],""]
 21:I[8221,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"TOCProvider"]
 22:I[2857,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"Sidebar"]
 23:I[825,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"ClientWrapper"]
-24:I[9114,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"HeadingAnchor"]
-5:["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L21",null,{"value":[{"value":"Automatic Control System (Autopilots)","id":"automatic-control-system-autopilots","depth":2},{"value":"Vertical Take-Off and Landing UAVs","id":"vertical-take-off-and-landing-uavs","depth":2},{"value":"Fixed-wing UAVs","id":"fixed-wing-uavs","depth":2},{"value":"Ground Control Units (GCU)","id":"ground-control-units-gcu","depth":2},{"value":"Servo Drives","id":"servo-drives","depth":2},{"value":"UAV Engines","id":"uav-engines","depth":2},{"value":"Communication Systems","id":"communication-systems","depth":2},{"value":"Gimbals","id":"gimbals","depth":2},{"value":"Pan-Tilt Platforms","id":"pan-tilt-platforms","depth":2},{"value":"UAV Parts","id":"uav-parts","depth":2},{"value":"Drone Parachute Systems","id":"drone-parachute-systems","depth":2},{"value":"Tools","id":"tools","depth":2}],"children":[["$","$L22",null,{}],["$","$L23",null,{"metadata":{"title":"Products","filePath":"content/products.mdx","timestamp":1756465628000},"bottomContent":"$undefined","sourceCode":"","children":[["$","div",null,{"id":"nextra-skip-nav"}],["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"id":"$undefined","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Products","$undefined"]}],"\n",["$","hr",null,{"className":"x:my-[2em] nextra-border"}],"\n",["$","h2",null,{"id":"automatic-control-system-autopilots","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Automatic Control System (Autopilots)",["$","$L24",null,{"id":"automatic-control-system-autopilots"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"AP 10.1"}],["$","br",null,{}],"\n","Automatic Control System for UAV with a takeoff weight of 100 kg up to 4000 kg"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"AP 10.2"}],["$","br",null,{}],"\n","Automatic Control System for UAV with a takeoff weight of 15 kg up to 100 kg"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"AP 10.3"}],["$","br",null,{}],"\n","Automatic Control System for UAV less than 15 kg"]}],"\n",["$","hr",null,{"className":"x:my-[2em] nextra-border"}],"\n",["$","h2",null,{"id":"vertical-take-off-and-landing-uavs","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Vertical Take-Off and Landing UAVs",["$","$L24",null,{"id":"vertical-take-off-and-landing-uavs"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"UVH-500 (KAHU-150) VTOL UAS"}],["$","br",null,{}],"\n","MTOW 1102 lb (500 kg)"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"UVH 170 Unmanned Helicopter"}],["$","br",null,{}],"\n","MTOW 99 lb (45 kg)"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"UVH 25EL Unmanned Helicopter"}],["$","br",null,{}],"\n","MTOW 55 lb (25 kg)"]}],"\n",["$","hr",null,{"className":"x:my-[2em] nextra-border"}],"\n",["$","h2",null,{"id":"fixed-wing-uavs","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Fixed-wing UAVs",["$","$L24",null,{"id":"fixed-wing-uavs"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"APUS DUO 15"}],["$","br",null,{}],"\n","High Altitude Platform Station",["$","br",null,{}],"\n","MTOW 95 lb (43 kg)"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Fixed-Wing Unmanned System ALBATROSS"}],["$","br",null,{}],"\n","MTOW 1210 lb (550 kg)"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Fixed-Wing Unmanned System BOREY"}],"$L25","\n","MTOW 45 lb (20 kg)"]}],"\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40","\n","$L41","\n","$L42","\n","$L43","\n","$L44","\n","$L45","\n","$L46","\n","$L47"]}]]}]]}]}]
-25:["$","br",null,{}]
-26:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-27:["$","h2",null,{"id":"ground-control-units-gcu","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Ground Control Units (GCU)",["$","$L24",null,{"id":"ground-control-units-gcu"}]]}]
-28:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"GCS.A"}],["$","br",null,{}],"\n","Installed into a modified 20-foot container, enhanced with a generator compartment"]}]
-29:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"PGCS.7"}],["$","br",null,{}],"\n","Portable Ground Control Station for UAS"]}]
-2a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"PGCS.4"}],["$","br",null,{}],"\n","Portable Ground Control Station for UAS"]}]
-2b:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-2c:["$","h2",null,{"id":"servo-drives","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Servo Drives",["$","$L24",null,{"id":"servo-drives"}]]}]
-2d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Xservo140"}],["$","br",null,{}],"\n","Xservo series"]}]
-2e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"SDLM-04B"}],["$","br",null,{}],"\n","Rugged and Durable Rotating Type Servo for Professional Intensive Applications"]}]
-2f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"SD-01B"}],["$","br",null,{}],"\n","Rugged and Durable Rotating Type Servo for Professional Intensive Applications"]}]
-30:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"SD-02B"}],["$","br",null,{}],"\n","Rugged and Durable Rotating Type Servo for Professional Intensive Applications"]}]
+24:Tbeb,---
+title: Products
+---
+
+# Products
+
+---
+
+## Automatic Control System (Autopilots)
+
+**AP 10.1**  
+Automatic Control System for UAV with a takeoff weight of 100 kg up to 4000 kg
+
+**AP 10.2**  
+Automatic Control System for UAV with a takeoff weight of 15 kg up to 100 kg
+
+**AP 10.3**  
+Automatic Control System for UAV less than 15 kg
+
+---
+
+## Vertical Take-Off and Landing UAVs
+
+**UVH-500 (KAHU-150) VTOL UAS**  
+MTOW 1102 lb (500 kg)
+
+**UVH 170 Unmanned Helicopter**  
+MTOW 99 lb (45 kg)
+
+**UVH 25EL Unmanned Helicopter**  
+MTOW 55 lb (25 kg)
+
+---
+
+## Fixed-wing UAVs
+
+**APUS DUO 15**  
+High Altitude Platform Station  
+MTOW 95 lb (43 kg)
+
+**Fixed-Wing Unmanned System ALBATROSS**  
+MTOW 1210 lb (550 kg)
+
+**Fixed-Wing Unmanned System BOREY**  
+MTOW 45 lb (20 kg)
+
+---
+
+## Ground Control Units (GCU)
+
+**GCS.A**  
+Installed into a modified 20-foot container, enhanced with a generator compartment
+
+**PGCS.7**  
+Portable Ground Control Station for UAS
+
+**PGCS.4**  
+Portable Ground Control Station for UAS
+
+---
+
+## Servo Drives
+
+**Xservo140**  
+Xservo series
+
+**SDLM-04B**  
+Rugged and Durable Rotating Type Servo for Professional Intensive Applications
+
+**SD-01B**  
+Rugged and Durable Rotating Type Servo for Professional Intensive Applications
+
+**SD-02B**  
+Rugged and Durable Rotating Type Servo for Professional Intensive Applications
+
+---
+
+## UAV Engines
+
+**UAV-170 Engine**  
+4-stroke gasoline power plant with volume 170 ccm designed for integration in UAV
+
+---
+
+## Communication Systems
+
+**pMDDLRadio Data Link System**  
+Advanced high power long range broadband COFDM communication system for UAV
+
+**Automatic Tracking System**  
+ARM Antenna Tracking System (ATS) allows use of directional antennas with higher gain compared to omni-directional ones
+
+---
+
+## Gimbals
+
+**GSG 201**  
+Gyro-stabilized two-axis gimbal for day and night surveillance, with Laser rangefinder
+
+**GOS-155D/T**  
+Gyro-stabilized optical gimbal with advanced image processing, a 30x zoom RGB camera, and high-resolution thermal camera
+
+---
+
+## Pan-Tilt Platforms
+
+**PTP140**  
+Powerful Pan Tilt Platform for payload up to 130 kg
+
+---
+
+## UAV Parts
+
+- **Main Landing Gear** – for unmanned aircraft up to 1200 kg  
+- **Two-Bladed Main Rotor** – for helicopters up to 50 kg take-off mass, rotor diameter 2600 mm (102.36")  
+- **Two-Bladed Main Rotor with All-metal Edging** – same parameters as above  
+- **Two-Bladed Main Rotor** – for helicopters up to 140 kg take-off mass, rotor diameter 3200 mm (126")  
+- **Two-Bladed Main Rotor with All-metal Edging** – same parameters as above
+
+---
+
+## Drone Parachute Systems
+
+**Drone Parachute Systems**  
+For UAVs ranging from 5 kg to 1000 kg, deployable at speeds between 20 km/h and 220 km/h
+
+---
+
+## Tools
+
+**Industrial Composite Curing Ovens**  
+High-performance composite curing ovens for curing, post-curing, and heat processing of composites, prepregs, thermoplastics, and tooling5:["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L21",null,{"value":[{"value":"Automatic Control System (Autopilots)","id":"automatic-control-system-autopilots","depth":2},{"value":"Vertical Take-Off and Landing UAVs","id":"vertical-take-off-and-landing-uavs","depth":2},{"value":"Fixed-wing UAVs","id":"fixed-wing-uavs","depth":2},{"value":"Ground Control Units (GCU)","id":"ground-control-units-gcu","depth":2},{"value":"Servo Drives","id":"servo-drives","depth":2},{"value":"UAV Engines","id":"uav-engines","depth":2},{"value":"Communication Systems","id":"communication-systems","depth":2},{"value":"Gimbals","id":"gimbals","depth":2},{"value":"Pan-Tilt Platforms","id":"pan-tilt-platforms","depth":2},{"value":"UAV Parts","id":"uav-parts","depth":2},{"value":"Drone Parachute Systems","id":"drone-parachute-systems","depth":2},{"value":"Tools","id":"tools","depth":2}],"children":[["$","$L22",null,{}],["$","$L23",null,{"metadata":{"title":"Products","filePath":"content/products.mdx","timestamp":1756465628000},"bottomContent":"$undefined","sourceCode":"$24","children":["$L25","$L26"]}]]}]}]
+27:I[9114,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"HeadingAnchor"]
+25:["$","div",null,{"id":"nextra-skip-nav"}]
+26:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"id":"$undefined","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Products","$undefined"]}],"\n",["$","hr",null,{"className":"x:my-[2em] nextra-border"}],"\n",["$","h2",null,{"id":"automatic-control-system-autopilots","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Automatic Control System (Autopilots)",["$","$L27",null,{"id":"automatic-control-system-autopilots"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"AP 10.1"}],["$","br",null,{}],"\n","Automatic Control System for UAV with a takeoff weight of 100 kg up to 4000 kg"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"AP 10.2"}],["$","br",null,{}],"\n","Automatic Control System for UAV with a takeoff weight of 15 kg up to 100 kg"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"AP 10.3"}],["$","br",null,{}],"\n","Automatic Control System for UAV less than 15 kg"]}],"\n",["$","hr",null,{"className":"x:my-[2em] nextra-border"}],"\n",["$","h2",null,{"id":"vertical-take-off-and-landing-uavs","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Vertical Take-Off and Landing UAVs",["$","$L27",null,{"id":"vertical-take-off-and-landing-uavs"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"UVH-500 (KAHU-150) VTOL UAS"}],["$","br",null,{}],"\n","MTOW 1102 lb (500 kg)"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"UVH 170 Unmanned Helicopter"}],["$","br",null,{}],"\n","MTOW 99 lb (45 kg)"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"UVH 25EL Unmanned Helicopter"}],["$","br",null,{}],"\n","MTOW 55 lb (25 kg)"]}],"\n",["$","hr",null,{"className":"x:my-[2em] nextra-border"}],"\n",["$","h2",null,{"id":"fixed-wing-uavs","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Fixed-wing UAVs",["$","$L27",null,{"id":"fixed-wing-uavs"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"APUS DUO 15"}],["$","br",null,{}],"\n","High Altitude Platform Station",["$","br",null,{}],"\n","MTOW 95 lb (43 kg)"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Fixed-Wing Unmanned System ALBATROSS"}],["$","br",null,{}],"\n","MTOW 1210 lb (550 kg)"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Fixed-Wing Unmanned System BOREY"}],["$","br",null,{}],"\n","MTOW 45 lb (20 kg)"]}],"\n",["$","hr",null,{"className":"x:my-[2em] nextra-border"}],"\n",["$","h2",null,{"id":"ground-control-units-gcu","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Ground Control Units (GCU)",["$","$L27",null,{"id":"ground-control-units-gcu"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"GCS.A"}],["$","br",null,{}],"\n","Installed into a modified 20-foot container, enhanced with a generator compartment"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"PGCS.7"}],["$","br",null,{}],"\n","Portable Ground Control Station for UAS"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"PGCS.4"}],["$","br",null,{}],"\n","Portable Ground Control Station for UAS"]}],"\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40","\n","$L41","\n","$L42","\n","$L43","\n","$L44"]}]
+28:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
+29:["$","h2",null,{"id":"servo-drives","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Servo Drives",["$","$L27",null,{"id":"servo-drives"}]]}]
+2a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Xservo140"}],["$","br",null,{}],"\n","Xservo series"]}]
+2b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"SDLM-04B"}],["$","br",null,{}],"\n","Rugged and Durable Rotating Type Servo for Professional Intensive Applications"]}]
+2c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"SD-01B"}],["$","br",null,{}],"\n","Rugged and Durable Rotating Type Servo for Professional Intensive Applications"]}]
+2d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"SD-02B"}],["$","br",null,{}],"\n","Rugged and Durable Rotating Type Servo for Professional Intensive Applications"]}]
+2e:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
+2f:["$","h2",null,{"id":"uav-engines","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["UAV Engines",["$","$L27",null,{"id":"uav-engines"}]]}]
+30:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"UAV-170 Engine"}],["$","br",null,{}],"\n","4-stroke gasoline power plant with volume 170 ccm designed for integration in UAV"]}]
 31:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-32:["$","h2",null,{"id":"uav-engines","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["UAV Engines",["$","$L24",null,{"id":"uav-engines"}]]}]
-33:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"UAV-170 Engine"}],["$","br",null,{}],"\n","4-stroke gasoline power plant with volume 170 ccm designed for integration in UAV"]}]
-34:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-35:["$","h2",null,{"id":"communication-systems","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Communication Systems",["$","$L24",null,{"id":"communication-systems"}]]}]
-36:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"pMDDLRadio Data Link System"}],["$","br",null,{}],"\n","Advanced high power long range broadband COFDM communication system for UAV"]}]
-37:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Automatic Tracking System"}],["$","br",null,{}],"\n","ARM Antenna Tracking System (ATS) allows use of directional antennas with higher gain compared to omni-directional ones"]}]
-38:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-39:["$","h2",null,{"id":"gimbals","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Gimbals",["$","$L24",null,{"id":"gimbals"}]]}]
-3a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"GSG 201"}],["$","br",null,{}],"\n","Gyro-stabilized two-axis gimbal for day and night surveillance, with Laser rangefinder"]}]
-3b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"GOS-155D/T"}],["$","br",null,{}],"\n","Gyro-stabilized optical gimbal with advanced image processing, a 30x zoom RGB camera, and high-resolution thermal camera"]}]
+32:["$","h2",null,{"id":"communication-systems","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Communication Systems",["$","$L27",null,{"id":"communication-systems"}]]}]
+33:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"pMDDLRadio Data Link System"}],["$","br",null,{}],"\n","Advanced high power long range broadband COFDM communication system for UAV"]}]
+34:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Automatic Tracking System"}],["$","br",null,{}],"\n","ARM Antenna Tracking System (ATS) allows use of directional antennas with higher gain compared to omni-directional ones"]}]
+35:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
+36:["$","h2",null,{"id":"gimbals","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Gimbals",["$","$L27",null,{"id":"gimbals"}]]}]
+37:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"GSG 201"}],["$","br",null,{}],"\n","Gyro-stabilized two-axis gimbal for day and night surveillance, with Laser rangefinder"]}]
+38:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"GOS-155D/T"}],["$","br",null,{}],"\n","Gyro-stabilized optical gimbal with advanced image processing, a 30x zoom RGB camera, and high-resolution thermal camera"]}]
+39:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
+3a:["$","h2",null,{"id":"pan-tilt-platforms","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Pan-Tilt Platforms",["$","$L27",null,{"id":"pan-tilt-platforms"}]]}]
+3b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"PTP140"}],["$","br",null,{}],"\n","Powerful Pan Tilt Platform for payload up to 130 kg"]}]
 3c:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-3d:["$","h2",null,{"id":"pan-tilt-platforms","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Pan-Tilt Platforms",["$","$L24",null,{"id":"pan-tilt-platforms"}]]}]
-3e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"PTP140"}],["$","br",null,{}],"\n","Powerful Pan Tilt Platform for payload up to 130 kg"]}]
+3d:["$","h2",null,{"id":"uav-parts","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["UAV Parts",["$","$L27",null,{"id":"uav-parts"}]]}]
+3e:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Main Landing Gear"}]," – for unmanned aircraft up to 1200 kg"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Two-Bladed Main Rotor"}]," – for helicopters up to 50 kg take-off mass, rotor diameter 2600 mm (102.36”)"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Two-Bladed Main Rotor with All-metal Edging"}]," – same parameters as above"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Two-Bladed Main Rotor"}]," – for helicopters up to 140 kg take-off mass, rotor diameter 3200 mm (126”)"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Two-Bladed Main Rotor with All-metal Edging"}]," – same parameters as above"]}],"\n"]}]
 3f:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-40:["$","h2",null,{"id":"uav-parts","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["UAV Parts",["$","$L24",null,{"id":"uav-parts"}]]}]
-41:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Main Landing Gear"}]," – for unmanned aircraft up to 1200 kg"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Two-Bladed Main Rotor"}]," – for helicopters up to 50 kg take-off mass, rotor diameter 2600 mm (102.36”)"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Two-Bladed Main Rotor with All-metal Edging"}]," – same parameters as above"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Two-Bladed Main Rotor"}]," – for helicopters up to 140 kg take-off mass, rotor diameter 3200 mm (126”)"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Two-Bladed Main Rotor with All-metal Edging"}]," – same parameters as above"]}],"\n"]}]
+40:["$","h2",null,{"id":"drone-parachute-systems","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Drone Parachute Systems",["$","$L27",null,{"id":"drone-parachute-systems"}]]}]
+41:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Drone Parachute Systems"}],["$","br",null,{}],"\n","For UAVs ranging from 5 kg to 1000 kg, deployable at speeds between 20 km/h and 220 km/h"]}]
 42:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-43:["$","h2",null,{"id":"drone-parachute-systems","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Drone Parachute Systems",["$","$L24",null,{"id":"drone-parachute-systems"}]]}]
-44:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Drone Parachute Systems"}],["$","br",null,{}],"\n","For UAVs ranging from 5 kg to 1000 kg, deployable at speeds between 20 km/h and 220 km/h"]}]
-45:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-46:["$","h2",null,{"id":"tools","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Tools",["$","$L24",null,{"id":"tools"}]]}]
-47:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Industrial Composite Curing Ovens"}],["$","br",null,{}],"\n","High-performance composite curing ovens for curing, post-curing, and heat processing of composites, prepregs, thermoplastics, and tooling"]}]
+43:["$","h2",null,{"id":"tools","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Tools",["$","$L27",null,{"id":"tools"}]]}]
+44:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Industrial Composite Curing Ovens"}],["$","br",null,{}],"\n","High-performance composite curing ovens for curing, post-curing, and heat processing of composites, prepregs, thermoplastics, and tooling"]}]
 b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 7:null
 9:{"metadata":[["$","title","0",{"children":"Products"}]],"error":null,"digest":"$undefined"}

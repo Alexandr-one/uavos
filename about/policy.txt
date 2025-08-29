@@ -9,7 +9,7 @@ d:"$Sreact.suspense"
 f:I[7150,[],""]
 :HL["/uavos/_next/static/css/2d82b615fcca1590.css","style"]
 :HL["/uavos/_next/static/css/c1bfe99054c71b91.css","style"]
-0:{"P":null,"b":"hHZNH88j3hRywFKljGJnu","p":"/uavos","c":["","about","policy"],"i":false,"f":[[["",{"children":[["mdxPath","about/policy","oc"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/uavos/_next/static/css/2d82b615fcca1590.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/uavos/_next/static/css/c1bfe99054c71b91.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],"$L2"]}],{"children":[["mdxPath","about/policy","oc"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+0:{"P":null,"b":"lsi98yCgDZTiTZkPgdwh7","p":"/uavos","c":["","about","policy"],"i":false,"f":[[["",{"children":[["mdxPath","about/policy","oc"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/uavos/_next/static/css/2d82b615fcca1590.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/uavos/_next/static/css/c1bfe99054c71b91.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],"$L2"]}],{"children":[["mdxPath","about/policy","oc"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
 10:I[451,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"ThemeConfigProvider"]
 11:I[6149,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"LastUpdated"]
 12:I[2586,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","385","static/chunks/385-b84c2aad0d53dae2.js","177","static/chunks/app/layout-4fe6fedcfc630377.js"],"SearchWithCallback"]
@@ -31,32 +31,168 @@ f:I[7150,[],""]
 21:I[8221,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"TOCProvider"]
 22:I[2857,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"Sidebar"]
 23:I[825,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"ClientWrapper"]
-5:["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L21",null,{"value":[{"value":"Objectives of UAVOS EU S.L.","id":"objectives-of-uavos-eu-sl","depth":3},{"value":"Certificates","id":"certificates","depth":3},{"value":"Happy Customers","id":"happy-customers","depth":2},{"value":"ISR Unmanned Technologies","id":"isr-unmanned-technologies","depth":3},{"value":"Stratodynamics","id":"stratodynamics","depth":3},{"value":"Fiala PROP company","id":"fiala-prop-company","depth":3}],"children":[["$","$L22",null,{}],["$","$L23",null,{"metadata":{"title":"Quality Policy & Testimonials","filePath":"content/about/policy.mdx","timestamp":1756465628000},"bottomContent":"$undefined","sourceCode":"","children":[["$","div",null,{"id":"nextra-skip-nav"}],["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"id":"$undefined","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Quality Policy","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Certificates are applicable to the following product and service ranges:"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Design, Software Development and Manufacture of:","\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Automatic Control Systems (ACS)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Robotic Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Autonomous and Unmanned Systems (including Aerial)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Guidance and Tracking Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Ground Control Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Electrooptical Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Gyro-stabilized Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Carbon Fiber Components"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Servo Mechanisms"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Systems and Facilities of Communications and Data Transmission"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Systems of Radio Electronic Control"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Navigation Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Information Security Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Data Processing Systems"}],"\n"]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Training of Specialists in Automatic Unmanned Systems Operation"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Operation and Implementation of Automatic Unmanned Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Collection, Processing and Preparation of Cartographic and Space Information, including Aerial Survey"}],"\n"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Our company is created for our customers and we are ready to constantly improve the quality of design and production of automated control systems, software, electronic control and regulation devices, data processing and visualization devices, communication and data transfer systems, robotic and unmanned systems, navigation systems, data security systems; training specialists in operating automated unmanned complexes; operation and implementation of automated unmanned complexes; collecting, processing and preparing cartographic and space-based information, promoting the competitiveness of our work and contributing to the prosperity of our customers."}],"\n",["$","hr",null,{"className":"x:my-[2em] nextra-border"}],"\n",["$","h3",null,{"id":"objectives-of-uavos-eu-sl","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Objectives of UAVOS EU S.L.","$L24"]}],"\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a"]}]]}]]}]}]
-3b:I[9114,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"HeadingAnchor"]
-3c:I[2692,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"ImageZoom"]
-24:["$","$L3b",null,{"id":"objectives-of-uavos-eu-sl"}]
-25:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Compliance with legislative requirements, and consumer/stakeholder requirements"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Maintenance and constant improvement of the quality management system according to ISO 9001:2015"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Allocation of resources for continuous improvement of QMS processes and achieving quality objectives"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Continuous improvement of employee skills and fostering creative productivity"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Continuous hazard identification, risk assessment and mitigation"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Ensuring high quality products while considering customer expectations and satisfaction"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Improving the financial situation of the company"}],"\n"]}]
-26:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The management commits to providing resources for implementing the quality policy, achieving objectives, and ensuring effective functioning of the QMS."}]
-27:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-28:["$","h3",null,{"id":"certificates","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Certificates",["$","$L3b",null,{"id":"certificates"}]]}]
-29:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Here are some example certificates (replace with real images if available):"}]
-2a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","$L3c",null,{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/ISO_9001_logo.svg/2560px-ISO_9001_logo.svg.png","alt":"ISO 9001 Certificate"}],["$","br",null,{}],"\n",["$","$L3c",null,{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/ISO_14001.svg/1024px-ISO_14001.svg.png","alt":"Quality Certificate"}]]}]
-2b:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-2c:["$","h1",null,{"id":"$undefined","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Testimonials","$undefined"]}]
-2d:["$","h2",null,{"id":"happy-customers","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Happy Customers",["$","$L3b",null,{"id":"happy-customers"}]]}]
-2e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Trusted by some of the world’s biggest brands:"}]
-2f:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-30:["$","h3",null,{"id":"isr-unmanned-technologies","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["ISR Unmanned Technologies",["$","$L3b",null,{"id":"isr-unmanned-technologies"}]]}]
-31:["$","blockquote",null,{"className":"x:not-first:mt-[1.25em] x:border-gray-300 x:italic x:text-gray-700 x:dark:border-gray-700 x:dark:text-gray-400 x:border-s-2 x:ps-[1.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["“It has been two long years since we started a mutual business relationship. I cannot believe how far ISR Unmanned Technologies has come in this period. I was not expected to achieve and create so much so quickly.\r\nA huge thanks to each of you for all the effort and dedication you have put into every project we have been involved in.\r\nISR and UAVOS share the same values and passion for what they do, respecting the environment with the aim to bring the best unmanned technology to the market.\r\nI look forward to continuing growing together for the years to come.”",["$","br",null,{}],"\n","— Mauricio Munoz Ebensperger, CEO & Founder"]}],"\n"]}]
-32:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","a",null,{"href":"https://www.isrunmanned.com","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Website",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}]
-33:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-34:["$","h3",null,{"id":"stratodynamics","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Stratodynamics",["$","$L3b",null,{"id":"stratodynamics"}]]}]
-35:["$","blockquote",null,{"className":"x:not-first:mt-[1.25em] x:border-gray-300 x:italic x:text-gray-700 x:dark:border-gray-700 x:dark:text-gray-400 x:border-s-2 x:ps-[1.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"“Stratodynamics’ HiDRON provides access to near space altitudes and a new in-situ monitoring method for the atmospheric science community. The HiDRON project, a collaboration with UAVOS, introduced cost-effective observation techniques useful for climate change and heliophysics research. The UAVOS team is dedicated, conscientious and imaginative in their abilities to approach a problem with multiple creative solutions. Stratodynamics looks forward to more R&D collaboration in the years to come.”"}],"\n"]}]
-36:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","a",null,{"href":"https://www.stratodynamics.com","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Website",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}]
-37:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
-38:["$","h3",null,{"id":"fiala-prop-company","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Fiala PROP company",["$","$L3b",null,{"id":"fiala-prop-company"}]]}]
-39:["$","blockquote",null,{"className":"x:not-first:mt-[1.25em] x:border-gray-300 x:italic x:text-gray-700 x:dark:border-gray-700 x:dark:text-gray-400 x:border-s-2 x:ps-[1.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"“The Fiala PROP company is excited to work with UAVOS to promote our technologies. The cooperation with the Company is a real opportunity to develop new capabilities and to pursue new business opportunities. This collaboration will be beneficial both to UAVOS and Fiala PROP company.”"}],"\n"]}]
-3a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","a",null,{"href":"https://www.fialaprop.com","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Website",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}]
+24:Tbeb,---
+title: Products
+---
+
+# Products
+
+---
+
+## Automatic Control System (Autopilots)
+
+**AP 10.1**  
+Automatic Control System for UAV with a takeoff weight of 100 kg up to 4000 kg
+
+**AP 10.2**  
+Automatic Control System for UAV with a takeoff weight of 15 kg up to 100 kg
+
+**AP 10.3**  
+Automatic Control System for UAV less than 15 kg
+
+---
+
+## Vertical Take-Off and Landing UAVs
+
+**UVH-500 (KAHU-150) VTOL UAS**  
+MTOW 1102 lb (500 kg)
+
+**UVH 170 Unmanned Helicopter**  
+MTOW 99 lb (45 kg)
+
+**UVH 25EL Unmanned Helicopter**  
+MTOW 55 lb (25 kg)
+
+---
+
+## Fixed-wing UAVs
+
+**APUS DUO 15**  
+High Altitude Platform Station  
+MTOW 95 lb (43 kg)
+
+**Fixed-Wing Unmanned System ALBATROSS**  
+MTOW 1210 lb (550 kg)
+
+**Fixed-Wing Unmanned System BOREY**  
+MTOW 45 lb (20 kg)
+
+---
+
+## Ground Control Units (GCU)
+
+**GCS.A**  
+Installed into a modified 20-foot container, enhanced with a generator compartment
+
+**PGCS.7**  
+Portable Ground Control Station for UAS
+
+**PGCS.4**  
+Portable Ground Control Station for UAS
+
+---
+
+## Servo Drives
+
+**Xservo140**  
+Xservo series
+
+**SDLM-04B**  
+Rugged and Durable Rotating Type Servo for Professional Intensive Applications
+
+**SD-01B**  
+Rugged and Durable Rotating Type Servo for Professional Intensive Applications
+
+**SD-02B**  
+Rugged and Durable Rotating Type Servo for Professional Intensive Applications
+
+---
+
+## UAV Engines
+
+**UAV-170 Engine**  
+4-stroke gasoline power plant with volume 170 ccm designed for integration in UAV
+
+---
+
+## Communication Systems
+
+**pMDDLRadio Data Link System**  
+Advanced high power long range broadband COFDM communication system for UAV
+
+**Automatic Tracking System**  
+ARM Antenna Tracking System (ATS) allows use of directional antennas with higher gain compared to omni-directional ones
+
+---
+
+## Gimbals
+
+**GSG 201**  
+Gyro-stabilized two-axis gimbal for day and night surveillance, with Laser rangefinder
+
+**GOS-155D/T**  
+Gyro-stabilized optical gimbal with advanced image processing, a 30x zoom RGB camera, and high-resolution thermal camera
+
+---
+
+## Pan-Tilt Platforms
+
+**PTP140**  
+Powerful Pan Tilt Platform for payload up to 130 kg
+
+---
+
+## UAV Parts
+
+- **Main Landing Gear** – for unmanned aircraft up to 1200 kg  
+- **Two-Bladed Main Rotor** – for helicopters up to 50 kg take-off mass, rotor diameter 2600 mm (102.36")  
+- **Two-Bladed Main Rotor with All-metal Edging** – same parameters as above  
+- **Two-Bladed Main Rotor** – for helicopters up to 140 kg take-off mass, rotor diameter 3200 mm (126")  
+- **Two-Bladed Main Rotor with All-metal Edging** – same parameters as above
+
+---
+
+## Drone Parachute Systems
+
+**Drone Parachute Systems**  
+For UAVs ranging from 5 kg to 1000 kg, deployable at speeds between 20 km/h and 220 km/h
+
+---
+
+## Tools
+
+**Industrial Composite Curing Ovens**  
+High-performance composite curing ovens for curing, post-curing, and heat processing of composites, prepregs, thermoplastics, and tooling5:["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L21",null,{"value":[{"value":"Objectives of UAVOS EU S.L.","id":"objectives-of-uavos-eu-sl","depth":3},{"value":"Certificates","id":"certificates","depth":3},{"value":"Happy Customers","id":"happy-customers","depth":2},{"value":"ISR Unmanned Technologies","id":"isr-unmanned-technologies","depth":3},{"value":"Stratodynamics","id":"stratodynamics","depth":3},{"value":"Fiala PROP company","id":"fiala-prop-company","depth":3}],"children":[["$","$L22",null,{}],["$","$L23",null,{"metadata":{"title":"Quality Policy & Testimonials","filePath":"content/about/policy.mdx","timestamp":1756465628000},"bottomContent":"$undefined","sourceCode":"$24","children":["$L25","$L26"]}]]}]}]
+27:I[9114,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"HeadingAnchor"]
+25:["$","div",null,{"id":"nextra-skip-nav"}]
+26:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"id":"$undefined","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Quality Policy","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Certificates are applicable to the following product and service ranges:"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Design, Software Development and Manufacture of:","\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Automatic Control Systems (ACS)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Robotic Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Autonomous and Unmanned Systems (including Aerial)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Guidance and Tracking Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Ground Control Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Electrooptical Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Gyro-stabilized Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Carbon Fiber Components"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Servo Mechanisms"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Systems and Facilities of Communications and Data Transmission"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Systems of Radio Electronic Control"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Navigation Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Information Security Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Data Processing Systems"}],"\n"]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Training of Specialists in Automatic Unmanned Systems Operation"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Operation and Implementation of Automatic Unmanned Systems"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Collection, Processing and Preparation of Cartographic and Space Information, including Aerial Survey"}],"\n"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Our company is created for our customers and we are ready to constantly improve the quality of design and production of automated control systems, software, electronic control and regulation devices, data processing and visualization devices, communication and data transfer systems, robotic and unmanned systems, navigation systems, data security systems; training specialists in operating automated unmanned complexes; operation and implementation of automated unmanned complexes; collecting, processing and preparing cartographic and space-based information, promoting the competitiveness of our work and contributing to the prosperity of our customers."}],"\n",["$","hr",null,{"className":"x:my-[2em] nextra-border"}],"\n",["$","h3",null,{"id":"objectives-of-uavos-eu-sl","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Objectives of UAVOS EU S.L.",["$","$L27",null,{"id":"objectives-of-uavos-eu-sl"}]]}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Compliance with legislative requirements, and consumer/stakeholder requirements"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Maintenance and constant improvement of the quality management system according to ISO 9001:2015"}],"\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n"]}],"\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40","\n","$L41"]}]
+42:I[2692,["545","static/chunks/c16f53c3-b8b233f8702d885b.js","680","static/chunks/680-83b3fb3e82012873.js","217","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-ac1526426dc364e2.js"],"ImageZoom"]
+28:["$","li",null,{"className":"x:my-[.5em]","children":"Allocation of resources for continuous improvement of QMS processes and achieving quality objectives"}]
+29:["$","li",null,{"className":"x:my-[.5em]","children":"Continuous improvement of employee skills and fostering creative productivity"}]
+2a:["$","li",null,{"className":"x:my-[.5em]","children":"Continuous hazard identification, risk assessment and mitigation"}]
+2b:["$","li",null,{"className":"x:my-[.5em]","children":"Ensuring high quality products while considering customer expectations and satisfaction"}]
+2c:["$","li",null,{"className":"x:my-[.5em]","children":"Improving the financial situation of the company"}]
+2d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The management commits to providing resources for implementing the quality policy, achieving objectives, and ensuring effective functioning of the QMS."}]
+2e:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
+2f:["$","h3",null,{"id":"certificates","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Certificates",["$","$L27",null,{"id":"certificates"}]]}]
+30:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Here are some example certificates (replace with real images if available):"}]
+31:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","$L42",null,{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/ISO_9001_logo.svg/2560px-ISO_9001_logo.svg.png","alt":"ISO 9001 Certificate"}],["$","br",null,{}],"\n",["$","$L42",null,{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/ISO_14001.svg/1024px-ISO_14001.svg.png","alt":"Quality Certificate"}]]}]
+32:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
+33:["$","h1",null,{"id":"$undefined","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Testimonials","$undefined"]}]
+34:["$","h2",null,{"id":"happy-customers","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Happy Customers",["$","$L27",null,{"id":"happy-customers"}]]}]
+35:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Trusted by some of the world’s biggest brands:"}]
+36:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
+37:["$","h3",null,{"id":"isr-unmanned-technologies","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["ISR Unmanned Technologies",["$","$L27",null,{"id":"isr-unmanned-technologies"}]]}]
+38:["$","blockquote",null,{"className":"x:not-first:mt-[1.25em] x:border-gray-300 x:italic x:text-gray-700 x:dark:border-gray-700 x:dark:text-gray-400 x:border-s-2 x:ps-[1.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["“It has been two long years since we started a mutual business relationship. I cannot believe how far ISR Unmanned Technologies has come in this period. I was not expected to achieve and create so much so quickly.\r\nA huge thanks to each of you for all the effort and dedication you have put into every project we have been involved in.\r\nISR and UAVOS share the same values and passion for what they do, respecting the environment with the aim to bring the best unmanned technology to the market.\r\nI look forward to continuing growing together for the years to come.”",["$","br",null,{}],"\n","— Mauricio Munoz Ebensperger, CEO & Founder"]}],"\n"]}]
+39:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","a",null,{"href":"https://www.isrunmanned.com","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Website",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}]
+3a:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
+3b:["$","h3",null,{"id":"stratodynamics","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Stratodynamics",["$","$L27",null,{"id":"stratodynamics"}]]}]
+3c:["$","blockquote",null,{"className":"x:not-first:mt-[1.25em] x:border-gray-300 x:italic x:text-gray-700 x:dark:border-gray-700 x:dark:text-gray-400 x:border-s-2 x:ps-[1.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"“Stratodynamics’ HiDRON provides access to near space altitudes and a new in-situ monitoring method for the atmospheric science community. The HiDRON project, a collaboration with UAVOS, introduced cost-effective observation techniques useful for climate change and heliophysics research. The UAVOS team is dedicated, conscientious and imaginative in their abilities to approach a problem with multiple creative solutions. Stratodynamics looks forward to more R&D collaboration in the years to come.”"}],"\n"]}]
+3d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","a",null,{"href":"https://www.stratodynamics.com","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Website",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}]
+3e:["$","hr",null,{"className":"x:my-[2em] nextra-border"}]
+3f:["$","h3",null,{"id":"fiala-prop-company","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Fiala PROP company",["$","$L27",null,{"id":"fiala-prop-company"}]]}]
+40:["$","blockquote",null,{"className":"x:not-first:mt-[1.25em] x:border-gray-300 x:italic x:text-gray-700 x:dark:border-gray-700 x:dark:text-gray-400 x:border-s-2 x:ps-[1.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"“The Fiala PROP company is excited to work with UAVOS to promote our technologies. The cooperation with the Company is a real opportunity to develop new capabilities and to pursue new business opportunities. This collaboration will be beneficial both to UAVOS and Fiala PROP company.”"}],"\n"]}]
+41:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","a",null,{"href":"https://www.fialaprop.com","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Website",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}]
 b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 7:null
 9:{"metadata":[["$","title","0",{"children":"Quality Policy & Testimonials"}]],"error":null,"digest":"$undefined"}
