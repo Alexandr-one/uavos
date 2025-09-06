@@ -1,17 +1,16 @@
 import nextra from 'nextra'
 
-const withNextra = nextra({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.js',
-  search: { codeblocks: false }
-})
-
 /** @type {import('next').NextConfig} */
-export default withNextra({
+const nextConfig = {
   reactStrictMode: true,
-  devIndicators: { buildActivity: false }, // исправлено под Next 14
+  devIndicators: { buildActivity: false }, // объект, а не boolean
   output: 'export',       // статический экспорт
   trailingSlash: true,
   images: { unoptimized: true },
-  distDir: 'out'          // папка сборки для gh-pages
-})
+  distDir: 'out'
+}
+
+// Nextra wrapper
+export default nextra({
+  search: { codeblocks: false }
+})(nextConfig)
