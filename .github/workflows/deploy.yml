@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '20' # Next.js 14+ требует Node 20+
 
-      - run: npm ci
+      - run: npm ci 
       - run: npm run build
 
       - uses: peaceiris/actions-gh-pages@v3
