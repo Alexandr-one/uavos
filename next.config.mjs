@@ -9,7 +9,7 @@ const nextConfig = {
   images: { unoptimized: true },
   distDir: 'out'
 }
-
+ 
 // Nextra wrapper
 export default nextra({
   search: { codeblocks: false }
