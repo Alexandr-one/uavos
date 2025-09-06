@@ -1,0 +1,99 @@
+---
+title: AP 10.1 - Automatic Control System
+description: Automatic Control System for UAV with a takeoff weight of 100–4000 kg
+---
+
+# AP 10.1
+
+**Automatic Control System for UAV with a takeoff weight of 100 kg up to 4000 kg**
+
+---
+
+## Overview
+
+The Automatic Control System (AP) provides the hardware and vehicle control abstraction layer for the host platform, enabling fully autonomous operation.  
+
+All flight systems — including take-off, landing, navigation and mission execution — can be initiated with a single keystroke.  
+
+Diagnostics, flight mission planning and remote control can all be achieved wirelessly.
+
+A notable feature of the AP is its **distributed architecture**:
+
+- Each component has a dedicated microcontroller.
+- Communication between components is via the CAN bus.
+- Decentralized configuration reduces central processor loading.
+- No restriction on the number of same-type modules — supports multiple redundancy at all levels.
+- Nearly all payloads or third-party modules can be integrated into the AP.
+
+---
+
+## Flexibility & Scalability
+
+- Can be used in a wide range of vehicles: from small quadcopters to full-size converted piloted aircraft.  
+- Redundant layering ensures basic functionality even in case of failures.  
+- Ground control software is multi-platform and supports both WAN and LAN operation.  
+- Custom payloads/sensors can be integrated by scripting protocols through onboard **Virtual Machines (VMs)**.  
+
+---
+
+## Compatibility
+
+The AP is compatible with almost any vehicle configuration:
+
+- VTOLs  
+- USVs  
+- UGVs  
+- Non-traditional aircraft concepts  
+
+Key algorithm: **Total Energy Control System (TECS)** for improved reliability and failure handling:  
+- Automatic landing with engine failure  
+- Auto-rotation for helicopters  
+- Parachute deployment  
+
+The AP is also:  
+- **Resilient against jamming**  
+- Supports **precise dead-reckoning navigation** in absence of GNSS  
+
+### Payload Interfaces
+
+- 1-Wire  
+- RS-232  
+- RS-485  
+- UART  
+- CAN  
+
+---
+
+## Key Features
+
+- Control of actuating mechanisms  
+- Engine control  
+- Semi-automatic control with stabilization  
+- Manual control via main **928 MHz** channel from Ground Control Station (GCU)  
+- Emergency mode vehicle control  
+- Payload control and feedback  
+- Gyro-stabilization of rotating platforms via AP 10.1  
+- Telemetry exchange between GCU and vehicles  
+- Simulation mode and flight simulator  
+- Onboard power control, stabilization, conversion and distribution  
+- Emergency power supply mode  
+- Onboard power monitoring  
+
+---
+
+## Specifications
+
+### Available Interfaces
+
+- Up to **15 × servo drives** (PWM control)  
+- **2 × RPM sensor inputs** (Hall-effect)  
+- 1-Wire interface  
+- TTL UART interface  
+- RS-485 interface  
+- Controller Area Network (CAN)  
+- RS-232 interface  
+- Low-side power output (3.7 A, @ 20 V, 68 mΩ)  
+- **3 × digital inputs** (timing, level)  
+- **5 × GPIO** (remappable on MCU)  
+
+---
