@@ -1,7 +1,7 @@
 {
   "name": "uavos",
   "version": "1.0.0",
-  "homepage": "./",
+  "homepage": "https://Alexandr-one.github.io/uavos/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
