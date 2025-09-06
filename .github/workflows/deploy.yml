@@ -1,45 +1,31 @@
-name: Deploy Next.js site to GitHub Pages
+name: Build and Deploy
 
 on:
   push:
     branches:
-      - main  # или твоя основная ветка
+      - main
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Клонируем репозиторий полностью
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # важно для nextra, чтобы видеть историю
 
-      # 2. Устанавливаем Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # или версия Node.js, совместимая с nextra
-          cache: 'npm'
+          node-version: '20'
 
-      # 3. Устанавливаем зависимости
       - name: Install dependencies
         run: npm install
 
-      # 4. Сборка проекта
-      - name: Build
+      - name: Build project
         run: npm run build
 
-      # 5. Экспорт статического сайта
-      - name: Export static site
-        run: npm run export
-
-      # 6. Деплой на GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          publish_dir: ./out   # папка, в которой Next.js экспортирует сайт
