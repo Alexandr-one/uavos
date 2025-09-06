@@ -1,16 +1,14 @@
 import nextra from 'nextra'
 
+const withNextra = nextra({
+})
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+export default withNextra({
   reactStrictMode: true,
-  devIndicators: { buildActivity: false }, // объект, а не boolean
-  output: 'export',       // статический экспорт
-  trailingSlash: true,
+  output: 'export',            // статический экспорт
   images: { unoptimized: true },
-  distDir: 'out'
-}
- 
-// Nextra wrapper
-export default nextra({
-  search: { codeblocks: false }
-})(nextConfig)
+  trailingSlash: true,
+  basePath: '/uavos',          // имя репозитория
+  assetPrefix: '/uavos/',      // обязательно со слэшем в конце
+})
