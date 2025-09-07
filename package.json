@@ -1,7 +1,6 @@
 {
   "name": "uavos",
   "version": "1.0.0",
-  "homepage": "https://Alexandr-one.github.io/uavos/",
   "scripts": {
     "dev": "next",
     "start": "next start",
@@ -11,11 +10,12 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d out"
   },
+  "homepage": "https://andewhash.github.io/uavos_website",
   "dependencies": {
     "next": "^14.0.0",
-    "nextra": "^4.4.0",
+    "nextra": "^4.0.0",
     "nextra-theme-docs": "^4.4.0",
-    "pagefind": "^1.4.0",
+    "pagefind": "~1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
