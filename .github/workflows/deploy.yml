@@ -33,6 +33,12 @@ jobs:
       - name: Build with Next.js
         run: npm run build
       
+      - name: Fix Pagefind paths
+        run: |
+          # Заменяем пути в HTML и JS файлах
+          find ./out -type f \( -name "*.html" -o -name "*.js" \) -exec sed -i 's|"/_pagefind|"/uavos/_pagefind|g' {} \;
+          find ./out -type f \( -name "*.html" -o -name "*.js" \) -exec sed -i 's|/_pagefind|/uavos/_pagefind|g' {} \;
+      
       - name: Create .nojekyll file
         run: touch ./out/.nojekyll
       
