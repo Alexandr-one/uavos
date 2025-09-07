@@ -8,7 +8,7 @@ const navbar = (
   <Navbar
 
     logo={<>
-      <img src="/images/logo.svg" width="32" height="32" viewBox="0 0 32 32" />
+      <img src="/uavos/images/logo.svg" width="32" height="32" viewBox="0 0 32 32" />
       <span style={{ marginLeft: '.4em', fontWeight: 800 }}>
         UAVOS
       </span>

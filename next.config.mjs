@@ -14,8 +14,8 @@ const nextConfig = {
   trailingSlash: true,
   
   // ✅ Настройки для префикса
-  basePath: process.env.NODE_ENV === 'production' ? '/uavos_website' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/uavos_website' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/uavos' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/uavos' : '',
   
   // ✅ ОТКЛЮЧАЕМ МИНИФИКАЦИЮ И ОПТИМИЗАЦИЮ
   swcMinify: false,
