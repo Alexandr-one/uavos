@@ -12,7 +12,11 @@ const nextConfig = {
     unoptimized: true 
   },
   trailingSlash: true,
-  
+  search: {
+    codeblocks: false,
+    // Указываем базовый путь для поиска
+    basePath: process.env.NODE_ENV === 'production' ? '/uavos' : ''
+  },
   // ✅ Настройки для префикса
   basePath: process.env.NODE_ENV === 'production' ? '/uavos' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/uavos' : '',
