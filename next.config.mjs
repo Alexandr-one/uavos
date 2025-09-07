@@ -12,66 +12,37 @@ const nextConfig = {
     unoptimized: true 
   },
   trailingSlash: true,
-  search: {
-    codeblocks: false,
-    // Указываем базовый путь для поиска
-    basePath: process.env.NODE_ENV === 'production' ? '/uavos' : ''
-  },
-  // ✅ Настройки для префикса
+
+  // ✅ Настройки для GitHub Pages
   basePath: process.env.NODE_ENV === 'production' ? '/uavos' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/uavos' : '',
-  
-  // ✅ ОТКЛЮЧАЕМ МИНИФИКАЦИЮ И ОПТИМИЗАЦИЮ
+
+  // ✅ Отключаем минификацию по умолчанию
   swcMinify: false,
   compress: false,
-  
-  // ✅ Отключаем все оптимизации
+
   webpack: (config, { isServer }) => {
-    // Отключаем минификацию JS
+    // Отключаем глобальную минификацию
     config.optimization.minimize = false
-    
-    // Сохраняем оригинальные имена файлов
     config.optimization.moduleIds = 'named'
     config.optimization.chunkIds = 'named'
-    
-    // Отключаем хеширование в именах файлов
-    if (!isServer) {
-      config.output.filename = 'static/js/[name].js'
-      config.output.chunkFilename = 'static/js/[name].js'
-      
-      // Для CSS
-      const cssRule = config.module.rules.find(rule => 
-        rule.test && rule.test.toString().includes('css')
-      )
-      if (cssRule) {
-        cssRule.use = cssRule.use.map(loader => {
-          if (loader.loader && loader.loader.includes('css-loader')) {
-            return {
-              ...loader,
-              options: {
-                ...loader.options,
-                modules: {
-                  ...loader.options.modules,
-                  exportLocalsConvention: 'asIs',
-                  localIdentName: '[name]__[local]'
-                }
-              }
-            }
-          }
-          return loader
-        })
+
+    // ⚡ Игнорируем pagefind ассеты (оставляем как есть)
+    config.module.rules.push({
+      test: /pagefind\/.*\.(js|wasm|json)$/,
+      type: 'asset/resource',
+      generator: {
+        filename: 'pagefind/[name][ext]'
       }
-    }
-    
+    })
+
     return config
   },
-  
-  // ✅ Отключаем оптимизацию CSS
+
   experimental: {
     optimizeCss: false
   },
-  
-  // ✅ Сохраняем оригинальные имена файлов
+
   generateBuildId: async () => {
     return 'build-' + Date.now()
   },
