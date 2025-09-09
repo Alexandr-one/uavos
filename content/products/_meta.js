@@ -1,8 +1,9 @@
+// meta.js
 export default {
-    asc: "Automatic Control System (Autopilots)",
-    vto: "Vertical Take-Off and Landing UAVs",
-    fw: "Fixed-wing UAVs",
-    gcu: "Ground Control Units (GCU)",
+    asc: "Automatic Control System",
+    vto: "Vertical Take-Off",
+    fw: "Fixed-wing",
+    gcu: "Ground Control Units",
     sd: "Servo Drives",
     uav: "UAV Engines",
     cs: "Communication Systems",

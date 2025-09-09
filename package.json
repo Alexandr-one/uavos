@@ -2,7 +2,8 @@
   "name": "uavos",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "npm run generate-meta && next",
+    "generate-meta": "node scripts/generate-meta.js",
     "start": "next start",
     "export": "next export",
     "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind",
@@ -12,6 +13,7 @@
   },
   "homepage": "https://andewhash.github.io/uavos_website",
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "^14.0.0",
     "nextra": "^4.0.0",
     "nextra-theme-docs": "^4.4.0",
