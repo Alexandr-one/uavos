@@ -65,7 +65,7 @@ function generateMeta() {
   }
 
   const mainMeta = {};
-  const categoryFolders = new Map();
+  const categoryStructure = {};
 
   function processDirectory(currentPath, relativePath = '') {
     const items = fs.readdirSync(currentPath);
@@ -88,33 +88,63 @@ function generateMeta() {
       const { data } = matter(content);
       
       if (data.category) {
-        const category = data.category;
+        const categories = data.category.split('/').map(cat => cat.trim());
         const title = data.title || path.basename(relativePath);
         
-        const safeCategoryKey = category
-          .toLowerCase()
-          .replace(/\s+/g, '_')
-          .replace(/[^a-z0-9_]/g, '');
+        // Строим структуру категорий
+        let currentLevel = categoryStructure;
+        let fullPath = '';
         
-        mainMeta[safeCategoryKey] = category;
-        
-        if (!categoryFolders.has(safeCategoryKey)) {
-          categoryFolders.set(safeCategoryKey, {
-            displayName: category,
-            documents: []
-          });
+        for (const category of categories) {
+          const safeCategoryKey = category
+            .toLowerCase()
+            .replace(/\s+/g, '_')
+            .replace(/[^a-z0-9_]/g, '');
+          
+          fullPath = fullPath ? `${fullPath}/${safeCategoryKey}` : safeCategoryKey;
+          
+          if (!currentLevel[safeCategoryKey]) {
+            currentLevel[safeCategoryKey] = {
+              displayName: category,
+              documents: [],
+              subcategories: {}
+            };
+          }
+          
+          // Добавляем в mainMeta для корневого уровня
+          if (categories.length === 1) {
+            mainMeta[safeCategoryKey] = category;
+          }
+          
+          currentLevel = currentLevel[safeCategoryKey].subcategories;
         }
-        categoryFolders.get(safeCategoryKey).documents.push({
-          originalPath: path.dirname(filePath),
-          title: title,
-          content: content
-        });
+        
+        // Возвращаемся к последней категории для добавления документа
+        let targetCategory = categoryStructure;
+        for (const category of categories) {
+          const safeCategoryKey = category
+            .toLowerCase()
+            .replace(/\s+/g, '_')
+            .replace(/[^a-z0-9_]/g, '');
+          
+          if (category === categories[categories.length - 1]) {
+            targetCategory[safeCategoryKey].documents.push({
+              originalPath: path.dirname(filePath),
+              title: title,
+              content: content
+            });
+          } else {
+            targetCategory = targetCategory[safeCategoryKey].subcategories;
+          }
+        }
 
         // Копируем папку images
         const imagesSourcePath = path.join(path.dirname(filePath), 'images');
         if (fs.existsSync(imagesSourcePath)) {
-          const categoryPath = path.join(targetPath, safeCategoryKey);
-          const imagesTargetPath = path.join(categoryPath, 'images');
+          const categoryPathParts = categories.map(cat => 
+            cat.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '')
+          );
+          const imagesTargetPath = path.join(targetPath, ...categoryPathParts, 'images');
           
           // Копируем изображения
           copyFolderRecursive(imagesSourcePath, imagesTargetPath);
@@ -131,29 +161,60 @@ function generateMeta() {
 
   console.log('Creating target structure...');
   
-  // Создаем папки категорий и документы
-  categoryFolders.forEach((categoryInfo, safeCategoryKey) => {
-    const categoryPath = path.join(targetPath, safeCategoryKey);
-    fs.mkdirSync(categoryPath, { recursive: true });
-    
-    const categoryMeta = {};
-    
-    categoryInfo.documents.forEach((document, index) => {
-      const docKey = `doc_${index + 1}`;
-      categoryMeta[docKey] = document.title;
+  // Рекурсивная функция для создания структуры папок и файлов
+  function createCategoryStructure(structure, basePath = '', parentMeta = {}) {
+    Object.keys(structure).forEach(categoryKey => {
+      const categoryInfo = structure[categoryKey];
+      const categoryPath = path.join(basePath, categoryKey);
       
-      const targetFile = path.join(categoryPath, `${docKey}.mdx`);
-      fs.writeFileSync(targetFile, document.content);
-      console.log(`Created: ${targetFile}`);
+      // Создаем папку категории
+      fs.mkdirSync(categoryPath, { recursive: true });
+      
+      const categoryMeta = {};
+      
+      // Добавляем индексный файл если есть документы
+      if (categoryInfo.documents.length > 0) {
+        categoryMeta.index = categoryInfo.displayName;
+        
+        // Создаем документы в категории
+        categoryInfo.documents.forEach((document, index) => {
+          const docKey = `doc_${index + 1}`;
+          categoryMeta[docKey] = document.title;
+          
+          const targetFile = path.join(categoryPath, `${docKey}.mdx`);
+          fs.writeFileSync(targetFile, document.content);
+          console.log(`Created: ${targetFile}`);
+        });
+      }
+      
+      // Рекурсивно обрабатываем подкатегории
+      if (Object.keys(categoryInfo.subcategories).length > 0) {
+        const subMeta = createCategoryStructure(
+          categoryInfo.subcategories, 
+          categoryPath,
+          categoryMeta
+        );
+        
+        // Добавляем подкатегории в meta текущей категории
+        Object.assign(categoryMeta, subMeta);
+      }
+      
+      // Создаем _meta.json для категории
+      const metaJsonPath = path.join(categoryPath, '_meta.json');
+      fs.writeFileSync(metaJsonPath, JSON.stringify(categoryMeta, null, 2));
+      console.log(`Created: ${metaJsonPath}`);
+      
+      // Добавляем в родительский meta
+      parentMeta[categoryKey] = categoryInfo.displayName;
     });
     
-    // СОЗДАЕМ _meta.json ДЛЯ КАТЕГОРИИ - ЭТО ВАЖНО!
-    const metaJsonPath = path.join(categoryPath, '_meta.json');
-    fs.writeFileSync(metaJsonPath, JSON.stringify(categoryMeta, null, 2));
-    console.log(`Created: ${metaJsonPath}`);
-  });
+    return parentMeta;
+  }
+  
+  // Создаем всю структуру категорий
+  const rootMeta = createCategoryStructure(categoryStructure, targetPath);
 
-  // Создаем главный _meta.js
+  // Создаем главный _meta.js для корневой папки products
   if (Object.keys(mainMeta).length > 0) {
     const mainMetaContent = `// _meta.js
 export default {
@@ -167,44 +228,18 @@ ${Object.entries(mainMeta)
     console.log(`Created: ${mainMetaPath}`);
   }
 
-  // СОЗДАЕМ КОРНЕВОЙ _meta.json - ЭТО ТОЖЕ ВАЖНО!
+  // Создаем корневой _meta.json для products
   const rootMetaContent = {
     "index": "Products Overview",
-    ...Object.fromEntries(
-      Array.from(categoryFolders.keys()).map(key => [key, mainMeta[key]])
-    )
+    ...rootMeta
   };
 
   const rootMetaPath = path.join(targetPath, '_meta.json');
   fs.writeFileSync(rootMetaPath, JSON.stringify(rootMetaContent, null, 2));
   console.log(`Created: ${rootMetaPath}`);
 
-  // Дополнительно: создаем _meta.json для каждой категории если их нет
-  const ensureCategoryMetaFiles = () => {
-    const categories = fs.readdirSync(targetPath).filter(item => {
-      const itemPath = path.join(targetPath, item);
-      return fs.statSync(itemPath).isDirectory();
-    });
-
-    categories.forEach(category => {
-      const categoryPath = path.join(targetPath, category);
-      const metaJsonPath = path.join(categoryPath, '_meta.json');
-      
-      if (!fs.existsSync(metaJsonPath)) {
-        // Создаем базовый _meta.json для категории
-        const basicMeta = {
-          "index": category
-        };
-        fs.writeFileSync(metaJsonPath, JSON.stringify(basicMeta, null, 2));
-        console.log(`Created basic _meta.json for ${category}`);
-      }
-    });
-  };
-
-  ensureCategoryMetaFiles();
-  
   console.log('Generation completed successfully!');
-  console.log('Created categories:', Array.from(categoryFolders.keys()));
+  console.log('Created category structure:', JSON.stringify(categoryStructure, null, 2));
 }
 
 try {
