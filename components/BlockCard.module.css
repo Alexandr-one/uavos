@@ -18,13 +18,11 @@
 .media {
     position: relative;
     width: 100%;
-    /* высота шапки с картинкой */
     background: #f6f7f9;
 }
 
 .content {
     padding: 20px;
-    /* как ты просил — ровно 20px */
 }
 
 :global(html.dark) .card {

@@ -6,7 +6,6 @@
     gap: 20px;
     justify-content: space-between;
     margin-top: 30px
-    /* расстояние между карточками */
 }
 .grid a{
     width: 100%;
@@ -14,7 +13,6 @@
 
 .item {
     flex: 1 1 calc(30%);
-    /* 2 блока в ряд */
     max-width: calc(30%);
     min-width: 300px;
 }
@@ -60,8 +58,6 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-/* ночная тема */
-
 :global(html.dark) .title{
     color: rgb(51,102,153);  
 }
@@ -70,9 +66,6 @@
     color:  rgb(51,102,153);  
 }
 
-
-
-/* Products page */
 
 .products{
     display: flex;

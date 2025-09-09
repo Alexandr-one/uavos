@@ -8,7 +8,7 @@ type Props = {
   href: string
   image: string
   description?: string
-  height?: string | number  // новый проп
+  height?: string | number 
   footer?: boolean
 }
 
