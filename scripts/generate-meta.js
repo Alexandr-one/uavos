@@ -24,7 +24,7 @@ function copyFolderRecursive(source, target) {
 }
 
 function generateMeta() {
-  const sourcePath = path.join(process.cwd(), 'pag', 'products');
+  const sourcePath = path.join(process.cwd(), 'maintenance', 'products');
   const targetPath = path.join(process.cwd(), 'content', 'products');
   
   console.log('Cleaning target directory (except index.mdx)...');
