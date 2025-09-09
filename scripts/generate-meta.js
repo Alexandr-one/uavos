@@ -24,7 +24,7 @@ function copyFolderRecursive(source, target) {
 }
 
 function generateMeta() {
-  const sourcePath = path.join(process.cwd(), 'pages', 'products');
+  const sourcePath = path.join(process.cwd(), 'pag', 'products');
   const targetPath = path.join(process.cwd(), 'content', 'products');
   
   console.log('Cleaning target directory (except index.mdx)...');
@@ -98,10 +98,13 @@ function generateMeta() {
         
         mainMeta[safeCategoryKey] = category;
         
-        if (!categoryFolders.has(category)) {
-          categoryFolders.set(category, []);
+        if (!categoryFolders.has(safeCategoryKey)) {
+          categoryFolders.set(safeCategoryKey, {
+            displayName: category,
+            documents: []
+          });
         }
-        categoryFolders.get(category).push({
+        categoryFolders.get(safeCategoryKey).documents.push({
           originalPath: path.dirname(filePath),
           title: title,
           content: content
@@ -128,31 +131,29 @@ function generateMeta() {
 
   console.log('Creating target structure...');
   
-  categoryFolders.forEach((folders, category) => {
-    const safeCategoryKey = category
-      .toLowerCase()
-      .replace(/\s+/g, '_')
-      .replace(/[^a-z0-9_]/g, '');
-    
+  // Создаем папки категорий и документы
+  categoryFolders.forEach((categoryInfo, safeCategoryKey) => {
     const categoryPath = path.join(targetPath, safeCategoryKey);
     fs.mkdirSync(categoryPath, { recursive: true });
     
     const categoryMeta = {};
     
-    folders.forEach((folder, index) => {
-      const folderName = `item_${index + 1}`;
-      categoryMeta[folderName] = folder.title;
+    categoryInfo.documents.forEach((document, index) => {
+      const docKey = `doc_${index + 1}`;
+      categoryMeta[docKey] = document.title;
       
-      const targetFile = path.join(categoryPath, `${folderName}.mdx`);
-      fs.writeFileSync(targetFile, folder.content);
+      const targetFile = path.join(categoryPath, `${docKey}.mdx`);
+      fs.writeFileSync(targetFile, document.content);
       console.log(`Created: ${targetFile}`);
     });
     
+    // СОЗДАЕМ _meta.json ДЛЯ КАТЕГОРИИ - ЭТО ВАЖНО!
     const metaJsonPath = path.join(categoryPath, '_meta.json');
     fs.writeFileSync(metaJsonPath, JSON.stringify(categoryMeta, null, 2));
     console.log(`Created: ${metaJsonPath}`);
   });
 
+  // Создаем главный _meta.js
   if (Object.keys(mainMeta).length > 0) {
     const mainMetaContent = `// _meta.js
 export default {
@@ -166,31 +167,44 @@ ${Object.entries(mainMeta)
     console.log(`Created: ${mainMetaPath}`);
   }
 
-  const ensureBasicMetaFiles = () => {
-    const basicMetaJS = `export default {
-  index: "Products Overview"
-}`;
-
-    const basicMetaJSON = `{
-  "index": "Products Overview"
-}`;
-
-    const metaJSPath = path.join(targetPath, '_meta.js');
-    if (!fs.existsSync(metaJSPath)) {
-      fs.writeFileSync(metaJSPath, basicMetaJS);
-      console.log('Created basic _meta.js');
-    }
-
-    const metaJSONPath = path.join(targetPath, '_meta.json');
-    if (!fs.existsSync(metaJSONPath)) {
-      fs.writeFileSync(metaJSONPath, basicMetaJSON);
-      console.log('Created basic _meta.json');
-    }
+  // СОЗДАЕМ КОРНЕВОЙ _meta.json - ЭТО ТОЖЕ ВАЖНО!
+  const rootMetaContent = {
+    "index": "Products Overview",
+    ...Object.fromEntries(
+      Array.from(categoryFolders.keys()).map(key => [key, mainMeta[key]])
+    )
   };
 
-  ensureBasicMetaFiles();
+  const rootMetaPath = path.join(targetPath, '_meta.json');
+  fs.writeFileSync(rootMetaPath, JSON.stringify(rootMetaContent, null, 2));
+  console.log(`Created: ${rootMetaPath}`);
+
+  // Дополнительно: создаем _meta.json для каждой категории если их нет
+  const ensureCategoryMetaFiles = () => {
+    const categories = fs.readdirSync(targetPath).filter(item => {
+      const itemPath = path.join(targetPath, item);
+      return fs.statSync(itemPath).isDirectory();
+    });
+
+    categories.forEach(category => {
+      const categoryPath = path.join(targetPath, category);
+      const metaJsonPath = path.join(categoryPath, '_meta.json');
+      
+      if (!fs.existsSync(metaJsonPath)) {
+        // Создаем базовый _meta.json для категории
+        const basicMeta = {
+          "index": category
+        };
+        fs.writeFileSync(metaJsonPath, JSON.stringify(basicMeta, null, 2));
+        console.log(`Created basic _meta.json for ${category}`);
+      }
+    });
+  };
+
+  ensureCategoryMetaFiles();
   
-  console.log('Generation completed!');
+  console.log('Generation completed successfully!');
+  console.log('Created categories:', Array.from(categoryFolders.keys()));
 }
 
 try {
