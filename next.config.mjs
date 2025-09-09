@@ -8,8 +8,8 @@ const withNextra = nextra({
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  images: {
-    unoptimized: true
+  images: { 
+    unoptimized: true 
   },
   trailingSlash: true,
   basePath: process.env.NODE_ENV === 'production' ? '/uavos' : '',
@@ -18,29 +18,15 @@ const nextConfig = {
   compress: false,
 
   webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        fs: false,
-        path: false,
-      }
-    }
+    config.optimization.minimize = false
+    config.optimization.moduleIds = 'named'
+    config.optimization.chunkIds = 'named'
 
-    config.plugins.push({
-      apply: (compiler) => {
-        compiler.hooks.afterEmit.tapAsync('CopyPagefindPlugin', (compilation, callback) => {
-          try {
-            const pagefindPath = path.dirname(require.resolve('pagefind-web'))
-            const sourceDir = path.join(pagefindPath, 'pagefind')
-            const targetDir = path.join(compiler.options.output.path, 'pagefind')
-
-            const { execSync } = require('child_process')
-            execSync(`mkdir -p ${targetDir} && cp -r ${sourceDir}/* ${targetDir}/`)
-            console.log('Pagefind files copied successfully!')
-          } catch (error) {
-            console.warn('Could not copy Pagefind files:', error.message)
-          }
-          callback()
-        })
+    config.module.rules.push({
+      test: /pagefind\/.*\.(js|wasm|json)$/,
+      type: 'asset/resource',
+      generator: {
+        filename: 'pagefind/[name][ext]'
       }
     })
 
