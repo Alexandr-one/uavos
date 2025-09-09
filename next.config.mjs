@@ -1,21 +1,15 @@
 import nextra from 'nextra'
 
 const withNextra = nextra({
-  search: {
-    codeblocks: false,
-    pagefind: {
-      bundleDir: 'pagefind',
-      baseUrl: process.env.NODE_ENV === 'production' ? '/uavos' : ''
-    }
-  }
+  search: { codeblocks: false }
 })
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  images: {
-    unoptimized: true
+  images: { 
+    unoptimized: true 
   },
   trailingSlash: true,
   basePath: process.env.NODE_ENV === 'production' ? '/uavos' : '',
