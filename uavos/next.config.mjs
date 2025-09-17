@@ -12,8 +12,10 @@ const nextConfig = {
     unoptimized: true 
   },
   trailingSlash: true,
-  basePath: process.env.NODE_ENV === 'production' ? '/uavos' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/uavos' : '',
+  
+  basePath: '/uavos',
+  assetPrefix: '/uavos/',
+  
   swcMinify: false,
   compress: false,
 

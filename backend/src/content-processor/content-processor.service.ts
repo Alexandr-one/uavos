@@ -21,18 +21,23 @@ export class ContentProcessorService {
   async processContent() {
     this.logger.log('🔄 Processing content for UAVOS...');
     
+    // Очищаем только целевые папки из folderMappings
     for (const targetFolder of Object.values(this.folderMappings)) {
       const targetPath = path.join(this.contentDestPath, targetFolder);
       await fs.remove(targetPath);
       this.logger.log(`Cleaned target folder: ${targetPath}`);
     }
 
+    // Обрабатываем каждую папку отдельно с чистой структурой
     for (const [sourceFolder, targetFolder] of Object.entries(this.folderMappings)) {
       const sourcePath = path.join(this.contentSrcPath, sourceFolder);
       
       if (await fs.pathExists(sourcePath)) {
         this.logger.log(`Processing ${sourceFolder} → ${targetFolder}`);
-        await this.processContentFolder(sourcePath, targetFolder);
+        
+        // Создаем новую чистую структуру для каждой папки
+        const categoryStructure = {};
+        await this.processContentFolder(sourcePath, targetFolder, categoryStructure);
       } else {
         this.logger.warn(`Source folder not found: ${sourcePath}`);
       }
@@ -41,11 +46,17 @@ export class ContentProcessorService {
     this.logger.log('✅ Content processed successfully');
   }
 
-  private async processContentFolder(sourcePath: string, targetFolder: string) {
+  private async processContentFolder(
+    sourcePath: string, 
+    targetFolder: string, 
+    categoryStructure: any
+  ) {
     const targetPath = path.join(this.contentDestPath, targetFolder);
     await fs.ensureDir(targetPath);
-    const categoryStructure = {};
+    
+    // Используем переданную структуру (должна быть пустой)
     await this.processDirectory(sourcePath, '', categoryStructure, sourcePath, targetPath);
+    
     if (Object.keys(categoryStructure).length > 0) {
       await this.createCategoryStructure(categoryStructure, targetPath, {});
       const folderName = path.basename(targetFolder);
@@ -126,9 +137,12 @@ export class ContentProcessorService {
       }
       
       const title = data.title || folderName;
+      
+      // Создаем структуру категорий
       let currentLevel = categoryStructure;
       for (const category of categories) {
         const safeCategoryKey = this.sanitizeCategoryKey(category);
+        
         if (!currentLevel[safeCategoryKey]) {
           currentLevel[safeCategoryKey] = {
             displayName: category,
@@ -140,18 +154,39 @@ export class ContentProcessorService {
         currentLevel = currentLevel[safeCategoryKey].subcategories;
       }
       
+      // Возвращаемся к нужному уровню и добавляем документ
       let targetCategory = categoryStructure;
-      for (const category of categories) {
+      for (let i = 0; i < categories.length; i++) {
+        const category = categories[i];
         const safeCategoryKey = this.sanitizeCategoryKey(category);
         
-        if (category === categories[categories.length - 1]) {
-          targetCategory[safeCategoryKey].documents.push({
-            originalPath: dirName,
-            title: title,
-            content: `---\n${yaml.dump(data)}---\n${markdownContent}`,
-            folderName: folderName,
-            filename: path.basename(filePath, '.mdx')
-          });
+        if (i === categories.length - 1) {
+          // Проверяем, нет ли уже такого документа
+          const existingDocIndex = targetCategory[safeCategoryKey].documents.findIndex(
+            doc => doc.title === title || doc.filename === path.basename(filePath, '.mdx')
+          );
+          
+          if (existingDocIndex === -1) {
+            // Добавляем новый документ
+            targetCategory[safeCategoryKey].documents.push({
+              originalPath: dirName,
+              title: title,
+              content: `---\n${yaml.dump(data)}---\n${markdownContent}`,
+              folderName: folderName,
+              filename: path.basename(filePath, '.mdx')
+            });
+            this.logger.log(`Added document: ${title} to category: ${category}`);
+          } else {
+            // Обновляем существующий документ
+            targetCategory[safeCategoryKey].documents[existingDocIndex] = {
+              originalPath: dirName,
+              title: title,
+              content: `---\n${yaml.dump(data)}---\n${markdownContent}`,
+              folderName: folderName,
+              filename: path.basename(filePath, '.mdx')
+            };
+            this.logger.log(`Updated document: ${title} in category: ${category}`);
+          }
         } else {
           targetCategory = targetCategory[safeCategoryKey].subcategories;
         }
@@ -208,30 +243,38 @@ export class ContentProcessorService {
       const categoryInfo = structure[categoryKey];
       const categoryPath = path.join(basePath, categoryKey);
       await fs.ensureDir(categoryPath);
+      
       const categoryMeta = {};
-      if (categoryInfo.documents.length > 0) {
+      
+      // Добавляем индексный файл для категории
+      if (categoryInfo.documents.length > 0 || Object.keys(categoryInfo.subcategories).length > 0) {
         categoryMeta['index'] = categoryInfo.displayName;
-        
-        for (const [index, document] of categoryInfo.documents.entries()) {
-          const docKey = document.filename || document.folderName || `doc_${index + 1}`;
-          categoryMeta[docKey] = document.title;
-          
-          const targetFile = path.join(categoryPath, `${docKey}.mdx`);
-          await fs.writeFile(targetFile, document.content);
-          this.logger.log(`Created: ${targetFile}`);
-        }
       }
+      
+      // Обрабатываем документы в категории
+      for (const [index, document] of categoryInfo.documents.entries()) {
+        const docKey = document.filename || document.folderName || `doc_${index + 1}`;
+        categoryMeta[docKey] = document.title;
+        
+        const targetFile = path.join(categoryPath, `${docKey}.mdx`);
+        await fs.writeFile(targetFile, document.content);
+        this.logger.log(`Created: ${targetFile}`);
+      }
+      
+      // Обрабатываем подкатегории
       if (Object.keys(categoryInfo.subcategories).length > 0) {
         const subMeta = await this.createCategoryStructure(
           categoryInfo.subcategories, 
           categoryPath,
-          categoryMeta
+          {}
         );
         Object.assign(categoryMeta, subMeta);
       }
+      
       const metaJsonPath = path.join(categoryPath, '_meta.json');
       await fs.writeJson(metaJsonPath, categoryMeta, { spaces: 2 });
       this.logger.log(`Created meta: ${metaJsonPath}`);
+      
       parentMeta[categoryKey] = categoryInfo.displayName;
     }
     return parentMeta;

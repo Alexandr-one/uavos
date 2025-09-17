@@ -64,25 +64,34 @@ export class GitService {
       throw new Error('❌ Build failed: out/ directory not found');
     }
 
-    // console.log('🚀 Deploying to gh-pages...');
-    // const ghPages = simpleGit(buildDir);
+    console.log('📝 Creating .nojekyll file...');
+    const noJekyllPath = path.join(buildDir, '.nojekyll');
+    fs.writeFileSync(noJekyllPath, '');
+    console.log('✅ Created .nojekyll file');
 
-    // await ghPages.init();
-    // await ghPages.addConfig('user.name', process.env.GIT_USER_NAME ?? 'Deploy Bot');
-    // await ghPages.addConfig('user.email', process.env.GIT_USER_EMAIL ?? 'bot@example.com');
+    console.log('🚀 Deploying to gh-pages...');
+    const ghPages = simpleGit(buildDir);
 
-    // await ghPages.checkout(['-B', 'gh-pages']);
+    try {
+      await ghPages.init();
+      await ghPages.addConfig('user.name', process.env.GIT_USER_NAME ?? 'Deploy Bot');
+      await ghPages.addConfig('user.email', process.env.GIT_USER_EMAIL ?? 'bot@example.com');
 
-    // await ghPages.add('.');
-    // await ghPages.commit('Deploy site');
+      await ghPages.checkout(['-B', 'gh-pages']);
+      await ghPages.add('.');
+      await ghPages.commit('Deploy site');
 
-    // await ghPages.push(
-    //   `https://${this.githubToken}@github.com/Alexandr-one/uavos.git`,
-    //   'gh-pages',
-    //   { '--force': null }
-    // );
+      await ghPages.push(
+        `https://${this.githubToken}@github.com/Alexandr-one/uavos.git`,
+        'gh-pages',
+        { '--force': null }
+      );
 
-    console.log('✅ Site deployed to gh-pages');
+      console.log('✅ Site deployed to gh-pages');
+    } catch (error) {
+      console.error('❌ Git deployment failed:', error);
+      throw new Error('Git deployment failed');
+    }
   }
 
 
