@@ -1,0 +1,76 @@
+# ----------------------------
+# Общие зависимости и сборка
+# ----------------------------
+node_modules/
+dist/
+build/
+out/
+.next/
+coverage/
+.nyc_output
+.temp
+.tmp
+
+# ----------------------------
+# Логи и отчёты
+# ----------------------------
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ----------------------------
+# ОС и редакторы
+# ----------------------------
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# ----------------------------
+# Yarn / PnP
+# ----------------------------
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ----------------------------
+# Прочее
+# ----------------------------
+*.pem
+*.tsbuildinfo
+next-env.d.ts
+
+# ----------------------------
+# Env-файлы
+# ----------------------------
+.env
+.env.*
+!.env.example
+
+# ----------------------------
+# Vercel
+# ----------------------------
+.vercel
