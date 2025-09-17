@@ -1,0 +1,54 @@
+"use client";
+
+import { useState } from "react";
+import styles from "./Header.module.css";
+import { Menu } from "lucide-react";
+import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const { user, isLoading, logout } = useAuth();
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.headerContainer}>
+        <button
+          className={styles.burger}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          <Menu size={24} />
+        </button>
+
+        <Link href="/" className={styles.title}>Admin Panel</Link>
+        {!isLoading && (
+          user ? (
+            <nav className={`${styles.nav} ${isOpen ? styles.open : ""}`}>
+              <Link href="/" className={styles.link}>Main</Link>
+              <Link href="/products/" className={styles.link}>Products</Link>
+              <Link href="/products/add" className={styles.link}>Add products</Link>
+              <Link href="/articles/" className={styles.link}>Articles</Link>
+              <Link href="/articles/add" className={styles.link}>Add article</Link>
+              <button
+                className={`${styles.link} ${styles['link-button']}`}
+                onClick={logout}
+              >
+                Logout
+              </button>
+            </nav>
+
+          ) : (
+            <nav className={`${styles.nav} ${isOpen ? styles.open : ""}`}>
+              <Link href="/" className={styles.link}>Main</Link>
+              <Link href="/login" className={styles.link}>
+                Login
+              </Link>
+            </nav>
+
+          )
+        )}
+      </div>
+    </header>
+  );
+}

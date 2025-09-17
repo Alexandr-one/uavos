@@ -1,0 +1,101 @@
+---
+title: Home - UAVOS
+---
+
+import Link from "next/link"
+import BlockCard from "../components/BlockCard"
+import styles from "../components/BlockGrid.module.css"
+import { Bleed, Callout, Tabs, Steps } from 'nextra/components'
+
+
+<Bleed>
+  <div className="flex flex-col items-center mt-20 text-center">
+    <h1 className={styles.title}>UAVOS</h1>
+    <p className={styles.subtitle}>BEYOND HUMAN CAPACITY. UNDER MACHINE CONTROL</p>
+    <Link
+      href="https://docs.uavos.com/"
+      className={styles.btn}
+    >
+      Get started
+    </Link>
+  </div>
+  ---
+</Bleed>
+<Bleed full>
+  <div className={styles.grid}>
+    <BlockCard
+      height={472}
+      href="/products"
+      image="/uavos/images/DcTGJHKV4AAuWAj.jpg"
+      footer={false}
+    />
+  </div>
+</Bleed>
+
+<Bleed full>
+  <div className={styles.products__block}>
+    
+    <BlockCard
+      title="APX Automatic Control System"
+      href="/products/"
+      
+      height={460}
+      image="/uavos/images/apx.png"
+    />
+    <div className={styles.products__items}>
+    <BlockCard
+      title="UVH-500 (KAHU-150) VTOL UAS"
+      href="/products/b"
+      image="/uavos/images/product2.jpg"
+    />
+    <BlockCard
+      title="AP 10.1"
+      href="/products/c"
+      image="/uavos/images/product3.jpg"
+    />
+    </div>
+    
+  </div>
+</Bleed>
+
+<Bleed full>
+  <div className={styles.grid}>
+    <div className={styles.item}>
+      <BlockCard
+        title="Products"
+        href="/products"
+        image="/uavos/images/product.jpg"
+        description={`Innovative solutions for every challenge.
+Cutting-edge tools that empower your workflow.
+Explore our range of high-performance products.`}
+      />
+    </div>
+
+    <div className={styles.item}>
+      <BlockCard
+        title="Services"
+        href="/services"
+        image="/uavos/images/services.jpg"
+        description={`Expert support and tailored solutions.
+Professional services that drive results.
+Helping your business succeed, step by step.`}
+      />
+    </div>
+
+    <div className={styles.item}>
+      <BlockCard
+        title="Media"
+        href="/media"
+        image="/uavos/images/media.jpg"
+        description={`Stay updated with our latest news and coverage.
+
+Press releases, stories, and highlights from our world.
+
+All the buzz about us in one place.`}
+      />
+    </div>
+  </div>
+</Bleed>
+
+
+

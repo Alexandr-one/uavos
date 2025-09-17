@@ -1,0 +1,112 @@
+.card {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  transition: all 0.15s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-color: #007bff;
+  transform: translateY(-2px);
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 1.25rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.title {
+  margin: 0;
+  color: #007bff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.excerpt {
+  margin: 0;
+  color: #6c757d;
+  line-height: 1.5;
+  font-size: 0.9375rem;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.date {
+  color: #6c757d;
+  font-size: 0.875rem;
+  background: #f8f9fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.2rem;
+  border: 1px solid #e9ecef;
+}
+/* ... предыдущие стили ... */
+
+.adminControls {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-top: 1px solid #e9ecef;
+  background-color: #f8f9fa;
+  margin-top: auto;
+}
+
+.editButton,
+.deleteButton {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.editButton {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.editButton:hover {
+  background-color: #e0a800;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.deleteButton:hover {
+  background-color: #c82333;
+}
+
+/* Адаптивность для кнопок */
+@media (max-width: 768px) {
+  .adminControls {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .editButton,
+  .deleteButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
