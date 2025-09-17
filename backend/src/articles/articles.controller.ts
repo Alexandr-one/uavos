@@ -2,6 +2,7 @@ import { Controller, Post, Get, Param, Body, UseGuards, Req, Delete } from '@nes
 import { ArticlesService } from './articles.service';
 import { AuthGuard } from '@nestjs/passport';
 import { GitService } from '../git/git.service';
+import path from 'path';
 
 
 @Controller('articles')
@@ -30,7 +31,6 @@ export class ArticlesController {
   @UseGuards(AuthGuard('jwt'))
   @Get(':slug')
   async getArticle(@Param('slug') slug: string) {
-
     try {
       const article = await this.articlesService.getArticleBySlug(slug);
       return {

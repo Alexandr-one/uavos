@@ -24,20 +24,6 @@ export class ArticlesService {
         });
     }
 
-
-
-    // private generateArticleContent(article: any, images: { [key: string]: string }): string {
-    //     let content = article.content || '';
-    //     content = this.processImagePathsForSave(content);
-    //     for (const img of Object.keys(images)) {
-    //         const localPath = images[img];
-    //         const regex = new RegExp(this.escapeRegExp(img), 'g');
-    //         content = content.replace(regex, localPath);
-    //     }
-
-    //     return content;
-    // }
-
     private generateFolderName(title: string): string {
         return title
             .toLowerCase()

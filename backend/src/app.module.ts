@@ -11,6 +11,7 @@ import { ArticlesService } from './articles/articles.service';
 import { GitModule } from './git/git.module';
 import { ProductsController } from './products/products.controller';
 import { ProductsService } from './products/products.service';
+import { ContentProcessorModule } from './content-processor/content-processor.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ProductsService } from './products/products.service';
     }),
     GitSyncModule,
     GitModule,
+    ContentProcessorModule,
     AuthModule
   ],
   controllers: [ArticlesController, ProductsController, ImagesController],

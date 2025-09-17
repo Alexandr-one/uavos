@@ -2,13 +2,10 @@
   "name": "uavos",
   "version": "1.0.0",
   "scripts": {
-    "dev": "npm run generate-meta && next",
-    "generate-meta": "node scripts/generate-meta.js",
+    "dev": "next",
     "start": "next start",
-    "export": "next export",
     "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind",
-    "build": "npm run generate-meta && next build",
-    "predeploy": "npm run build",
+    "build": "next build",
     "deploy": "gh-pages -d out"
   },
   "dependencies": {
