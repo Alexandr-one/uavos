@@ -3,35 +3,35 @@ import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { GitService } from './git/git.service';
-import { ArticlesController } from './articles/articles.controller';
+import { ContentController } from './content/content.controller';
 import { ImagesController } from './images/images.controller';
 import { GitSyncModule } from './git/git-sync/git-sync.module';
 import { AuthModule } from './auth/auth.module';
-import { ArticlesService } from './articles/articles.service';
+import { ContentService } from './content/content.service';
 import { GitModule } from './git/git.module';
-import { ProductsController } from './products/products.controller';
-import { ProductsService } from './products/products.service';
 import { ContentProcessorModule } from './content-processor/content-processor.module';
+import { DeploymentModule } from './deployment/deployment.module';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),
-      serveRoot: '/uploads', 
+      serveRoot: '/uploads',
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'content'),
-      serveRoot: '/content', 
+      serveRoot: '/content',
     }),
     ConfigModule.forRoot({
-      isGlobal: true, 
+      isGlobal: true,
     }),
     GitSyncModule,
     GitModule,
+    DeploymentModule,
     ContentProcessorModule,
     AuthModule
   ],
-  controllers: [ArticlesController, ProductsController, ImagesController],
-  providers: [GitService, ProductsService, ArticlesService],
+  controllers: [ContentController, ImagesController],
+  providers: [GitService, ContentService],
 })
-export class AppModule {}
+export class AppModule { }

@@ -16,8 +16,14 @@ const nextConfig = {
   basePath: '/uavos',
   assetPrefix: '/uavos/',
   
+  // Важные фиксы для GitHub Pages
+  skipTrailingSlashRedirect: true,
+  skipMiddlewareUrlNormalize: true,
+  
+  // Отключаем оптимизации которые могут ломать сборку
   swcMinify: false,
   compress: false,
+  optimizeFonts: false,
 
   webpack: (config, { isServer }) => {
     config.optimization.minimize = false
@@ -32,11 +38,16 @@ const nextConfig = {
       }
     })
 
+    // Фикс для динамических импортов
+    config.output.chunkLoadingGlobal = 'webpackJsonpNextraApp'
+
     return config
   },
 
+  // Отключаем экспериментальные фичи
   experimental: {
-    optimizeCss: false
+    optimizeCss: false,
+    scrollRestoration: false
   },
 
   generateBuildId: async () => {

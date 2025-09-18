@@ -3,216 +3,185 @@ import * as fs from 'fs-extra';
 import * as path from 'path';
 import matter from 'gray-matter';
 import * as yaml from 'js-yaml';
-import MarkdownIt from 'markdown-it';
 
 @Injectable()
 export class ContentProcessorService {
   private readonly logger = new Logger(ContentProcessorService.name);
-  private readonly md = new MarkdownIt();
 
   private readonly contentSrcPath = path.join(process.cwd(), 'content');
   private readonly contentDestPath = path.join(process.cwd(), '../uavos/content');
 
-  private readonly folderMappings = {
-    'articles': 'media/articles',
-    'products': 'products'
-  };
-
   async processContent() {
-    this.logger.log('🔄 Processing content for UAVOS...');
-    
-    // Очищаем только целевые папки из folderMappings
-    for (const targetFolder of Object.values(this.folderMappings)) {
-      const targetPath = path.join(this.contentDestPath, targetFolder);
-      await fs.remove(targetPath);
-      this.logger.log(`Cleaned target folder: ${targetPath}`);
-    }
 
-    // Обрабатываем каждую папку отдельно с чистой структурой
-    for (const [sourceFolder, targetFolder] of Object.entries(this.folderMappings)) {
-      const sourcePath = path.join(this.contentSrcPath, sourceFolder);
-      
-      if (await fs.pathExists(sourcePath)) {
-        this.logger.log(`Processing ${sourceFolder} → ${targetFolder}`);
-        
-        // Создаем новую чистую структуру для каждой папки
-        const categoryStructure = {};
-        await this.processContentFolder(sourcePath, targetFolder, categoryStructure);
-      } else {
-        this.logger.warn(`Source folder not found: ${sourcePath}`);
+
+    // Собираем все уникальные template из файлов
+    const usedTemplates = new Set<string>();
+    const categoryStructures: Record<string, any> = {};
+
+    // Обработка всех файлов в корне content
+    if (await fs.pathExists(this.contentSrcPath)) {
+
+
+      await this.processContentRoot(this.contentSrcPath, usedTemplates, categoryStructures);
+
+      // Очищаем только те папки, которые реально используются
+      for (const template of usedTemplates) {
+        const targetPath = path.join(this.contentDestPath, template);
+        await fs.remove(targetPath);
+
       }
-    }
 
-    this.logger.log('✅ Content processed successfully');
-  }
+      // Создание структуры для каждого используемого template
+      for (const [templateType, categoryStructure] of Object.entries(categoryStructures)) {
+        if (Object.keys(categoryStructure).length > 0) {
+          const targetBasePath = path.join(this.contentDestPath, templateType);
+          await fs.ensureDir(targetBasePath);
 
-  private async processContentFolder(
-    sourcePath: string, 
-    targetFolder: string, 
-    categoryStructure: any
-  ) {
-    const targetPath = path.join(this.contentDestPath, targetFolder);
-    await fs.ensureDir(targetPath);
-    
-    // Используем переданную структуру (должна быть пустой)
-    await this.processDirectory(sourcePath, '', categoryStructure, sourcePath, targetPath);
-    
-    if (Object.keys(categoryStructure).length > 0) {
-      await this.createCategoryStructure(categoryStructure, targetPath, {});
-      const folderName = path.basename(targetFolder);
-      const rootMetaContent = {
-        "index": `${folderName.charAt(0).toUpperCase() + folderName.slice(1)} Overview`
-      };
+          // Создаем корневой meta файл
+          const rootMeta = await this.buildCategoryStructure(
+            categoryStructure,
+            targetBasePath
+          );
 
-      const rootMetaPath = path.join(targetPath, '_meta.json');
-      await fs.writeJson(rootMetaPath, rootMetaContent, { spaces: 2 });
-      this.logger.log(`Created root meta: ${rootMetaPath}`);
+          const rootMetaPath = path.join(targetBasePath, '_meta.json');
+          await fs.writeJson(rootMetaPath, rootMeta, { spaces: 2 });
+
+        }
+      }
     } else {
-      this.logger.log(`No content found in ${sourcePath}`);
+
     }
+
+
   }
 
-  private async processDirectory(
-    currentPath: string, 
-    relativePath: string, 
-    categoryStructure: any,
-    sourceBasePath: string,
-    targetBasePath: string
+  private async processContentRoot(
+    sourcePath: string,
+    usedTemplates: Set<string>,
+    categoryStructures: Record<string, any>
   ) {
     try {
-      const items = await fs.readdir(currentPath, { withFileTypes: true });
-      
+      const items = await fs.readdir(sourcePath, { withFileTypes: true });
+
       for (const item of items) {
-        const itemPath = path.join(currentPath, item.name);
-        
+        const itemPath = path.join(sourcePath, item.name);
+
         if (item.isDirectory()) {
+          // Пропускаем системные папки
           if (item.name.startsWith('.') || item.name === 'images' || item.name === 'common') {
             continue;
           }
-          await this.processDirectory(
-            itemPath, 
-            path.join(relativePath, item.name), 
-            categoryStructure,
-            sourceBasePath,
-            targetBasePath
-          );
-        } else if (item.name === 'index.mdx' || item.name.endsWith('.mdx')) {
-          await this.processMdxFile(
-            itemPath, 
-            relativePath, 
-            categoryStructure, 
-            sourceBasePath,
-            targetBasePath
-          );
+          // Рекурсивно обрабатываем подпапки
+          await this.processContentRoot(itemPath, usedTemplates, categoryStructures);
+        } else if (item.name.endsWith('.mdx')) {
+          await this.processMdxFile(itemPath, usedTemplates, categoryStructures);
         }
       }
     } catch (error) {
-      this.logger.error(`Error processing directory ${currentPath}:`, error);
+
     }
   }
 
   private async processMdxFile(
-    filePath: string, 
-    relativePath: string, 
-    categoryStructure: any,
-    sourceBasePath: string,
-    targetBasePath: string
+    filePath: string,
+    usedTemplates: Set<string>,
+    categoryStructures: Record<string, any>
   ) {
     try {
       const content = await fs.readFile(filePath, 'utf8');
       const { data, content: markdownContent } = matter(content);
-      
-      const dirName = path.dirname(filePath);
-      const folderName = path.basename(dirName);
-      let categories: string[];
-      
+
+      // Определяем тип контента из frontmatter
+      const templateType = data.template;
+      if (!templateType) {
+
+        return;
+      }
+
+      // Добавляем template в список используемых
+      usedTemplates.add(templateType);
+
+      // Инициализируем структуру для этого template если еще не существует
+      if (!categoryStructures[templateType]) {
+        categoryStructures[templateType] = {};
+      }
+
+      // Получаем категории
+      let categories: string[] = [];
       if (data.category) {
         categories = data.category.split('/').map(cat => cat.trim());
       } else {
-        const relativeDir = path.relative(sourceBasePath, dirName);
-        categories = relativeDir.split(path.sep).filter(part => part && part !== '.');
+        // Если категория не указана, используем путь к файлу
+        const relativePath = path.relative(this.contentSrcPath, path.dirname(filePath));
+        categories = relativePath.split(path.sep).filter(part => part && part !== '.');
         if (categories.length === 0) {
-          categories = [path.basename(sourceBasePath)];
+          categories = ['uncategorized'];
         }
       }
-      
-      const title = data.title || folderName;
-      
-      // Создаем структуру категорий
-      let currentLevel = categoryStructure;
+
+      const title = data.title || path.basename(filePath, '.mdx');
+      const folderName = this.slugify(title);
+
+      // Добавляем в соответствующую структуру
+      const structure = categoryStructures[templateType];
+      let currentLevel = structure;
+
+      // Строим структуру категорий
       for (const category of categories) {
-        const safeCategoryKey = this.sanitizeCategoryKey(category);
-        
-        if (!currentLevel[safeCategoryKey]) {
-          currentLevel[safeCategoryKey] = {
+        const categorySlug = this.slugify(category);
+
+        if (!currentLevel[categorySlug]) {
+          currentLevel[categorySlug] = {
             displayName: category,
             documents: [],
             subcategories: {}
           };
         }
-        
-        currentLevel = currentLevel[safeCategoryKey].subcategories;
+
+        currentLevel = currentLevel[categorySlug].subcategories;
       }
-      
-      // Возвращаемся к нужному уровню и добавляем документ
-      let targetCategory = categoryStructure;
+
+      // Добавляем документ в структуру
+      let targetLevel = structure;
       for (let i = 0; i < categories.length; i++) {
         const category = categories[i];
-        const safeCategoryKey = this.sanitizeCategoryKey(category);
-        
+        const categorySlug = this.slugify(category);
+
         if (i === categories.length - 1) {
-          // Проверяем, нет ли уже такого документа
-          const existingDocIndex = targetCategory[safeCategoryKey].documents.findIndex(
-            doc => doc.title === title || doc.filename === path.basename(filePath, '.mdx')
+          // Добавляем документ в последнюю категорию
+          const existingDocIndex = targetLevel[categorySlug].documents.findIndex(
+            doc => doc.folderName === folderName
           );
-          
+
+          const documentData = {
+            title: title,
+            content: `---\n${yaml.dump(data)}---\n${markdownContent}`,
+            folderName: folderName,
+            originalPath: path.dirname(filePath),
+            imagesPath: path.join(path.dirname(filePath), 'images')
+          };
+
           if (existingDocIndex === -1) {
-            // Добавляем новый документ
-            targetCategory[safeCategoryKey].documents.push({
-              originalPath: dirName,
-              title: title,
-              content: `---\n${yaml.dump(data)}---\n${markdownContent}`,
-              folderName: folderName,
-              filename: path.basename(filePath, '.mdx')
-            });
-            this.logger.log(`Added document: ${title} to category: ${category}`);
+            targetLevel[categorySlug].documents.push(documentData);
           } else {
-            // Обновляем существующий документ
-            targetCategory[safeCategoryKey].documents[existingDocIndex] = {
-              originalPath: dirName,
-              title: title,
-              content: `---\n${yaml.dump(data)}---\n${markdownContent}`,
-              folderName: folderName,
-              filename: path.basename(filePath, '.mdx')
-            };
-            this.logger.log(`Updated document: ${title} in category: ${category}`);
+            targetLevel[categorySlug].documents[existingDocIndex] = documentData;
           }
         } else {
-          targetCategory = targetCategory[safeCategoryKey].subcategories;
+          targetLevel = targetLevel[categorySlug].subcategories;
         }
       }
 
-      const imagesSourcePath = path.join(dirName, 'images');
-      if (await fs.pathExists(imagesSourcePath)) {
-        const categoryPathParts = categories.map(cat => this.sanitizeCategoryKey(cat));
-        const imagesTargetPath = path.join(targetBasePath, ...categoryPathParts, 'images');
-        
-        await this.copyFolderRecursive(imagesSourcePath, imagesTargetPath);
-        this.logger.log(`Copied images: ${imagesSourcePath} -> ${imagesTargetPath}`);
-      }
-
-      this.logger.log(`Processed: ${title} in ${relativePath}`);
-
     } catch (error) {
-      this.logger.error(`Error processing MDX file ${filePath}:`, error);
     }
   }
 
-  private sanitizeCategoryKey(category: string): string {
-    return category
+  private slugify(text: string): string {
+    return text
       .toLowerCase()
-      .replace(/\s+/g, '_')
-      .replace(/[^a-z0-9_]/g, '');
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
   }
 
   private async copyFolderRecursive(source: string, target: string) {
@@ -221,7 +190,7 @@ export class ContentProcessorService {
     }
 
     const items = await fs.readdir(source, { withFileTypes: true });
-    
+
     for (const item of items) {
       const sourcePath = path.join(source, item.name);
       const targetPath = path.join(target, item.name);
@@ -234,49 +203,60 @@ export class ContentProcessorService {
     }
   }
 
-  private async createCategoryStructure(
-    structure: any, 
-    basePath: string, 
-    parentMeta: any
+  private async buildCategoryStructure(
+    structure: any,
+    basePath: string
   ): Promise<any> {
-    for (const categoryKey of Object.keys(structure)) {
-      const categoryInfo = structure[categoryKey];
-      const categoryPath = path.join(basePath, categoryKey);
+    const meta: any = {};
+
+    for (const [categorySlug, categoryInfo] of Object.entries(structure) as [string, any][]) {
+      const categoryPath = path.join(basePath, categorySlug);
       await fs.ensureDir(categoryPath);
-      
-      const categoryMeta = {};
-      
-      // Добавляем индексный файл для категории
-      if (categoryInfo.documents.length > 0 || Object.keys(categoryInfo.subcategories).length > 0) {
-        categoryMeta['index'] = categoryInfo.displayName;
+
+      // Добавляем категорию в meta
+      meta[categorySlug] = categoryInfo.displayName;
+
+      const categoryMeta: any = {};
+
+      // Обрабатываем документы в категории - создаем папку для каждого
+      for (const document of categoryInfo.documents) {
+        const documentFolderName = document.folderName;
+        categoryMeta[documentFolderName] = document.title;
+
+        // Создаем папку для документа
+        const documentFolderPath = path.join(categoryPath, documentFolderName);
+        await fs.ensureDir(documentFolderPath);
+
+        // Создаем index.mdx внутри папки
+        const indexFilePath = path.join(documentFolderPath, 'index.mdx');
+        await fs.writeFile(indexFilePath, document.content);
+
+
+        // Копируем изображения если они есть
+        if (await fs.pathExists(document.imagesPath)) {
+          const imagesTargetPath = path.join(documentFolderPath, 'images');
+          await this.copyFolderRecursive(document.imagesPath, imagesTargetPath);
+
+        }
       }
-      
-      // Обрабатываем документы в категории
-      for (const [index, document] of categoryInfo.documents.entries()) {
-        const docKey = document.filename || document.folderName || `doc_${index + 1}`;
-        categoryMeta[docKey] = document.title;
-        
-        const targetFile = path.join(categoryPath, `${docKey}.mdx`);
-        await fs.writeFile(targetFile, document.content);
-        this.logger.log(`Created: ${targetFile}`);
-      }
-      
-      // Обрабатываем подкатегории
+
+      // Рекурсивно обрабатываем подкатегории
       if (Object.keys(categoryInfo.subcategories).length > 0) {
-        const subMeta = await this.createCategoryStructure(
-          categoryInfo.subcategories, 
-          categoryPath,
-          {}
+        const subMeta = await this.buildCategoryStructure(
+          categoryInfo.subcategories,
+          categoryPath
         );
+
+        // Добавляем подкатегории в meta текущей категории
         Object.assign(categoryMeta, subMeta);
       }
-      
+
+      // Создаем meta файл для категории
       const metaJsonPath = path.join(categoryPath, '_meta.json');
       await fs.writeJson(metaJsonPath, categoryMeta, { spaces: 2 });
-      this.logger.log(`Created meta: ${metaJsonPath}`);
-      
-      parentMeta[categoryKey] = categoryInfo.displayName;
+
     }
-    return parentMeta;
+
+    return meta;
   }
 }

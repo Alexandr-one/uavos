@@ -26,10 +26,8 @@ export default function Header() {
           user ? (
             <nav className={`${styles.nav} ${isOpen ? styles.open : ""}`}>
               <Link href="/" className={styles.link}>Main</Link>
-              <Link href="/products/" className={styles.link}>Products</Link>
-              <Link href="/products/add" className={styles.link}>Add products</Link>
-              <Link href="/articles/" className={styles.link}>Articles</Link>
-              <Link href="/articles/add" className={styles.link}>Add article</Link>
+              <Link href="/content/" className={styles.link}>Content</Link>
+              <Link href="/content/add" className={styles.link}>Add content</Link>
               <button
                 className={`${styles.link} ${styles['link-button']}`}
                 onClick={logout}
