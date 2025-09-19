@@ -1,0 +1,138 @@
+3:I["(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js",[],""]
+5:I["(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js",[],""]
+4:["mdxPath","products/automatic-control-system/ap-103-automatic-control-system","oc"]
+0:["build-1758282735970",[[["",{"children":[["mdxPath","products/automatic-control-system/ap-103-automatic-control-system","oc"],{"children":["__PAGE__?{\"mdxPath\":[\"products\",\"automatic-control-system\",\"ap-103-automatic-control-system\"]}",{}]}]},"$undefined","$undefined",true],["",{"children":[["mdxPath","products/automatic-control-system/ap-103-automatic-control-system","oc"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/uavos/_next/static/css/4655733179afd5e6.css","precedence":"next","crossOrigin":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/uavos/_next/static/css/3fca8bf3d5ea4246.css","precedence":"next","crossOrigin":"$undefined"}]],"$L6"],null],null],["$L7",null]]]]
+8:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/stores/theme-config.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"ThemeConfigProvider"]
+9:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/components/last-updated.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"LastUpdated"]
+a:I["(app-pages-browser)/./app/search-with-callback.jsx",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","vendors-_app-pages-browser_node_modules_nextra_dist_client_components_search_js-_app-pages-br-2d64e6","static/chunks/vendors-_app-pages-browser_node_modules_nextra_dist_client_components_search_js-_app-pages-br-2d64e6-a2359e23608af45f.js","app/layout","static/chunks/app/layout-ccaef4b87b827362.js"],"SearchWithCallback"]
+b:I["(app-pages-browser)/./node_modules/next-themes/dist/index.mjs",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","vendors-_app-pages-browser_node_modules_nextra_dist_client_components_search_js-_app-pages-br-2d64e6","static/chunks/vendors-_app-pages-browser_node_modules_nextra_dist_client_components_search_js-_app-pages-br-2d64e6-a2359e23608af45f.js","app/layout","static/chunks/app/layout-ccaef4b87b827362.js"],"ThemeProvider"]
+c:I["(app-pages-browser)/./node_modules/nextra/dist/client/components/skip-nav/index.client.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"SkipNavLink"]
+d:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/stores/config.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"ConfigProvider"]
+15:I["(app-pages-browser)/./node_modules/next/dist/client/link.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],""]
+16:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/components/navbar/index.client.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"ClientNavbar"]
+17:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/components/footer/switchers.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"Switchers"]
+18:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/components/locale-switch.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"LocaleSwitch"]
+19:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/components/theme-switch.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"ThemeSwitch"]
+1a:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/components/sidebar.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"MobileNav"]
+1b:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/stores/toc.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"TOCProvider"]
+1c:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/components/sidebar.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"Sidebar"]
+1d:I["(app-pages-browser)/./node_modules/nextra-theme-docs/dist/mdx-components/wrapper.client.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"ClientWrapper"]
+1f:I["(app-pages-browser)/./node_modules/nextra/dist/client/components/image-zoom.js",["c16f53c3","static/chunks/c16f53c3-31917f434e6bea1d.js","vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91","static/chunks/vendors-_app-pages-browser_node_modules_nextra-theme-docs_dist_components_404_index_client_js-9bbe91-45638522d3b0b90f.js","app/[[...mdxPath]]/page","static/chunks/app/%5B%5B...mdxPath%5D%5D/page-b2ed80bfb5a74d6e.js"],"ImageZoom"]
+f:{"href":"/media/coverage","title":"Media Coverage"}
+10:{"href":"/media/releases","title":"Press Releases"}
+11:{"href":"/media/ceo","title":"CEO Tech Commentary"}
+e:{"coverage":"$f","releases":"$10","ceo":"$11"}
+13:{"href":"/about/services","title":"Managed Services"}
+14:{"href":"/about/policy","title":"Quality Policy"}
+12:{"1-coverage":"$13","2-releases":"$14"}
+6:["$","html",null,{"lang":"en","dir":"ltr","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$undefined",["$","style",null,{"children":":root {\n  --nextra-primary-hue: 212deg;\n  --nextra-primary-saturation: 100%;\n  --nextra-primary-lightness: 45%;\n  --nextra-bg: 250,250,250;\n  --nextra-content-width: 90rem;\n}\n.dark {\n  --nextra-primary-hue: 204deg;\n  --nextra-primary-saturation: 100%;\n  --nextra-primary-lightness: 55%;\n  --nextra-bg: 17,17,17;\n}\n::selection {\n  background: hsla(var(--nextra-primary-hue),var(--nextra-primary-saturation),var(--nextra-primary-lightness),.3);\n}\nhtml {\n  background: rgb(var(--nextra-bg));\n}"}],["$","meta",null,{"name":"theme-color","media":"(prefers-color-scheme: light)","content":"rgb(250,250,250)"}],["$","meta",null,{"name":"theme-color","media":"(prefers-color-scheme: dark)","content":"rgb(17,17,17)"}],"$undefined"]}],["$","link",null,{"rel":"icon","href":"/logo.svg"}],["$","body",null,{"children":["$","$L8",null,{"value":{"children":"$undefined","darkMode":true,"docsRepositoryBase":"https://github.com/shuding/nextra/tree/main/docs","editLink":null,"feedback":{"content":null,"labels":"feedback"},"i18n":[],"lastUpdated":["$","$L9",null,{}],"navigation":{"next":true,"prev":true},"search":["$","$La",null,{}],"sidebar":{"defaultMenuCollapseLevel":2,"defaultOpen":true,"toggleButton":true,"autoCollapse":true},"themeSwitch":{"dark":"Dark","light":"Light","system":"System"},"toc":{"backToTop":"Scroll to top","float":true,"title":"On This Page"}},"children":["$","$Lb",null,{"attribute":"class","defaultTheme":"system","disableTransitionOnChange":true,"storageKey":"theme","children":[["$","$Lc",null,{}],"$undefined",["$","$Ld",null,{"pageMap":[{"data":{"index":{"type":"page","title":"Home","theme":{"toc":false}},"products":{"type":"page","title":"Products"},"services":{"type":"page","title":"Services"},"media":{"type":"menu","items":{"coverage":{"href":"/media/coverage","title":"Media Coverage"},"releases":{"href":"/media/releases","title":"Press Releases"},"ceo":{"href":"/media/ceo","title":"CEO Tech Commentary"}},"title":"Media"},"clientArea":{"href":"mailto:hi@example.com","title":"Client Area","type":"page"},"contactus":{"type":"page","title":"Contact us"},"about":{"type":"menu","items":{"1-coverage":{"href":"/about/services","title":"Managed Services"},"2-releases":{"href":"/about/policy","title":"Quality Policy"}},"title":"About Us"}}},{"name":"index","route":"/","frontMatter":{"title":"Home - UAVOS","filePath":"content/index.mdx"},"title":"Home"},{"name":"products","route":"/products","children":[{"name":"automatic-control-system","route":"/products/automatic-control-system","children":[{"name":"ap-101-automatic-control-system","route":"/products/automatic-control-system/ap-101-automatic-control-system","frontMatter":{"title":"AP 10.1 - Automatic Control System","description":"Automatic Control System for UAV with a takeoff weight of 100–4000 kg","category":"Automatic Control System","template":"products","filePath":"content/products/automatic-control-system/ap-101-automatic-control-system/index.mdx"},"title":"AP 10.1 - Automatic Control System"},{"name":"ap-103-automatic-control-system","route":"/products/automatic-control-system/ap-103-automatic-control-system","frontMatter":{"title":"AP 10.3 - Automatic Control System","description":"Automatic Control System for UAV with a takeoff weight of 100–4000 kg","category":"Automatic Control System","template":"products","filePath":"content/products/automatic-control-system/ap-103-automatic-control-system/index.mdx"},"title":"AP 10.3 - Automatic Control System"},{"name":"ap-111-automatic-control-system","route":"/products/automatic-control-system/ap-111-automatic-control-system","frontMatter":{"title":"AP 11.1 - Automatic Control System","description":"Automatic Control System for UAV with a takeoff weight of 100–4000 kg","category":"Automatic Control System","template":"products","filePath":"content/products/automatic-control-system/ap-111-automatic-control-system/index.mdx"},"title":"AP 11.1 - Automatic Control System"}],"title":"Automatic Control System"}],"title":"Products"},{"name":"services","route":"/services","children":[{"data":{"index":{"title":"All services"},"agricultural":{"title":"AGRICULTURAL"},"land":{"title":"LAND AND CONSTRUCTIONS SERVICES"},"mapp":{"title":"SURVEYING AND GIS MAPPING"},"industrial":{"title":"INDUSTRIAL INSPECTIONS OIL & GAS INDUSTRY"},"environment":{"title":"ENVIRONMENT AND FORESTRY"},"public":{"title":"PUBLIC USE"}}},{"name":"index","route":"/services","frontMatter":{"title":"Services - UAVOS","filePath":"content/services.mdx"},"title":"All services"},{"name":"agricultural","route":"/services/agricultural","frontMatter":{"title":"Agricultural","filePath":"content/services/agricultural.mdx"},"title":"AGRICULTURAL"},{"name":"land","route":"/services/land","frontMatter":{"title":"Land","filePath":"content/services/land.mdx"},"title":"LAND AND CONSTRUCTIONS SERVICES"},{"name":"mapp","route":"/services/mapp","frontMatter":{"title":"Mapp","filePath":"content/services/mapp.mdx"},"title":"SURVEYING AND GIS MAPPING"},{"name":"industrial","route":"/services/industrial","frontMatter":{"title":"Industrial","filePath":"content/services/industrial.mdx"},"title":"INDUSTRIAL INSPECTIONS OIL & GAS INDUSTRY"},{"name":"environment","route":"/services/environment","frontMatter":{"title":"Environment","filePath":"content/services/environment.mdx"},"title":"ENVIRONMENT AND FORESTRY"},{"name":"public","route":"/services/public","frontMatter":{"title":"Public","filePath":"content/services/public.mdx"},"title":"PUBLIC USE"}],"title":"Services"},{"name":"media","route":"/media","children":[{"data":{"coverage":{"title":"Media Coverage"},"releases":{"title":"Press Releases"},"ceo":{"title":"CEO Tech Commentary"}}},{"name":"coverage","route":"/media/coverage","frontMatter":{"title":"Media Coverage","date":"2025-09-01","tags":["uavos","composites","news"],"filePath":"content/media/coverage.mdx"},"title":"Media Coverage"},{"name":"releases","route":"/media/releases","frontMatter":{"title":"Press Releases","filePath":"content/media/releases.mdx"},"title":"Press Releases"},{"name":"ceo","route":"/media/ceo","frontMatter":{"title":"CEO Tech Commentary","date":"2025-09-01","tags":["uavos","ceo","tech","commentary"],"filePath":"content/media/ceo.mdx"},"title":"CEO Tech Commentary"},{"name":"articles","route":"/media/articles","children":[{"name":"automatic-control-system","route":"/media/articles/automatic-control-system","children":[{"name":"new-content","route":"/media/articles/automatic-control-system/new-content","frontMatter":{"title":"New Content","description":"Automatic Control System for UAV with a takeoff weight of 100–4000 kg","category":"Automatic Control System","template":"media/articles","filePath":"content/media/articles/automatic-control-system/new-content/index.mdx"},"title":"New Content"}],"title":"Automatic Control System"}],"title":"Articles"}],"title":"Media","items":"$e"},{"name":"clientArea","href":"mailto:hi@example.com","title":"Client Area","type":"page"},{"name":"contactus","route":"/contactus","frontMatter":{"title":"Contact Us - UAVOS","filePath":"content/contactus.mdx"},"title":"Contact us"},{"name":"about","route":"/about","children":[{"data":{"services":{"title":"Managed Services"},"policy":{"title":"Quality Policy"}}},{"name":"services","route":"/about/services","frontMatter":{"title":"Managed Services","filePath":"content/about/services.mdx"},"title":"Managed Services"},{"name":"policy","route":"/about/policy","frontMatter":{"title":"Quality Policy & Testimonials","filePath":"content/about/policy.mdx"},"title":"Quality Policy"}],"title":"About Us","items":"$12"}],"navbar":["$","header",null,{"className":"nextra-navbar x:sticky x:top-0 x:z-30 x:w-full x:bg-transparent x:print:hidden x:max-md:[.nextra-banner:not([class$=hidden])~&]:top-(--nextra-banner-height)","children":[["$","div",null,{"className":"nextra-navbar-blur x:absolute x:-z-1 x:size-full nextra-border x:border-b x:backdrop-blur-md x:bg-nextra-bg/70"}],["$","nav",null,{"style":{"height":"var(--nextra-navbar-height)"},"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width) x:items-center x:gap-4 x:pl-[max(env(safe-area-inset-left),1.5rem)] x:pr-[max(env(safe-area-inset-right),1.5rem)] x:justify-end","children":[["$","$L15",null,{"href":"/","className":"x:flex x:items-center x:me-auto x:transition-opacity x:focus-visible:nextra-focus x:hover:opacity-75","aria-label":"Home page","children":[["$","img",null,{"src":"/uavos/images/logo.svg","width":"32","height":"32","viewBox":"0 0 32 32"}],["$","span",null,{"style":{"marginLeft":".4em","fontWeight":800},"children":"UAVOS"}]]}],["$","$L16",null,{"className":"","children":["$undefined","$undefined","$undefined"]}]]}]]}],"footer":["$","div",null,{"className":"x:bg-gray-100 x:pb-[env(safe-area-inset-bottom)] x:dark:bg-neutral-900 x:print:bg-transparent","children":[["$","$L17",null,{"children":["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width) x:gap-2 x:py-2 x:px-4","children":[["$","$L18",null,{}],["$","$L19",null,{}]]}]}],["$","hr",null,{"className":"nextra-border"}],["$","footer",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width) x:justify-center x:py-12 x:text-gray-600 x:dark:text-gray-400 x:md:justify-start x:pl-[max(env(safe-area-inset-left),1.5rem)] x:pr-[max(env(safe-area-inset-right),1.5rem)]","children":"UAVOS Email: uavos@uavos.com"}]]}],"children":[["$","$L1a",null,{}],["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]]}]]}]}]}]]}]
+1e:Ta85,---
+title: Services - UAVOS
+---
+
+import { Cards, Steps  } from 'nextra/components'
+import Image from 'next/image';
+
+##Services
+---
+
+<Steps>
+### System Leases
+ 
+UAVOS offers our aircraft and sensing equipment for lease worldwide. Ask about our end to end service support.
+ 
+### UAV Services
+ 
+Our pilots and operators draw on hundreds of hours of flight experience to offer long range, remote aerial inspections utilizing our UAV’s both on and offshore for our industrial and environmental clients.
+
+### Data Analytics
+
+Our post-flight data analysis is world class. Our staff employ high-performance algorithms to glean meaningful insights for our clients that contribute directly to the bottom line.
+
+</Steps>
+
+
+Applications
+---
+<Cards>
+  <Cards.Card
+  icon={
+    <Image 
+      src="/uavos/images/services/wheat.jpg"
+      alt="Building"
+      width={64}      
+      height={64}     
+      style={{ objectFit: 'cover' }}
+    />
+  }
+  title="AGRICULTURAL"
+  href="/agricultural-services/"
+/>
+  <Cards.Card
+    icon={
+        <Image 
+        src="/uavos/images/services/building.png"
+        alt="Building"
+        width={64}      
+        height={64}     
+        style={{ objectFit: 'cover' }}
+        />
+    }
+    title="LAND AND CONSTRUCTIONS SERVICES"
+    href="/land-and-constructions-services/"
+  />
+  <Cards.Card
+    icon={
+        <Image 
+        src="/uavos/images/services/route.png"
+        alt="Building"
+        width={64}      
+        height={64}     
+        style={{ objectFit: 'cover' }}
+        />
+    }
+    title="SURVEYING AND GIS MAPPING"
+    href="/surveying-and-gis-mapping/"
+  />
+  <Cards.Card
+    icon={
+        <Image 
+        src="/uavos/images/services/pump-jack.png"
+        alt="Building"
+        width={64}      
+        height={64}     
+        style={{ objectFit: 'cover' }}
+        />
+    }
+    title="INDUSTRIAL INSPECTIONS OIL & GAS INDUSTRY"
+    href="https://www.uavos.com/industrial-inspections-oil-gas-industry/"
+  />
+  <Cards.Card
+    icon={
+        <Image 
+        src="/uavos/images/services/trees.png"
+        alt="Building"
+        width={64}      
+        height={64}     
+        style={{ objectFit: 'cover' }}
+        />
+    }
+    title="ENVIRONMENT AND FORESTRY"
+    href="https://www.uavos.com/environment-and-forestry-services/"
+  />
+  <Cards.Card
+    icon={
+        <Image 
+        src="/uavos/images/services/worker.png"
+        alt="Building"
+        width={64}      
+        height={64}     
+        style={{ objectFit: 'cover' }}
+        />
+    }
+    title="PUBLIC USE"
+    href="https://www.uavos.com/public-use/"
+  />
+</Cards>2:["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L1b",null,{"value":[],"children":[["$","$L1c",null,{}],["$","$L1d",null,{"metadata":{"title":"AP 10.3 - Automatic Control System","description":"Automatic Control System for UAV with a takeoff weight of 100–4000 kg","category":"Automatic Control System","template":"products","filePath":"content/products/automatic-control-system/ap-103-automatic-control-system/index.mdx"},"bottomContent":"$undefined","sourceCode":"$1e","children":[["$","div",null,{"id":"nextra-skip-nav"}],["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"id":"$undefined","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Header","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L1f",null,{"alt":"about4.png","placeholder":"blur","src":{"src":"/uavos//_next/static/media/1758282503093-572545752.d02a38e1.png","height":1504,"width":1412,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAwklEQVR42mMAAsb///8zWFla2wPZ6UAcBMQGQDGwHIO8rBAziKOrZ3wkPyfjf01l0f+w0PB7QEkmsCIYQ1qcYV9iWtn/prZZ//08TB4AxdmgCqzBCriYGfa7Fe77Xz793n8Gi4r7zgwMrFAFimAFamIM+xl8Vv1vXP71v3vWmvsMcAUSAWAFUqIM++TCV/2XidwC5Pg9sIIr8JjNDGYoBh31zVzzP6l0038Njy5kR/KCGfx8wq4MDGq5QIFwIDaCeRMABxZjqgUQM0MAAAAASUVORK5CYII=","blurWidth":8,"blurHeight":8}}]}]]}]]}]]}]}]
+7:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"AP 10.3 - Automatic Control System"}],["$","meta","3",{"name":"description","content":"Automatic Control System for UAV with a takeoff weight of 100–4000 kg"}],["$","meta","4",{"name":"category","content":"Automatic Control System"}]]
+1:null
