@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "esnext",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "baseUrl": ".",
+      "paths": {
+        "@shared/*": ["libs/shared_types/src/*"],
+        "@scripts/*": ["scripts/src/*"]
+      },
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve"
+    }
+  }
+  

@@ -1,0 +1,27 @@
+{
+  "name": "admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@uavos/shared-types": "file:../../libs/shared-types",
+    "@uiw/react-markdown-preview": "^5.1.5",
+    "@uiw/react-md-editor": "^4.0.8",
+    "axios": "^1.11.0",
+    "js-cookie": "^3.0.5",
+    "lucide-react": "^0.544.0",
+    "next": "15.5.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.1.13",
+    "typescript": "^5.9.2"
+  }
+}

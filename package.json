@@ -1,0 +1,31 @@
+{
+    "name": "monorepo",
+    "version": "1.0.0",
+    "private": true,
+    "description": "monorepo",
+    "workspaces": [
+        "apps/*",
+        "libs/*",
+        "scripts/*"
+    ],
+    "scripts": {
+        "dev:admin": "npm run dev --workspace=apps/admin",
+        "dev:api": "npm run start:dev --workspace=apps/api",
+        "dev:site": "npm run dev --workspace=apps/site",
+        "build:admin": "npm run build --workspace=apps/admin",
+        "build:api": "npm run build --workspace=apps/api",
+        "build:site": "npm run build --workspace=apps/site",
+        "build:libs": "npm run build --workspace=libs/shared_types",
+        "build:scripts": "npm run build --workspace=scripts"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "^11.0.4",
+        "prettier": "^3.0.0"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "@uavos/scripts": "file:scripts"
+    }
+}

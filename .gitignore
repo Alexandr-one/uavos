@@ -1,0 +1,96 @@
+# ----------------------------
+# Monorepo: root files
+# ----------------------------
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# ----------------------------
+# Monorepo: build outputs for all projects
+# ----------------------------
+dist/
+build/
+out/
+.next/
+.vercel
+
+# ----------------------------
+# Content and temporary files
+# ----------------------------
+content/
+coverage/
+.nyc_output
+.temp
+.tmp
+*.tsbuildinfo
+next-env.d.ts
+
+# ----------------------------
+# Logs and reports
+# ----------------------------
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ----------------------------
+# OS and editor files
+# ----------------------------
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*~
+*.swp
+*.swo
+
+# ----------------------------
+# Yarn / PnP
+# ----------------------------
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# ----------------------------
+# Miscellaneous
+# ----------------------------
+*.pem
+
+# ----------------------------
+# Environment files (do not commit)
+# ----------------------------
+.env
+.env.*
+!.env.example
+
+# ----------------------------
+# Vercel
+# ----------------------------
+.vercel

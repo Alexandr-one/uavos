@@ -1,0 +1,187 @@
+/* components/ui/DeploymentButtons.module.css */
+
+.wrapper {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  /* центрируем блок по горизонтали */
+  align-items: flex-start;
+  /* центрируем по вертикали */
+  min-height: 100vh;
+  /* занимаем весь экран */
+  padding: 20px;
+}
+
+/* DeploymentButtons.module.css */
+.statusAlert {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid;
+}
+
+.statusSuccess {
+  background-color: #f0f9f0;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.statusWarning {
+  background-color: #fff3cd;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.statusAlert strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.card {
+  background-color: #ffffff;
+  /* белый блок */
+  border-radius: 0.5rem;
+  /* закругление углов */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  /* тень */
+  padding: 30px;
+  /* внутренние отступы */
+  max-width: 800px;
+  /* ограничение ширины */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #343a40;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.buttonStartPreview {
+  background-color: #007bff;
+}
+
+.buttonStartPreview:hover:not(:disabled) {
+  background-color: #0069d9;
+}
+
+.buttonStopPreview {
+  background-color: #dc3545;
+}
+
+.buttonStopPreview:hover:not(:disabled) {
+  background-color: #c82333;
+}
+
+.buttonPublish {
+  background-color: #28a745;
+}
+
+.buttonPublish:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.buttonRollback {
+  background-color: #17a2b8;
+}
+
+.buttonRollback:hover:not(:disabled) {
+  background-color: #117a8b;
+}
+
+.buttonLink {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.previewStatus {
+  padding: 10px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.tagList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tagItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background-color: #f1f3f5;
+  border-radius: 4px;
+}
+
+.tagButton {
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.messageSuccess {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.messageError {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.warning {
+  padding: 10px;
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.loading {
+  text-align: center;
+  color: #666;
+}
