@@ -1,0 +1,11 @@
+.list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.empty {
+  text-align: center;
+  padding: 3rem;
+  color: #888;
+  font-size: 1.1rem;
+}

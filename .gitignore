@@ -18,7 +18,7 @@ out/
 # ----------------------------
 # Content and temporary files
 # ----------------------------
-content/
+apps/api/content/
 coverage/
 .nyc_output
 .temp
