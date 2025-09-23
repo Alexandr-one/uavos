@@ -1,9 +1,6 @@
-export interface ValidationResult {
-    isValid: boolean;
-    errors: string[];
-  }
-  
-  export class LoginDto {
+import { ValidationResult } from '../../validation-result';
+
+export class LoginDto {
     constructor(
       public username: string,
       public password: string

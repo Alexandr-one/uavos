@@ -2,101 +2,74 @@
 
 import { useState, useEffect } from 'react';
 import MDXEditor from '@/components/ui/MDXEditor/MDXEditor';
-import { uploadImage } from '@uavos/shared-types';
 import styles from './ContentForm.module.css';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
+import { updateContent, deleteContent, uploadImage } from '@/services/contentService';
 
-interface ImageData {
-  url: string;
-  path?: string;
-  filename?: string;
-  originalName: string;
-}
+import {
+  UploadImageDto,
+  UploadImageResponseDto,
+  ContentUpdateDto,
+  Content,
+  ImageData
+} from '@uavos/shared-types';
 
-interface Content {
-  title: string;
-  content: string;
-  images?: ImageData[];
-}
 
 interface ContentFormProps {
-  content?: Content;
-  slug?: string;
+  content: Content;
+  slug: string;
 }
 
 export default function ContentForm({ content, slug }: ContentFormProps) {
   const [formData, setFormData] = useState<Content>({
-    title: content?.title || '',
-    content: content?.content || '',
-    images: content?.images || [],
+    title: content.title,
+    content: content.content,
+    images: content.images || [],
   });
-
-  const [uploadedImages, setUploadedImages] = useState<ImageData[]>(content?.images || []);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>('');
+  const [uploadedImages, setUploadedImages] = useState<ImageData[]>(content.images || []);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
   const router = useRouter();
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3003/api';
 
   useEffect(() => {
     if (content) {
       setFormData({
-        title: content.title || '',
-        content: content.content || '',
+        title: content.title,
+        content: content.content,
         images: content.images || [],
       });
       setUploadedImages(content.images || []);
     }
   }, [content]);
 
+
   const handleImageUpload = async (file: File): Promise<ImageData> => {
     try {
-      const imageData = await uploadImage(file, slug!, process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3003/api');
+      const dto = new UploadImageDto(slug);
+      const validation = dto.validate();
+      if (!validation.isValid) throw new Error(validation.errors.join(', '));
+
+      const imageData = await uploadImage(file, slug, apiUrl);
+      const respDto = new UploadImageResponseDto(imageData.url);
+      const respValidation = respDto.validate();
+      if (!respValidation.isValid) throw new Error(respValidation.errors.join(', '));
+
       const newImage: ImageData = {
-        url: imageData.url,
+        url: respDto.url,
+        originalName: file.name,
         path: imageData.path,
         filename: imageData.filename,
-        originalName: file.name,
       };
+
       setUploadedImages(prev => [...prev, newImage]);
+      setFormData({ ...formData, images: [...uploadedImages, newImage] });
+
       return newImage;
-    } catch (error) {
-      console.error('Image upload error:', error);
-      throw error;
-    }
-  };
-
-  const handleDelete = async () => {
-    if (!slug) {
-      setMessage('❌ Cannot delete: content has no ID');
-      return;
-    }
-
-    const storedToken = Cookies.get('token');
-    setLoading(true);
-    setMessage('');
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/content/delete/${slug}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${storedToken}`,
-        },
-      });
-
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const result: { success: boolean; message?: string } = await response.json();
-
-      if (result.success) {
-        setMessage(`✅ Content "${content?.title}" deleted successfully!`);
-        router.push('/content');
-      } else {
-        throw new Error(result.message || 'Unknown error');
-      }
     } catch (error: any) {
-      setMessage(`❌ Error deleting content: ${error.message}`);
-    } finally {
-      setLoading(false);
+      console.error('❌ Image upload error:', error.message);
+      throw error;
     }
   };
 
@@ -105,44 +78,42 @@ export default function ContentForm({ content, slug }: ContentFormProps) {
     setLoading(true);
     setMessage('');
 
-    try {
-      const storedToken = Cookies.get('token');
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/content/update/${slug}`;
-
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${storedToken}`,
-        },
-        body: JSON.stringify({
-          title: formData.title,
-          content: formData.content,
-          images: uploadedImages,
-        }),
-      });
-
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const result: { success: boolean; message?: string } = await response.json();
-
-      if (result.success) {
-        setMessage('✅ Content updated successfully!');
-      } else {
-        throw new Error(result.message || 'Unknown error');
-      }
-    } catch (error: any) {
-      setMessage(`❌ Error updating content: ${error.message}`);
-    } finally {
+    const dto = new ContentUpdateDto(formData.title, formData.content, uploadedImages);
+    const validation = dto.validate();
+    if (!validation.isValid) {
+      setMessage(`❌ Validation error: ${validation.errors.join(', ')}`);
       setLoading(false);
+      return;
     }
+
+    const result = await updateContent(slug, dto, apiUrl);
+    if (result.success) setMessage('✅ Content updated successfully!');
+    else setMessage(`❌ Error updating content: ${result.message}`);
+
+    setLoading(false);
+  };
+
+  const handleDelete = async () => {
+    setLoading(true);
+    setMessage('');
+
+    const result = await deleteContent(slug, apiUrl);
+    if (result.success) {
+      setMessage(`✅ Content "${formData.title}" deleted successfully!`);
+      router.push('/content');
+    } else {
+      setMessage(`❌ Error deleting content: ${result.message}`);
+    }
+
+    setLoading(false);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, title: e.target.value });
   };
 
-  const handleContentChange = (contentValue: string) => {
-    setFormData({ ...formData, content: contentValue });
+  const handleContentChange = (value: string) => {
+    setFormData({ ...formData, content: value });
   };
 
   const getMessageStyle = () => {
@@ -160,18 +131,14 @@ export default function ContentForm({ content, slug }: ContentFormProps) {
 
       <form onSubmit={handleUpdate} className={styles.form}>
         <div className={styles.formGroup}>
-          <label htmlFor="title" className={styles.label}>
-            Content Title
-          </label>
+          <label htmlFor="title" className={styles.label}>Content Title</label>
           <input
             type="text"
             id="title"
-            name="title"
-            placeholder="Enter content title"
             value={formData.title}
             onChange={handleInputChange}
-            required
             className={styles.input}
+            required
           />
         </div>
 
@@ -181,7 +148,7 @@ export default function ContentForm({ content, slug }: ContentFormProps) {
             onChange={handleContentChange}
             height={400}
             label="Content (MDX with frontmatter)"
-            placeholder="---\ntitle: My Content\nauthor: Me\n---\n\n# Start writing..."
+            placeholder="---\ntitle: My Content\n---\n# Start writing..."
             onImageUpload={handleImageUpload}
             contentId={slug}
           />
@@ -207,11 +174,7 @@ export default function ContentForm({ content, slug }: ContentFormProps) {
         </button>
       </form>
 
-      {message && (
-        <div className={styles.message} style={getMessageStyle()}>
-          {message}
-        </div>
-      )}
+      {message && <div className={styles.message} style={getMessageStyle()}>{message}</div>}
     </div>
   );
 }

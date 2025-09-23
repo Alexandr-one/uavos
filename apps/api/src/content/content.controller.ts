@@ -2,6 +2,8 @@ import { Controller, Post, Get, Param, Body, UseGuards, Req, Delete } from '@nes
 import { ContentService } from './content.service';
 import { AuthGuard } from '@nestjs/passport';
 import { GitService } from '@uavos/scripts';
+import { ContentUpdateDto, DeleteContentResponseDto } from '@uavos/shared-types';
+import { BadRequestException } from '@nestjs/common';
 
 @Controller('content')
 @UseGuards(AuthGuard('jwt'))
@@ -62,24 +64,30 @@ export class ContentController {
     try {
       const content = await this.contentService.deleteContent(slug);
       await this.gitService.commitAndPush(`Delete content: ${slug}`);
-      return {
-        success: true,
-        data: content
-      };
+
+      const response = new DeleteContentResponseDto(true, `Content "${slug}" deleted successfully`);
+      return response;
     } catch (error) {
-      return {
-        success: false,
-        message: error.message
-      };
+      const response = new DeleteContentResponseDto(false, error.message);
+      return response;
     }
   }
 
-  @Post('update/:slug')
-  async updateContent(@Param('slug') slug: string, @Body() contentData: any) {
+
+  @Post('update/:slug') 
+  async updateContent(
+    @Param('slug') slug: string,
+    @Body() contentData: any
+  ) {
+    const dto = new ContentUpdateDto(contentData.title, contentData.content, contentData.images);
+    const validation = dto.validate();
+    if (!validation.isValid) {
+      throw new BadRequestException(validation.errors);
+    }
     try {
-      const result = await this.contentService.updateContent(slug, contentData);
-      await this.gitService.commitAndPush(`Update content: ${contentData.title}`);
-      return result;
+      const result = await this.contentService.updateContent(slug, dto);
+      await this.gitService.commitAndPush(`Update content: ${dto.title}`);
+      return { success: true, data: result };
     } catch (error) {
       return {
         success: false,
@@ -88,4 +96,5 @@ export class ContentController {
       };
     }
   }
+
 }

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import ContentForm from "@/components/forms/edit/ContentForm";
-import Cookies from "js-cookie";
+import { fetchContent } from "@/services/contentService/fetchContent";
 
 interface Content {
   id: string;
@@ -23,8 +23,8 @@ export default function ContentManager() {
   const [content, setContent] = useState<Content | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003/api"
-  const storedToken = Cookies.get('token');
   const params = useParams();
   const { slug } = params as { slug?: string };
 
@@ -37,22 +37,10 @@ export default function ContentManager() {
   useEffect(() => {
     if (!slug) return;
 
-    const fetchContent = async () => {
+    const loadContent = async () => {
       try {
-        const response = await fetch(`${apiUrl}/content/${slug}`, {
-          method: "GET",
-          headers: {
-            'Authorization': `Bearer ${storedToken}`,
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`Failed to load content: ${response.status} ${response.statusText}`);
-        }
-
-        const data: { data: Content } = await response.json();
-        setContent(data.data);
+        const data = await fetchContent(slug, apiUrl);
+        setContent(data);
       } catch (err: any) {
         setError(err.message || 'Unknown error');
       } finally {
@@ -60,8 +48,8 @@ export default function ContentManager() {
       }
     };
 
-    fetchContent();
-  }, [slug, storedToken]);
+    loadContent();
+  }, [slug, apiUrl]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
