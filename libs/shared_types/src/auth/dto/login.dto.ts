@@ -10,6 +10,7 @@ export class LoginDto {
   ) {}
 
   validate(): ValidationResult {
+    console.log('Using updated DTO with 5 chars');
     const errors: string[] = [];
 
     if (!this.username || this.username.trim().length === 0) {
@@ -24,8 +25,8 @@ export class LoginDto {
       errors.push('Username must be at least 3 characters long');
     }
 
-    if (this.password && this.password.length < 6) {
-      errors.push('Password must be at least 6 characters long');
+    if (this.password && this.password.length < 5) {
+      errors.push('Password must be at least 5 characters long');
     }
 
     return {

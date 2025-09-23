@@ -10,7 +10,7 @@ const nextConfig = {
     config.resolve.symlinks = false;
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@uavos/shared-types': require('path').resolve(__dirname, '../../libs/shared-types/src'),
+      '@uavos/shared-types': require('path').resolve(__dirname, '../../node_modules/@uavos/shared-types'),
     };
     
     return config;

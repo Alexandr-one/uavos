@@ -1,7 +1,9 @@
-import { Controller, Post, Body, HttpException, HttpStatus, Get } from '@nestjs/common';
+import { Controller, Post, Body, HttpException, HttpStatus, UseGuards, Get } from '@nestjs/common';
 import { DeploymentService } from './deployment.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('deploy')
+@UseGuards(AuthGuard('jwt'))
 export class DeploymentController {
     constructor(private readonly deploymentService: DeploymentService) { }
 
@@ -13,7 +15,7 @@ export class DeploymentController {
         } catch (error) {
             throw new HttpException(error.message || 'Failed to get preview status', HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    } 
+    }
 
     @Post('preview-start')
     async startPreview() {

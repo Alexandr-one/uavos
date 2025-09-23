@@ -6,7 +6,7 @@
     "workspaces": [
         "apps/*",
         "libs/*",
-        "scripts/*"
+        "scripts"
     ],
     "scripts": {
         "dev:admin": "npm run dev --workspace=apps/admin",
@@ -26,6 +26,7 @@
         "node": ">=18"
     },
     "dependencies": {
-        "@uavos/scripts": "file:scripts"
+        "@uavos/scripts": "file:scripts",
+        "@uavos/shared-types": "file:libs/shared-types"
     }
 }

@@ -4,10 +4,10 @@ import { AuthGuard } from '@nestjs/passport';
 import { GitService } from '@uavos/scripts';
 
 @Controller('content')
+@UseGuards(AuthGuard('jwt'))
 export class ContentController {
   constructor(private readonly contentService: ContentService, private readonly gitService: GitService) { }
 
-  @UseGuards(AuthGuard('jwt'))
   @Get()
   async getAllContent() {
     try {
@@ -26,7 +26,6 @@ export class ContentController {
     }
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Get(':slug')
   async getContent(@Param('slug') slug: string) {
     try {
@@ -43,7 +42,6 @@ export class ContentController {
     }
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Post('push')
   async pushContent(@Body() contentData: any) {
     try {
@@ -57,9 +55,8 @@ export class ContentController {
         details: 'Check your GitHub token and repository permissions'
       };
     }
-  } 
+  }
 
-  @UseGuards(AuthGuard('jwt'))
   @Delete('delete/:slug')
   async deleteContent(@Param('slug') slug: string) {
     try {
@@ -77,7 +74,6 @@ export class ContentController {
     }
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Post('update/:slug')
   async updateContent(@Param('slug') slug: string, @Body() contentData: any) {
     try {

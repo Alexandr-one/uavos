@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@uavos/shared-types": "file:../../libs/shared-types",
     "@uiw/react-markdown-preview": "^5.1.5",
     "@uiw/react-md-editor": "^4.0.8",
     "axios": "^1.11.0",

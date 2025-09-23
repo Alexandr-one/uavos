@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/api/auth/check", {
+      const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/auth/check", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${storedToken}`,
@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     password: string
   ): Promise<{ success: boolean; message?: string }> => {
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/api/auth/login", {
+      const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const logout = async (): Promise<void> => {
     try {
-      await fetch(process.env.NEXT_PUBLIC_API_HOST + "/api/auth/logout", {
+      await fetch(process.env.NEXT_PUBLIC_API_HOST + "/auth/logout", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
