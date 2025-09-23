@@ -3,7 +3,7 @@
 import { useAuth } from '../contexts/AuthContext';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import DeploymentButtons from '@/components/ui/DeploymentButtons';
+import DeploymentButtons from '@/components/ui/deploy/DeploymentButtons';
 
 interface TagsResponse {
   tags: string[];
@@ -34,6 +34,7 @@ export default function HomePage() {
   const { user, isLoading } = useAuth();
   const router = useRouter();
   const [initialData, setInitialData] = useState<InitialData | null>(null);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003/api"
 
   useEffect(() => {
     document.title = "Home | Uavos";
@@ -49,12 +50,12 @@ export default function HomePage() {
     if (user) {
       const loadInitialData = async () => {
         try {
-          const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003";
+          ;
 
           const [tagsRes, previewRes, deployRes] = await Promise.all([
-            fetch(`${apiUrl}/api/deploy/tags`, { cache: "no-store" }),
-            fetch(`${apiUrl}/api/deploy/preview-status`, { cache: "no-store" }),
-            fetch(`${apiUrl}/api/deploy/status`, { cache: "no-store" }),
+            fetch(`${apiUrl}/deploy/tags`, { cache: "no-store" }),
+            fetch(`${apiUrl}/deploy/preview-status`, { cache: "no-store" }),
+            fetch(`${apiUrl}/deploy/status`, { cache: "no-store" }),
           ]);
 
           const data: InitialData = {
@@ -68,7 +69,7 @@ export default function HomePage() {
         } catch (err) {
           console.error("Failed to load initial data:", err);
           setInitialData({
-            apiUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003",
+            apiUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003/api",
             tags: { tags: [] },
             previewStatus: {},
             deploymentStatus: {},

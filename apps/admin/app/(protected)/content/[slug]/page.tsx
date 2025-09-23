@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import ContentForm from "@/components/content/edit/ContentForm";
+import ContentForm from "@/components/forms/edit/ContentForm";
 import Cookies from "js-cookie";
 
 interface Content {
@@ -23,7 +23,7 @@ export default function ContentManager() {
   const [content, setContent] = useState<Content | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003/api"
   const storedToken = Cookies.get('token');
   const params = useParams();
   const { slug } = params as { slug?: string };
@@ -39,7 +39,7 @@ export default function ContentManager() {
 
     const fetchContent = async () => {
       try {
-        const response = await fetch(`http://localhost:3003/api/content/${slug}`, {
+        const response = await fetch(`${apiUrl}/content/${slug}`, {
           method: "GET",
           headers: {
             'Authorization': `Bearer ${storedToken}`,

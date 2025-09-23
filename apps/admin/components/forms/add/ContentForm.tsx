@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import MDXEditor from '@/components/ui/MDXEditor/MDXEditor';
-import { uploadImage } from '@/services/imageUploader';
+import { uploadImage } from '@uavos/shared-types';
 import styles from './ContentForm.module.css';
 import Cookies from 'js-cookie';
 
@@ -28,7 +28,7 @@ export default function ContentForm() {
 
   const handleImageUpload = async (file: File, contentId: string): Promise<ImageData> => {
     try {
-      const imageData = await uploadImage(file, contentId);
+      const imageData = await uploadImage(file, contentId, process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3003/api');
       const newImage: ImageData = {
         url: imageData.url,
       };
@@ -46,7 +46,7 @@ export default function ContentForm() {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:3003/api/content/push', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/content/push`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

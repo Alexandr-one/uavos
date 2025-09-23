@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "./DeploymentButtons.module.css";
+import Cookies from "js-cookie";
 
 interface PreviewStatus {
   isRunning: boolean;
@@ -39,9 +40,9 @@ export default function DeploymentButtons({
   const loadData = async () => {
     try {
       const [previewRes, deployRes, tagsRes] = await Promise.all([
-        fetch(`${apiUrl}/api/deploy/preview-status`).then(r => r.json()),
-        fetch(`${apiUrl}/api/deploy/status`).then(r => r.json()),
-        fetch(`${apiUrl}/api/deploy/tags`).then(r => r.json()),
+        fetch(`${apiUrl}/deploy/preview-status`).then(r => r.json()),
+        fetch(`${apiUrl}/deploy/status`).then(r => r.json()),
+        fetch(`${apiUrl}/deploy/tags`).then(r => r.json()),
       ]);
 
       setPreviewStatus(previewRes || { isRunning: false });
@@ -54,7 +55,7 @@ export default function DeploymentButtons({
 
   useEffect(() => {
     loadData();
-    const interval = setInterval(loadData, 5000); 
+    const interval = setInterval(loadData, 5000);
     return () => clearInterval(interval);
   }, [apiUrl]);
 
@@ -65,11 +66,14 @@ export default function DeploymentButtons({
   ) => {
     setLoading(type);
     setMessage("");
-
+    const storedToken = Cookies.get('token');
     try {
-      const response = await fetch(`${apiUrl}/api/deploy/${endpoint}`, {
+      const response = await fetch(`${apiUrl}/deploy/${endpoint}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${storedToken}`
+        },
         body: Object.keys(body).length ? JSON.stringify(body) : undefined,
       });
 
@@ -101,11 +105,10 @@ export default function DeploymentButtons({
         {/* Deployment Status */}
         {deploymentStatus && (
           <div
-            className={`${styles.statusAlert} ${
-              deploymentStatus.hasUnpublishedChanges
-                ? styles.statusWarning
-                : styles.statusSuccess
-            }`}
+            className={`${styles.statusAlert} ${deploymentStatus.hasUnpublishedChanges
+              ? styles.statusWarning
+              : styles.statusSuccess
+              }`}
           >
             <strong>📊 Status:</strong> {deploymentStatus.message || "Unknown"}
             {deploymentStatus.currentTag && (
@@ -208,11 +211,10 @@ export default function DeploymentButtons({
         {/* Messages */}
         {message && (
           <div
-            className={`${styles.message} ${
-              message.includes("failed")
-                ? styles.messageError
-                : styles.messageSuccess
-            }`}
+            className={`${styles.message} ${message.includes("failed")
+              ? styles.messageError
+              : styles.messageSuccess
+              }`}
           >
             {message}
           </div>

@@ -12,7 +12,7 @@ const nextConfig = {
       ...config.resolve.alias,
       '@uavos/shared-types': require('path').resolve(__dirname, '../../node_modules/@uavos/shared-types'),
     };
-    
+
     return config;
   },
   transpilePackages: ['@uavos/shared-types'],

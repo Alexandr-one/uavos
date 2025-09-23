@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import ContentList from '@/components/content/ContentList';
+import ContentList from '@/components/templates/list/ContentList';
 import './styles.css';
 import Cookies from 'js-cookie';
 
@@ -23,7 +23,7 @@ export default function ContentPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const storedToken = Cookies.get('token');
-
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003/api"
   useEffect(() => {
     document.title = "Content | Uavos";
   }, []);
@@ -33,7 +33,7 @@ export default function ContentPage() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:3003/api/content/", {
+      const response = await fetch(`${apiUrl}/content/`, {
         method: "GET",
         headers: {
           'Authorization': `Bearer ${storedToken}`,

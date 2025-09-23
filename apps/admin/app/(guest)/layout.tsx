@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ReactNode } from "react";
-import GuestRoute from "@/components/auth/GuestRoute";
+import GuestRoute from "@/components/guards/GuestRoute";
 
 interface ProtectedLayoutProps {
   children: ReactNode;

@@ -1,10 +1,10 @@
 'use client';
 
 import React, { ReactNode } from 'react';
-import Header from '@/components/templates/Header';
+import Header from '@/components/templates/header/Header';
 import { AuthProvider } from '@/contexts/AuthContext';
 import './globals.css';
-import Loader from '@/components/ui/Loader';
+import Loader from '@/components/ui/loader/Loader';
 
 interface RootLayoutProps {
   children: ReactNode;

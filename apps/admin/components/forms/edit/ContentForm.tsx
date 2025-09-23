@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import MDXEditor from '@/components/ui/MDXEditor/MDXEditor';
-import { uploadImage } from '@/services/imageUploader';
+import { uploadImage } from '@uavos/shared-types';
 import styles from './ContentForm.module.css';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
@@ -50,7 +50,7 @@ export default function ContentForm({ content, slug }: ContentFormProps) {
 
   const handleImageUpload = async (file: File): Promise<ImageData> => {
     try {
-      const imageData = await uploadImage(file, slug!); // slug точно должен быть
+      const imageData = await uploadImage(file, slug!, process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3003/api');
       const newImage: ImageData = {
         url: imageData.url,
         path: imageData.path,
@@ -76,7 +76,7 @@ export default function ContentForm({ content, slug }: ContentFormProps) {
     setMessage('');
 
     try {
-      const response = await fetch(`http://localhost:3003/api/content/delete/${slug}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/content/delete/${slug}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ export default function ContentForm({ content, slug }: ContentFormProps) {
 
     try {
       const storedToken = Cookies.get('token');
-      const url = `http://localhost:3003/api/content/update/${slug}`;
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/content/update/${slug}`;
 
       const response = await fetch(url, {
         method: 'POST',

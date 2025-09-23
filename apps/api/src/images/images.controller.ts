@@ -7,7 +7,7 @@ import { AuthGuard } from '@nestjs/passport';
 @UseGuards(AuthGuard('jwt'))
 export class ImagesController {
   constructor(private readonly imagesService: ImagesService) {}
-
+ 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', { storage: new ImagesService().getStorageOptions() }))
   uploadImage(@UploadedFile() file: Express.Multer.File) {

@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import LoginForm from '@/components/auth/LoginForm';
-import GuestRoute from '@/components/auth/GuestRoute';
+import LoginForm from '@/components/forms/auth/LoginForm';
+import GuestRoute from '@/components/guards/GuestRoute';
 
 const LoginPage: React.FC = () => {
   useEffect(() => {

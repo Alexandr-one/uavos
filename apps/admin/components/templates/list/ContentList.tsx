@@ -1,5 +1,5 @@
 import React from "react";
-import ContentCard from "./ContentCard";
+import ContentCard from "../card/ContentCard";
 import styles from "./ContentList.module.css";
 
 interface Article {

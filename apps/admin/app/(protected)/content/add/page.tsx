@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import ContentForm from '@/components/content/add/ContentForm';
+import ContentForm from '@/components/forms/add/ContentForm';
 
 const Home: React.FC = () => {
   useEffect(() => {

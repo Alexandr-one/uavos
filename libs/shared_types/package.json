@@ -1,16 +1,16 @@
 {
-  "name": "@uavos/shared-types",
-  "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
-  },
-  "dependencies": {
-    "simple-git": "^3.28.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.0.0"
-  }
+    "name": "@uavos/shared-types",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "prepublishOnly": "npm run build"
+    },
+    "dependencies": {
+        "simple-git": "^3.28.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0"
+    }
 }
