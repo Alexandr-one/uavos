@@ -4,19 +4,17 @@ import { useState, useEffect } from "react";
 import styles from "./DeploymentButtons.module.css";
 import Cookies from "js-cookie";
 
-interface PreviewStatus {
-  isRunning: boolean;
-  url?: string;
-  port?: number;
-  [key: string]: any;
-}
-
-interface DeploymentStatus {
-  hasUnpublishedChanges?: boolean;
-  message?: string;
-  currentTag?: string;
-  [key: string]: any;
-}
+import {
+  fetchPreviewStatus,
+  fetchDeploymentStatus,
+  fetchTags,
+  startPreview as startPreviewService,
+  stopPreview as stopPreviewService,
+  publish as publishService,
+  rollback as rollbackService,
+  PreviewStatus,
+  DeploymentStatus
+} from "@/services/deploymentService";
 
 interface DeploymentButtonsProps {
   apiUrl: string;
@@ -37,17 +35,22 @@ export default function DeploymentButtons({
   const [loading, setLoading] = useState<string | null>(null);
   const [message, setMessage] = useState<string>("");
 
+  const storedToken = Cookies.get('token') || "";
+
+  // -----------------------
+  // Load data (preview, deployment, tags)
+  // -----------------------
   const loadData = async () => {
     try {
       const [previewRes, deployRes, tagsRes] = await Promise.all([
-        fetch(`${apiUrl}/deploy/preview-status`).then(r => r.json()),
-        fetch(`${apiUrl}/deploy/status`).then(r => r.json()),
-        fetch(`${apiUrl}/deploy/tags`).then(r => r.json()),
+        fetchPreviewStatus(apiUrl, storedToken),
+        fetchDeploymentStatus(apiUrl, storedToken),
+        fetchTags(apiUrl, storedToken),
       ]);
 
-      setPreviewStatus(previewRes || { isRunning: false });
-      setDeploymentStatus(deployRes || {});
-      setTags(Array.isArray(tagsRes.tags) ? tagsRes.tags : []);
+      setPreviewStatus(previewRes);
+      setDeploymentStatus(deployRes);
+      setTags(tagsRes.tags || []);
     } catch (err) {
       console.error("Failed to load deployment data:", err);
     }
@@ -57,44 +60,39 @@ export default function DeploymentButtons({
     loadData();
     const interval = setInterval(loadData, 5000);
     return () => clearInterval(interval);
-  }, [apiUrl]);
+  }, [apiUrl, storedToken]);
 
-  const callApi = async (
-    endpoint: string,
-    body: Record<string, any> = {},
-    type: string = ""
+  // -----------------------
+  // Wrapper for all action methods
+  // -----------------------
+  const handleAction = async (
+    action: () => Promise<{ success: boolean; message?: string }>,
+    type: string
   ) => {
     setLoading(type);
     setMessage("");
-    const storedToken = Cookies.get('token');
     try {
-      const response = await fetch(`${apiUrl}/deploy/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${storedToken}`
-        },
-        body: Object.keys(body).length ? JSON.stringify(body) : undefined,
-      });
-
-      const result: { success: boolean; message?: string } = await response.json();
-
+      const result = await action();
       if (result.success) {
-        setMessage(`${endpoint} successful! ${result.message || ""}`);
+        setMessage(`${type} successful! ${result.message || ""}`);
         await loadData();
       } else {
-        setMessage(`${endpoint} failed: ${result.message || "Unknown error"}`);
+        setMessage(`${type} failed: ${result.message || "Unknown error"}`);
       }
-    } catch (error: any) {
-      setMessage(`${endpoint} failed: ${error.message}`);
+    } catch (err: any) {
+      setMessage(`${type} failed: ${err.message}`);
     } finally {
       setLoading(null);
     }
   };
 
-  const startPreview = () => callApi("preview-start", {}, "preview-start");
-  const stopPreview = () => callApi("preview-stop", {}, "preview-stop");
-  const rollback = (tag: string) => callApi("rollback", { tag }, `rollback-${tag}`);
+  // -----------------------
+  // Actions
+  // -----------------------
+  const startPreview = () => handleAction(() => startPreviewService(apiUrl, storedToken), "preview-start");
+  const stopPreview = () => handleAction(() => stopPreviewService(apiUrl, storedToken), "preview-stop");
+  const publish = () => handleAction(() => publishService(apiUrl, storedToken), "publish");
+  const rollback = (tag: string) => handleAction(() => rollbackService(apiUrl, tag, storedToken), `rollback-${tag}`);
   const rollbackLast = () => tags.length > 0 && rollback(tags[0]);
 
   return (
@@ -105,10 +103,11 @@ export default function DeploymentButtons({
         {/* Deployment Status */}
         {deploymentStatus && (
           <div
-            className={`${styles.statusAlert} ${deploymentStatus.hasUnpublishedChanges
-              ? styles.statusWarning
-              : styles.statusSuccess
-              }`}
+            className={`${styles.statusAlert} ${
+              deploymentStatus.hasUnpublishedChanges
+                ? styles.statusWarning
+                : styles.statusSuccess
+            }`}
           >
             <strong>📊 Status:</strong> {deploymentStatus.message || "Unknown"}
             {deploymentStatus.currentTag && (
@@ -152,7 +151,7 @@ export default function DeploymentButtons({
           )}
 
           <button
-            onClick={() => callApi("publish", {}, "publish")}
+            onClick={publish}
             disabled={!!loading}
             className={`${styles.button} ${styles.buttonPublish}`}
           >
@@ -211,10 +210,11 @@ export default function DeploymentButtons({
         {/* Messages */}
         {message && (
           <div
-            className={`${styles.message} ${message.includes("failed")
-              ? styles.messageError
-              : styles.messageSuccess
-              }`}
+            className={`${styles.message} ${
+              message.includes("failed")
+                ? styles.messageError
+                : styles.messageSuccess
+            }`}
           >
             {message}
           </div>

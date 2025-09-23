@@ -4,28 +4,11 @@ import { useAuth } from '../contexts/AuthContext';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import DeploymentButtons from '@/components/ui/deploy/DeploymentButtons';
-
-interface TagsResponse {
-  tags: string[];
-}
-
-interface DeploymentStatus {
-  hasUnpublishedChanges?: boolean;
-  message?: string;
-  currentTag?: string;
-  [key: string]: any;
-}
-
-interface PreviewStatus {
-  isRunning?: boolean;
-  url?: string;
-  port?: number;
-  [key: string]: any;
-}
+import { fetchPreviewStatus, fetchDeploymentStatus, fetchTags, PreviewStatus, DeploymentStatus } from '@/services/deploymentService';
 
 interface InitialData {
   apiUrl: string;
-  tags: TagsResponse;
+  tags: string[];
   previewStatus: PreviewStatus;
   deploymentStatus: DeploymentStatus;
 }
@@ -34,7 +17,9 @@ export default function HomePage() {
   const { user, isLoading } = useAuth();
   const router = useRouter();
   const [initialData, setInitialData] = useState<InitialData | null>(null);
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003/api"
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003/api";
+  const storedToken = user ? localStorage.getItem('token') || '' : '';
 
   useEffect(() => {
     document.title = "Home | Uavos";
@@ -47,39 +32,35 @@ export default function HomePage() {
   }, [isLoading, user, router]);
 
   useEffect(() => {
-    if (user) {
-      const loadInitialData = async () => {
-        try {
-          ;
+    if (!user) return;
 
-          const [tagsRes, previewRes, deployRes] = await Promise.all([
-            fetch(`${apiUrl}/deploy/tags`, { cache: "no-store" }),
-            fetch(`${apiUrl}/deploy/preview-status`, { cache: "no-store" }),
-            fetch(`${apiUrl}/deploy/status`, { cache: "no-store" }),
-          ]);
+    const loadInitialData = async () => {
+      try {
+        const [tagsRes, previewRes, deployRes] = await Promise.all([
+          fetchTags(apiUrl, storedToken),
+          fetchPreviewStatus(apiUrl, storedToken),
+          fetchDeploymentStatus(apiUrl, storedToken),
+        ]);
 
-          const data: InitialData = {
-            apiUrl,
-            tags: await tagsRes.json(),
-            previewStatus: await previewRes.json(),
-            deploymentStatus: await deployRes.json(),
-          };
+        setInitialData({
+          apiUrl,
+          tags: tagsRes.tags || [],
+          previewStatus: previewRes,
+          deploymentStatus: deployRes,
+        });
+      } catch (err) {
+        console.error("Failed to load initial deployment data:", err);
+        setInitialData({
+          apiUrl,
+          tags: [],
+          previewStatus: { isRunning: false },
+          deploymentStatus: {},
+        });
+      }
+    };
 
-          setInitialData(data);
-        } catch (err) {
-          console.error("Failed to load initial data:", err);
-          setInitialData({
-            apiUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3003/api",
-            tags: { tags: [] },
-            previewStatus: {},
-            deploymentStatus: {},
-          });
-        }
-      };
-
-      loadInitialData();
-    }
-  }, [user]);
+    loadInitialData();
+  }, [user, apiUrl, storedToken]);
 
   if (isLoading) {
     return (
@@ -97,19 +78,7 @@ export default function HomePage() {
     );
   }
 
-  if (!user) return null; // редирект уже сработает
-
-  if (!initialData) {
-    return (
-      <div className="content-wrapper">
-        <div className="content">
-          <div className="container-fluid">
-            <p>Loading deployment data...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (!user || !initialData) return null;
 
   return (
     <div className="content-wrapper">
