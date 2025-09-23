@@ -2,7 +2,7 @@ import { Controller, Post, Get, Param, Body, UseGuards, Req, Delete } from '@nes
 import { ContentService } from './content.service';
 import { AuthGuard } from '@nestjs/passport';
 import { GitService } from '@uavos/scripts';
-import { ContentUpdateDto, DeleteContentResponseDto } from '@uavos/shared-types';
+import { ContentUpdateDto, DeleteContentResponseDto, ContentCreateDto } from '@uavos/shared-types';
 import { BadRequestException } from '@nestjs/common';
 
 @Controller('content')
@@ -47,6 +47,11 @@ export class ContentController {
   @Post('push')
   async pushContent(@Body() contentData: any) {
     try {
+      const dto = new ContentCreateDto(contentData.title, contentData.content, contentData.images);
+      const validation = dto.validate();
+      if (!validation.isValid) {
+        throw new BadRequestException(validation.errors);
+      }
       const result = await this.contentService.pushContent(contentData);
       await this.gitService.commitAndPush(`Add content: ${contentData.title}`);
       return result;
@@ -74,7 +79,7 @@ export class ContentController {
   }
 
 
-  @Post('update/:slug') 
+  @Post('update/:slug')
   async updateContent(
     @Param('slug') slug: string,
     @Body() contentData: any
