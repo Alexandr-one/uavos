@@ -1,33 +1,39 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { LoginResponseDto, UserDto, UserJwtDto } from '@uavos/shared-types';
 import * as bcrypt from 'bcrypt';
-import { User, UserPayload } from './interfaces/user.interface';
+import { UsersService } from './users.service';
 
 @Injectable()
 export class AuthService {
-  private users: User[] = [
-    {
-      id: 1,
-      username: 'admin',
-      password: '$2b$10$GGp/ES2reQgThEBjsL7NTOWOV0pb3X36y4W49idYx/WFAm41HdrQO',
-      email: 'admin@example.com',
-    },
-  ];
-  // console.log(await bcrypt.hash('admin', 10));
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly jwtService: JwtService,
+  ) { }
 
-  constructor(private jwtService: JwtService) { }
-
-  async validateUser(username: string, password: string): Promise<any> {
-    const user = this.users.find(u => u.username === username);
-    if (user && await bcrypt.compare(password, user.password)) {
-      const { password, ...result } = user;
-      return result;
+  /**
+   * Validate user
+   * 
+   * @param username 
+   * @param password 
+   * @returns UserDto | null
+   */
+  async validateUser(username: string, password: string): Promise<UserDto | null> {
+    const user = await this.usersService.getUserByUsername(username);
+    if (user && await bcrypt.compare(password, user.password ?? '')) {
+      return user;
     }
     return null;
   }
 
-  async login(user: any) {
-    const payload: UserPayload = {
+  /**
+   * Login
+   * 
+   * @param user 
+   * @returns LoginResponseDto
+   */
+  async login(user: UserDto): Promise<LoginResponseDto> {
+    const payload: UserJwtDto = {
       username: user.username,
       userId: user.id
     };
@@ -40,5 +46,5 @@ export class AuthService {
         email: user.email
       }
     };
-  }  
+  }
 }

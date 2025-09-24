@@ -1,13 +1,13 @@
+import { ImageDto } from '../../image/dto/image.dto';
 import { ValidationResult } from '../../validation-result';
-import { ImageData } from '../interfaces/content.interface';
 
 export class ContentCreateDto {
   constructor(
     public title: string,
     public content: string,
-    public images: ImageData[] = [],
-    public category?: string, 
-    public author?: string 
+    public images: ImageDto[] = [],
+    public category?: string,
+    public author?: string,
   ) {}
 
   validate(): ValidationResult {

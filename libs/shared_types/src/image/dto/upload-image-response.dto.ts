@@ -3,6 +3,8 @@ import { ValidationResult } from '../../validation-result';
 export class UploadImageResponseDto {
     constructor(
       public url: string,
+      public path?: string,
+      public filename?: string
     ) {}
   
     validate(): ValidationResult {

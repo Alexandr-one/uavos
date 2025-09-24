@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@uavos/scripts": "file:scripts",
-        "@uavos/shared-types": "file:libs/shared-types"
+        "@uavos/shared-types": "file:libs/shared-types",
+        "class-transformer": "^0.5.1"
     }
 }

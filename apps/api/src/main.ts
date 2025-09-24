@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { GitSyncService } from '@uavos/scripts';
 import { config } from 'dotenv';
 import { join } from 'path';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 config({ path: join(__dirname, '../../../.env') });
 
@@ -10,6 +11,16 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
   
+  const config = new DocumentBuilder()
+    .setTitle('UAVOS API')
+    .setDescription('API documentation for UAVOS project')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api-docs', app, document);
+
   app.enableCors({
     origin: process.env.ADMIN_HOST ?? 'http://localhost:3000',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

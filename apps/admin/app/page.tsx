@@ -1,10 +1,10 @@
 'use client';
 
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/auth.context';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import DeploymentButtons from '@/components/ui/deploy/DeploymentButtons';
-import { fetchPreviewStatus, fetchDeploymentStatus, fetchTags, PreviewStatus, DeploymentStatus } from '@/services/deploymentService';
+import DeploymentButtons from '@/components/ui/deploy/deployment-buttons.ui';
+import { fetchPreviewStatus, fetchDeploymentStatus, fetchTags, PreviewStatus, DeploymentStatus } from '@/services/deployment-service';
 
 interface InitialData {
   apiUrl: string;

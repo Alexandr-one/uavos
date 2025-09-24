@@ -5,18 +5,28 @@ import simpleGit, { SimpleGit, DiffResult } from 'simple-git';
 import { execSync, exec } from 'child_process';
 import { ContentProcessorService } from '@uavos/scripts';
 import kill from 'tree-kill';
+import { DeploymentResponseDto, DeploymentStatusRequestDto } from '@uavos/shared-types';
 
 @Injectable()
 export class DeploymentService {
+    // Local Content Repo
     private repoPath: string;
+    // Repo Url
     private repoUrl: string;
+    // Repo Branch
     private branch: string;
+    // Github Authorization Token 
     private githubToken: string;
-    private previewProcess: any = null;
+    // Is Process in preview
+    private previewProcess: any;
+    // Preview port
     private previewPort: number;
+    // Preview url
     private previewUrl: string;
 
-    constructor(private readonly contentProcessorService: ContentProcessorService) {
+    constructor(
+        private readonly contentProcessorService: ContentProcessorService
+    ) {
         this.repoPath = process.env.GIT_REPO_PATH ?? './content';
         const rawUrl = process.env.GIT_REPO_URL ?? '';
         this.repoUrl = rawUrl.replace('https://@', 'https://').replace('@', '');
@@ -28,18 +38,15 @@ export class DeploymentService {
         if (!this.githubToken) throw new Error('GITHUB_TOKEN is required');
     }
 
-    /* getStatus */
-    
-    async getStatus(): Promise<{
-        currentTag: string | null;
-        hasUnpublishedChanges: boolean;
-        message: string;
-    }> {
+    /**
+     * Get Current Workflow Status
+     * @returns DeploymentStatusRequestDto
+     */
+    async getStatus(): Promise<DeploymentStatusRequestDto> {
         try {
             const gitFolder = path.join(this.repoPath, '.git');
             if (!fs.existsSync(gitFolder)) {
                 return {
-                    currentTag: null,
                     hasUnpublishedChanges: false,
                     message: 'Repository is not initialized'
                 };
@@ -51,7 +58,6 @@ export class DeploymentService {
             const latestTag = tagsList.all.length > 0 ? tagsList.all[0] : null;
             if (!latestTag) {
                 return {
-                    currentTag: null,
                     hasUnpublishedChanges: true,
                     message: 'No tags found, unpublished changes detected'
                 };
@@ -69,16 +75,17 @@ export class DeploymentService {
 
         } catch (error) {
             return {
-                currentTag: null,
                 hasUnpublishedChanges: false,
                 message: `Status check failed: ${error.message}`
             };
         }
     }
 
-    /* Preview */
-
-    async previewStart(): Promise<{ success: boolean; message: string; url?: string }> {
+    /**
+     * Start Nextra Site Preview
+     * @returns DeploymentResponseDto
+     */
+    async previewStart(): Promise<DeploymentResponseDto> {
         if (this.previewProcess) {
             return { success: false, message: `Preview already running at ${this.previewUrl}` };
         }
@@ -96,15 +103,25 @@ export class DeploymentService {
         }
     }
 
-    async previewStatus(): Promise<{ isRunning: boolean; url?: string }> {
+    /**
+     * Get Current Preview Status
+     * @returns DeploymentResponseDto
+     */
+    async previewStatus(): Promise<DeploymentResponseDto> {
         const isRunning = !!this.previewProcess;
+
         return {
+            success: true,
             isRunning,
             url: isRunning ? `${this.previewUrl}` : undefined
         };
     }
 
-    async previewStop(): Promise<{ success: boolean; message: string }> {
+    /**
+     * Stop Current Preview
+     * @returns DeploymentResponseDto
+     */
+    async previewStop(): Promise<DeploymentResponseDto> {
         if (!this.previewProcess) {
             return { success: false, message: 'Preview server is not running' };
         }
@@ -121,6 +138,10 @@ export class DeploymentService {
         }
     }
 
+    /**
+     * Start Dev Server
+     * @param port 
+     */
     private startDevServer(port: number) {
         const uavosPath = path.join(process.cwd(), '../site');
         const child = exec(`npm run dev`, {
@@ -138,20 +159,28 @@ export class DeploymentService {
         });
     }
 
-    /* Publish */
-
-    async publish(): Promise<{ success: boolean; message: string }> {
+    /**
+     * Publish Content
+     * @returns DeploymentResponseDto
+     */
+    async publish(): Promise<DeploymentResponseDto> {
         try {
             const git = simpleGit(this.repoPath);
             await git.fetch('--tags');
+            
             const currentTag = await this.getCurrentTag();
             const hasChanges = await this.hasChangesSinceLastTag(git, currentTag);
+            
             await this.contentProcessorService.processContent();
+            
             const buildDir = await this.buildSite('production');
+            
             await this.deployToGhPages(buildDir, 'production');
+            
             if (hasChanges) {
                 const nextTag = await this.getNextTag(git);
                 await this.createTag(git, nextTag);
+                
                 return { success: true, message: `Site published with NEW content tag ${nextTag}` };
             } else {
                 return { success: true, message: `Site published (no content changes, using existing tag ${currentTag})` };
@@ -161,6 +190,12 @@ export class DeploymentService {
         }
     }
 
+    /**
+     * 
+     * @param git 
+     * @param currentTag 
+     * @returns boolean
+     */
     private async hasChangesSinceLastTag(git: SimpleGit, currentTag: string | null): Promise<boolean> {
         try {
             if (!currentTag) {
@@ -176,6 +211,11 @@ export class DeploymentService {
         }
     }
 
+    /**
+     * Get next tag
+     * @param git 
+     * @returns string
+     */
     private async getNextTag(git: SimpleGit): Promise<string> {
         const tags = await this.getAllTags(git);
         if (tags.length === 0) return 'v1.0.0';
@@ -185,13 +225,25 @@ export class DeploymentService {
         return `v${major}.${minor}.${patch + 1}`;
     }
 
+    /**
+     * Create Tag
+     * @param git 
+     * @param version 
+     * @param message 
+     */
     private async createTag(git: SimpleGit, version: string, message?: string) {
         const tagMessage = message || `Release ${version}`;
+        
         await git.addAnnotatedTag(version, tagMessage);
         await git.pushTags('origin');
         console.log(`✅ Tag ${version} created and pushed`);
     }
 
+    /**
+     * Build Site 
+     * @param environment 
+     * @returns string
+     */
     private async buildSite(environment: string): Promise<string> {
         const uavosPath = path.join(process.cwd(), '../site');
         const buildDir = path.join(uavosPath, 'out');
@@ -216,6 +268,11 @@ export class DeploymentService {
         return buildDir;
     }
 
+    /**
+     * Deploy To Github Pages
+     * @param buildDir 
+     * @param environment 
+     */
     private async deployToGhPages(buildDir: string, environment: string) {
         console.log('🚀 Deploying to gh-pages...');
         const ghPages = simpleGit(buildDir);
@@ -236,6 +293,10 @@ export class DeploymentService {
         console.log('✅ Site deployed to gh-pages');
     }
 
+    /**
+     * Get Current Github Tag 
+     * @returns string | null
+     */
     private async getCurrentTag(): Promise<string | null> {
         try {
             if (!fs.existsSync(path.join(this.repoPath, '.git'))) {
@@ -252,30 +313,37 @@ export class DeploymentService {
         }
     }
 
-
-    /* Rollback */
-
-
-    async rollback(tagName: string): Promise<{ success: boolean; message: string }> {
+    /**
+     * Rollback to requested tag
+     * @param tagName 
+     * @returns DeploymentResponseDto
+     */
+    async rollback(tagName: string): Promise<DeploymentResponseDto> {
         try {
             console.log(`↩️ Starting rollback to tag: ${tagName}`);
             if (fs.existsSync(this.repoPath)) {
                 fs.rmSync(this.repoPath, { recursive: true, force: true });
             }
             fs.mkdirSync(this.repoPath, { recursive: true });
+            
             const cleanUrl = this.repoUrl.replace('https://', '').replace('@', '');
             const domain = cleanUrl.split('/')[0];
             const repoPathPart = cleanUrl.substring(domain.length);
             const authenticatedUrl = `https://${this.githubToken}@${domain}${repoPathPart}`;
+            
             await simpleGit().clone(authenticatedUrl, this.repoPath);
             const git: SimpleGit = simpleGit(this.repoPath);
+            
             await git.fetch(['--tags']);
             const tagsList = await git.tags();
+            
             if (!tagsList.all.includes(tagName)) {
                 throw new Error(`Tag "${tagName}" does not exist in the repository`);
             }
+            
             await git.checkout(tagName);
             console.log(`✅ Rollback completed. Repository is now at tag: ${tagName}`);
+            
             return { success: true, message: `Rollback completed to tag: ${tagName}` };
         } catch (error) {
             console.error('Rollback error:', error);
@@ -283,8 +351,11 @@ export class DeploymentService {
         }
     }
 
-    /* ShowTags */
-
+    
+    /**
+     * Show Github Tags
+     * @returns string[]
+     */
     async showTags(): Promise<string[]> {
         try {
             const git = simpleGit(this.repoPath);
@@ -325,11 +396,21 @@ export class DeploymentService {
         }
     }
 
+    /**
+     * Get All Tags
+     * @param git 
+     * @returns string[]
+     */
     async getAllTags(git: SimpleGit): Promise<string[]> {
         const tags = await git.tags();
         return tags.all;
     }
 
+    /**
+     * Clone Github Repository
+     * @param ref 
+     * @returns SimpleGit
+     */
     private async cloneRepo(ref?: string): Promise<SimpleGit> {
         const cleanUrl = this.repoUrl.replace('https://', '').replace('@', '');
         const domain = cleanUrl.split('/')[0];
@@ -354,5 +435,4 @@ export class DeploymentService {
 
         return git;
     }
-
 }

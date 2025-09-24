@@ -7,6 +7,11 @@ import { AuthGuard } from '@nestjs/passport';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  /**
+   * Login
+   * @param loginDto 
+   * @returns 
+   */
   @Post('login')
   async login(@Body() loginDto: LoginDto) {
     const user = await this.authService.validateUser(loginDto.username, loginDto.password);
@@ -16,6 +21,11 @@ export class AuthController {
     return this.authService.login(user);
   }
 
+  /**
+   * Check current User
+   * @param req 
+   * @returns 
+   */
   @UseGuards(AuthGuard('jwt'))
   @Get('check')
   checkAuth(@Request() req) {

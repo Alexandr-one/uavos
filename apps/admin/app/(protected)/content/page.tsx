@@ -1,25 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import ContentList from '@/components/templates/list/ContentList';
+import ContentList from '@/components/templates/list/content-list.template';
 import './styles.css';
 import Cookies from 'js-cookie';
-
-interface Article {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  [key: string]: any;
-}
-
-interface FetchResponse {
-  data: Article[];
-}
+import { ContentFetchDto, ContentResponseDto } from '@uavos/shared-types';
+import { getContent } from '@/services/content-service/content-get.service';
 
 export default function ContentPage() {
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<ContentFetchDto[]|null>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const storedToken = Cookies.get('token');
@@ -33,20 +22,9 @@ export default function ContentPage() {
     setError(null);
 
     try {
-      const response = await fetch(`${apiUrl}/content/`, {
-        method: "GET",
-        headers: {
-          'Authorization': `Bearer ${storedToken}`,
-          'Content-Type': 'application/json',
-        },
-      });
 
-      if (!response.ok) {
-        throw new Error(`Failed to load articles: ${response.status} ${response.statusText}`);
-      }
-
-      const data: FetchResponse = await response.json();
-      setArticles(data.data);
+      const data: ContentFetchDto[]|null = await getContent(apiUrl);
+      setArticles(data);
     } catch (err: any) {
       setError(err.message || 'Unknown error');
       console.error('Loading error:', err);

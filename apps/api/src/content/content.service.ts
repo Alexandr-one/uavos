@@ -3,13 +3,21 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Injectable } from '@nestjs/common';
 import matter from 'gray-matter';
+import { ContentFetchDto, ContentObjectDto } from '@uavos/shared-types';
 
 @Injectable()
 export class ContentService {
-    private readonly repoPath = process.env.GIT_REPO_PATH ?? './content';
-    private readonly contentPath = this.repoPath;
+    // Local Content link
+    private readonly contentPath = process.env.GIT_REPO_PATH ?? './content';
+    
+    // Api Host 
     private readonly baseUrl = process.env.API_HOST || 'http://localhost:3003';
 
+    /**
+     * Process Image for saving
+     * @param content 
+     * @returns 
+     */
     private processImagePathsForSave(content: string): string {
         return content.replace(/!\[(.*?)\]\((.*?)\)/g, (match, altText, imageUrl) => {
             if (imageUrl.includes('/uploads/tmp/')) {
@@ -20,6 +28,11 @@ export class ContentService {
         });
     }
 
+    /**
+     * Generate folter name from title
+     * @param title 
+     * @returns 
+     */
     private generateFolderName(title: string): string {
         return title
             .toLowerCase()
@@ -30,11 +43,21 @@ export class ContentService {
             .slice(0, 50);
     }
 
+    /**
+     * Reg Exp for folder name
+     * @param string 
+     * @returns 
+     */
     private escapeRegExp(string: string): string {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    async pushContent(contentData: any): Promise<{ success: boolean; message: string; folderPath: string }> {
+    /**
+     * Pushing content to git
+     * @param contentData 
+     * @returns 
+     */
+    async pushContent(contentData: any): Promise<ContentObjectDto> {
         try {
             const contentFolder = this.contentPath;
             if (!fs.existsSync(contentFolder)) fs.mkdirSync(contentFolder, { recursive: true });
@@ -95,6 +118,11 @@ export class ContentService {
         }
     }
 
+    /**
+     * Generate Folter Title 
+     * @param slug 
+     * @returns 
+     */
     private generateTitleFromSlug(slug: string): string {
         return slug
             .replace(/-/g, ' ')
@@ -102,13 +130,23 @@ export class ContentService {
             .trim();
     }
 
-    private parseContentFile(filePath: string, folderPath: string): any {
+    /**
+     * Parse mdx Content
+     * @param filePath 
+     * @param folderPath 
+     * @returns
+     */
+    private parseContentFile(filePath: string, folderPath: string): ContentFetchDto {
         const content = fs.readFileSync(filePath, 'utf-8');
         const parsed = matter(content);
         const metadata = parsed.data;
 
         const pathParts = folderPath.split('/');
         const slug = pathParts.pop();
+        
+        if (!slug) {
+            throw new Error(`Invalid folderPath: ${folderPath}`);
+        }
 
         const contentText = this.processImagePaths(parsed.content, folderPath);
         const frontmatterText = this.convertMetadataToFrontmatter(metadata);
@@ -122,6 +160,12 @@ export class ContentService {
         };
     }
 
+    /**
+     * Process Image Paths
+     * @param content 
+     * @param folderPath 
+     * @returns 
+     */
     private processImagePaths(content: string, folderPath: string): string {
         return content.replace(
             /\.\/images\/([^)\s]+)/g,
@@ -129,11 +173,15 @@ export class ContentService {
         );
     }
 
-    async getAllContent(): Promise<any[]> {
+    /**
+     * Get All content from work folter
+     * @returns 
+     */
+    async getAllContent(): Promise<ContentFetchDto[]> {
         const contentFolder = this.contentPath;
         if (!fs.existsSync(contentFolder)) return [];
 
-        const contentItems: any[] = [];
+        const contentItems: ContentFetchDto[] = [];
 
         const findContentRecursive = (currentPath: string, relativePath: string = '') => {
             const items = fs.readdirSync(currentPath, { withFileTypes: true });
@@ -146,7 +194,7 @@ export class ContentService {
                     const indexPath = path.join(itemPath, 'index.mdx');
                     if (fs.existsSync(indexPath)) {
                         try {
-                            const contentItem = this.parseContentFile(indexPath, newRelativePath);
+                            const contentItem: ContentFetchDto = this.parseContentFile(indexPath, newRelativePath);
                             contentItems.push(contentItem);
                         } catch (error) {
                             console.warn(`Error parsing content in folder ${newRelativePath}:`, error.message);
@@ -163,7 +211,12 @@ export class ContentService {
         return contentItems;
     }
 
-    async getContentBySlug(slug: string): Promise<any> {
+    /**
+     * Find file by slug and parse
+     * @param slug 
+     * @returns 
+     */
+    async getContentBySlug(slug: string): Promise<ContentFetchDto> {
         const contentFolder = this.contentPath;
         const fullPath = path.join(contentFolder, slug, 'index.mdx');
 
@@ -174,6 +227,11 @@ export class ContentService {
         return this.parseContentFile(fullPath, slug);
     }
 
+    /**
+     * 
+     * @param metadata 
+     * @returns 
+     */
     private convertMetadataToFrontmatter(metadata: any): string {
         let frontmatter = '---\n';
         
@@ -187,7 +245,12 @@ export class ContentService {
         return frontmatter;
     }
 
-    async deleteContent(slug: string): Promise<{ success: boolean; message: string; deletedPath?: string }> {
+    /**
+     * Delete content from foler
+     * @param slug 
+     * @returns 
+     */
+    async deleteContent(slug: string): Promise<ContentObjectDto> {
         try {
             const contentFolder = this.contentPath;
             const fullPath = path.join(contentFolder, slug);
@@ -199,7 +262,7 @@ export class ContentService {
             return {
                 success: true,
                 message: `Content "${slug}" has been deleted successfully.`,
-                deletedPath: `content/${slug}`,
+                folderPath: `content/${slug}`,
             };
         } catch (error) {
             console.error(`Error deleting content ${slug}:`, error);
@@ -207,10 +270,16 @@ export class ContentService {
         }
     }
 
+    /**
+     * Upate content in folder
+     * @param slug 
+     * @param contentData 
+     * @returns 
+     */
     async updateContent(
         slug: string,
         contentData: any
-    ): Promise<{ success: boolean; message: string; folderPath: string }> {
+    ): Promise<ContentObjectDto> {
         try {
             const contentFolder = this.contentPath;
             const oldContentFolder = path.join(contentFolder, slug);
@@ -298,6 +367,11 @@ export class ContentService {
         }
     }
 
+    /**
+     * Replace image paths
+     * @param content 
+     * @returns 
+     */
     private normalizeAllImagePaths(content: string): string {
         return content.replace(
             /!\[([^\]]*)\]\(([^)]+)\)/g,

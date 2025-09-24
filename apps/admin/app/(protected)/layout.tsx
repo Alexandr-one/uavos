@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { ProtectedRoute } from "@/components/guards/ProtectedRoute";
+import { ProtectedRoute } from "@/components/guards/protected-route.guard";
 
 interface ProtectedLayoutProps {
   children: ReactNode;

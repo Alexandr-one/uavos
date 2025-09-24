@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import * as fs from 'fs';
-import * as path from 'path';
 
 @Injectable()
 export class ImagesService {
+  // Upload dir for temporary files
   private readonly uploadDir = './uploads/tmp';
 
   constructor() {
@@ -14,6 +14,10 @@ export class ImagesService {
     }
   }
 
+  /**
+   * Return Storage Options
+   * @returns 
+   */
   getStorageOptions() {
     return diskStorage({
       destination: this.uploadDir,
@@ -24,7 +28,12 @@ export class ImagesService {
     });
   }
 
-  getFileUrl(filename: string) {
+  /**
+   * 
+   * @param filename 
+   * @returns string
+   */
+  getFileUrl(filename: string): string {
     return `${process.env.API_HOST}/uploads/tmp/${filename}`;
   }
 }
