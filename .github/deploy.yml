@@ -1,0 +1,10 @@
+on:
+  repository_dispatch:
+    types: [run-builder]
+
+jobs:
+  run:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./apps/builder/builder.exe
