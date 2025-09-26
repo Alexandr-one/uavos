@@ -1,4 +1,3 @@
-// /services/authService.ts
 import Cookies from "js-cookie";
 import { request } from "../helpers/request.helper";
 import { LoginDto, LoginResponseDto } from "@uavos/shared-types";

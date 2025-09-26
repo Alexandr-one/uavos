@@ -2,10 +2,8 @@ import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 import simpleGit, { SimpleGit, DiffResult } from 'simple-git';
-import { execSync, exec } from 'child_process';
-import { ContentProcessorService } from '@uavos/scripts';
-import kill from 'tree-kill';
 import { DeploymentResponseDto, DeploymentStatusRequestDto } from '@uavos/shared-types';
+import { GitService } from '../git/git.service';
 
 @Injectable()
 export class DeploymentService {
@@ -17,23 +15,14 @@ export class DeploymentService {
     private branch: string;
     // Github Authorization Token 
     private githubToken: string;
-    // Is Process in preview
-    private previewProcess: any;
-    // Preview port
-    private previewPort: number;
-    // Preview url
-    private previewUrl: string;
 
-    constructor(
-        private readonly contentProcessorService: ContentProcessorService
+    constructor( private readonly gitservice: GitService
     ) {
         this.repoPath = process.env.GIT_REPO_PATH ?? './content';
         const rawUrl = process.env.GIT_REPO_URL ?? '';
         this.repoUrl = rawUrl.replace('https://@', 'https://').replace('@', '');
         this.branch = process.env.GIT_BRANCH ?? 'main';
         this.githubToken = process.env.GITHUB_TOKEN ?? '';
-        this.previewPort = Number(process.env.PREVIEW_PORT) ?? 3001;
-        this.previewUrl = process.env.SITE_HOST ?? 'http://localhost:3001';
         if (!this.repoUrl) throw new Error('GIT_REPO_URL is required');
         if (!this.githubToken) throw new Error('GITHUB_TOKEN is required');
     }
@@ -81,82 +70,24 @@ export class DeploymentService {
         }
     }
 
-    /**
-     * Start Nextra Site Preview
-     * @returns DeploymentResponseDto
-     */
-    async previewStart(): Promise<DeploymentResponseDto> {
-        if (this.previewProcess) {
-            return { success: false, message: `Preview already running at ${this.previewUrl}` };
-        }
 
+    public async preview(): Promise<{ success: boolean; message: string }> {
         try {
-            await this.contentProcessorService.processContent();
-            this.startDevServer(this.previewPort);
-            return {
-                success: true,
-                message: `Preview server starting on ${this.previewUrl}`,
-                url: `${this.previewUrl}`
-            };
-        } catch (error) {
-            return { success: false, message: `Preview start failed: ${error.message}` };
+            const git = simpleGit(this.repoPath);
+
+            const currentTag = await this.getCurrentTag();
+            const hasChanges = await this.hasChangesSinceLastTag(git, currentTag);
+
+            if (!hasChanges) {
+                return { success: false, message: 'No changes to push for preview' };
+            }
+
+            const commitResult = await this.gitservice.commitAndPush('Preview content update');
+            return commitResult;
+        } catch (err: unknown) {
+            const message = err instanceof Error ? err.message : JSON.stringify(err);
+            return { success: false, message: `Preview failed: ${message}` };
         }
-    }
-
-    /**
-     * Get Current Preview Status
-     * @returns DeploymentResponseDto
-     */
-    async previewStatus(): Promise<DeploymentResponseDto> {
-        const isRunning = !!this.previewProcess;
-
-        return {
-            success: true,
-            isRunning,
-            url: isRunning ? `${this.previewUrl}` : undefined
-        };
-    }
-
-    /**
-     * Stop Current Preview
-     * @returns DeploymentResponseDto
-     */
-    async previewStop(): Promise<DeploymentResponseDto> {
-        if (!this.previewProcess) {
-            return { success: false, message: 'Preview server is not running' };
-        }
-
-        try {
-            kill(this.previewProcess.pid, 'SIGTERM', (err) => {
-                if (err) console.error('Failed to stop preview process:', err);
-            });
-
-            this.previewProcess = null;
-            return { success: true, message: 'Preview server stopped' };
-        } catch (error) {
-            return { success: false, message: `Failed to stop preview: ${error.message}` };
-        }
-    }
-
-    /**
-     * Start Dev Server
-     * @param port 
-     */
-    private startDevServer(port: number) {
-        const uavosPath = path.join(process.cwd(), '../site');
-        const child = exec(`npm run dev`, {
-            cwd: uavosPath,
-            env: { ...process.env, PORT: port.toString() }
-        });
-
-        this.previewProcess = child;
-
-        child.stdout?.on('data', (data) => console.log(data));
-        child.stderr?.on('data', (data) => console.error(data));
-        child.on('exit', () => {
-            this.previewProcess = null;
-            console.log('Preview server exited');
-        });
     }
 
     /**
@@ -167,24 +98,21 @@ export class DeploymentService {
         try {
             const git = simpleGit(this.repoPath);
             await git.fetch('--tags');
-            
+
             const currentTag = await this.getCurrentTag();
             const hasChanges = await this.hasChangesSinceLastTag(git, currentTag);
-            
-            await this.contentProcessorService.processContent();
-            
-            const buildDir = await this.buildSite('production');
-            
-            await this.deployToGhPages(buildDir, 'production');
-            
-            if (hasChanges) {
+
+            // if (hasChanges) {
+                const commitResult = await this.gitservice.commitAndPush(`Publish content update ${currentTag ?? ''}`);
+                if (!commitResult.success) return commitResult;
+
                 const nextTag = await this.getNextTag(git);
                 await this.createTag(git, nextTag);
-                
+
                 return { success: true, message: `Site published with NEW content tag ${nextTag}` };
-            } else {
-                return { success: true, message: `Site published (no content changes, using existing tag ${currentTag})` };
-            }
+            // } else {
+            //     return { success: false, message: `no content changes, using existing tag ${currentTag}` };
+            // }
         } catch (error) {
             return { success: false, message: `Publish failed: ${error.message}` };
         }
@@ -233,65 +161,13 @@ export class DeploymentService {
      */
     private async createTag(git: SimpleGit, version: string, message?: string) {
         const tagMessage = message || `Release ${version}`;
-        
+
         await git.addAnnotatedTag(version, tagMessage);
         await git.pushTags('origin');
         console.log(`✅ Tag ${version} created and pushed`);
     }
 
-    /**
-     * Build Site 
-     * @param environment 
-     * @returns string
-     */
-    private async buildSite(environment: string): Promise<string> {
-        const uavosPath = path.join(process.cwd(), '../site');
-        const buildDir = path.join(uavosPath, 'out');
 
-        console.log('🧹 Cleaning build...');
-        if (fs.existsSync(path.join(uavosPath, '.next'))) {
-            fs.rmSync(path.join(uavosPath, '.next'), { recursive: true, force: true });
-        }
-        if (fs.existsSync(buildDir)) {
-            fs.rmSync(buildDir, { recursive: true, force: true });
-        }
-
-        console.log(`📦 Building site (${environment})...`);
-        process.env.DEPLOY_ENV = environment;
-        execSync('npm run build', { stdio: 'inherit', cwd: uavosPath });
-
-        if (!fs.existsSync(buildDir)) {
-            throw new Error('❌ Build failed: out/ directory not found');
-        }
-
-        fs.writeFileSync(path.join(buildDir, '.nojekyll'), '');
-        return buildDir;
-    }
-
-    /**
-     * Deploy To Github Pages
-     * @param buildDir 
-     * @param environment 
-     */
-    private async deployToGhPages(buildDir: string, environment: string) {
-        console.log('🚀 Deploying to gh-pages...');
-        const ghPages = simpleGit(buildDir);
-
-        await ghPages.init();
-        await ghPages.addConfig('user.name', process.env.GIT_USER_NAME || 'Deploy Bot');
-        await ghPages.addConfig('user.email', process.env.GIT_USER_EMAIL || 'bot@example.com');
-
-        await ghPages.checkout(['-B', 'gh-pages']);
-        await ghPages.add('.');
-        await ghPages.commit(`Deploy site - ${environment} - ${new Date().toISOString()}`);
-        await ghPages.push(
-            `https://${this.githubToken}@github.com/Alexandr-one/uavos.git`,
-            'gh-pages',
-            { '--force': null },
-        );
-
-        console.log('✅ Site deployed to gh-pages');
-    }
 
     /**
      * Get Current Github Tag 
@@ -325,25 +201,25 @@ export class DeploymentService {
                 fs.rmSync(this.repoPath, { recursive: true, force: true });
             }
             fs.mkdirSync(this.repoPath, { recursive: true });
-            
+
             const cleanUrl = this.repoUrl.replace('https://', '').replace('@', '');
             const domain = cleanUrl.split('/')[0];
             const repoPathPart = cleanUrl.substring(domain.length);
             const authenticatedUrl = `https://${this.githubToken}@${domain}${repoPathPart}`;
-            
+
             await simpleGit().clone(authenticatedUrl, this.repoPath);
             const git: SimpleGit = simpleGit(this.repoPath);
-            
+
             await git.fetch(['--tags']);
             const tagsList = await git.tags();
-            
+
             if (!tagsList.all.includes(tagName)) {
                 throw new Error(`Tag "${tagName}" does not exist in the repository`);
             }
-            
+
             await git.checkout(tagName);
             console.log(`✅ Rollback completed. Repository is now at tag: ${tagName}`);
-            
+
             return { success: true, message: `Rollback completed to tag: ${tagName}` };
         } catch (error) {
             console.error('Rollback error:', error);
@@ -351,7 +227,7 @@ export class DeploymentService {
         }
     }
 
-    
+
     /**
      * Show Github Tags
      * @returns string[]

@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { DeploymentService } from './deployment.service';
 import { DeploymentController } from './deployment.controller';
-import { ContentProcessorModule } from '@uavos/scripts';
+import { GitService } from 'src/git/git.service';
 
 @Module({
-  imports: [ContentProcessorModule],
+  imports: [],
   controllers: [DeploymentController],
-  providers: [DeploymentService],
+  providers: [DeploymentService, GitService],
   exports: [DeploymentService],
 })
 export class DeploymentModule { }

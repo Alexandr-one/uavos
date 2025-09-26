@@ -4,10 +4,11 @@ import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { AuthModule } from './auth/auth.module';
 import { DeploymentModule } from './deployment/deployment.module';
-import { GitSyncService, GitService } from '@uavos/scripts';
 import { ImagesModule } from './images/images.module';
 import { ContentModule } from './content/content.module';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { GitService } from './git/git.service';
+import { GitSyncService } from './git/git-sync/git-sync.service';
 
 /**
  * Main application module - root module that imports all feature modules

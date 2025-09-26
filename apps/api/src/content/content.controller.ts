@@ -10,7 +10,6 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ContentService } from './content.service';
-import { GitService } from '@uavos/scripts';
 
 import {
   ContentUpdateDto,
@@ -29,7 +28,6 @@ import {
 export class ContentController {
   constructor(
     private readonly contentService: ContentService, // Service handling content operations
-    private readonly gitService: GitService,         // Service for Git operations (commit & push)
   ) {}
 
   /**
@@ -87,8 +85,6 @@ export class ContentController {
 
       // Save content and push to Git
       const result = await this.contentService.pushContent(dto);
-      await this.gitService.commitAndPush(`Add content: ${dto.title}`);
-
       return new ContentResponseDto(true, result);
     } catch (error) {
       return new ContentResponseDto(false, null, error.message);
@@ -104,8 +100,6 @@ export class ContentController {
   async deleteContent(@Param('slug') slug: string): Promise<ContentResponseDto<string>> {
     try {
       await this.contentService.deleteContent(slug);
-      await this.gitService.commitAndPush(`Delete content: ${slug}`);
-
       return new ContentResponseDto(true, `Content "${slug}" deleted successfully`);
     } catch (error) {
       return new ContentResponseDto(false, error.message);
@@ -135,8 +129,6 @@ export class ContentController {
     try {
       // Update content and push to Git
       const result = await this.contentService.updateContent(slug, dto);
-      await this.gitService.commitAndPush(`Update content: ${dto.title}`);
-
       return new ContentResponseDto(true, result);
     } catch (error) {
       return new ContentResponseDto(false, null, error.message);
