@@ -1,0 +1,46 @@
+{
+  "baseRef": "origin/main",
+  "changed": {
+    "about": {
+      "path": "about.md",
+      "route": "about",
+      "status": "modified",
+      "diffHtml": "<span>diff --git a/about.md b/about.md</span><br><span>index adf29fb..0c1b0b7 100644</span><br><span>--- a/about.md</span><br><span>+++ b/about.md</span><br><span style=\"color:orange;\">@@ -5,8 +5,6 @@ order: 2</span><br><span> ---</span><br><span> </span><br><span> </span><br><span style=\"color:red;\">-## About page</span><br><span> </span><br><span style=\"color:red;\">-TEST FOR UPDDATE MERGE</span><br><span style=\"color:green;\">+## About page</span><br><span> </span><br><span style=\"color:red;\">-TESTING ....</span><br><span>\\ No newline at end of file</span><br><span></span>",
+      "assets": []
+    },
+    "blog/2025-10-17-new-art": {
+      "path": "blog/2025-10-17-new-art.md",
+      "route": "blog/2025-10-17-new-art",
+      "status": "modified",
+      "diffHtml": "<span>diff --git a/blog/2025-10-17-new-art.md b/blog/2025-10-17-new-art.md</span><br><span>index 14414f4..a93e766 100644</span><br><span>--- a/blog/2025-10-17-new-art.md</span><br><span>+++ b/blog/2025-10-17-new-art.md</span><br><span style=\"color:orange;\">@@ -3,5 +3,11 @@ title: new art</span><br><span> order: 5</span><br><span> ---</span><br><span> </span><br><span style=\"color:green;\">+</span><br><span style=\"color:green;\">+</span><br><span> # NEW ARTICLE</span><br><span style=\"color:red;\">-![about9.png](./assets/2025-10-17-new-art-1760700934467-781701972.png)</span><br><span style=\"color:green;\">+</span><br><span style=\"color:green;\">+sadasdasd</span><br><span style=\"color:green;\">+`asdasdasdasdasd`</span><br><span style=\"color:green;\">+</span><br><span style=\"color:green;\">+![about.png](./assets/2025-10-17-new-art-1760815157582-827882538.png)</span><br><span></span>",
+      "assets": []
+    },
+    "": {
+      "path": "index.mdx",
+      "route": "",
+      "status": "modified",
+      "diffHtml": "<span>diff --git a/index.mdx b/index.mdx</span><br><span>index c932401..71adaf0 100644</span><br><span>--- a/index.mdx</span><br><span>+++ b/index.mdx</span><br><span style=\"color:orange;\">@@ -8,6 +8,6 @@ order: 1</span><br><span> </span><br><span> </span><br><span> </span><br><span style=\"color:red;\">-# UAVOS Inc Company Site</span><br><span> </span><br><span style=\"color:red;\">-testing</span><br><span style=\"color:green;\">+# UAVOS Inc Company Site</span><br><span style=\"color:green;\">+change text</span><br><span></span>",
+      "assets": []
+    }
+  },
+  "summary": {
+    "added": [],
+    "modified": [
+      "about",
+      "blog/2025-10-17-new-art",
+      ""
+    ],
+    "deleted": [],
+    "renamed": [],
+    "assets": [
+      "blog/assets/2025-10-17-new-art-1760700934467-781701972.png",
+      "blog/assets/2025-10-17-new-art-1760815157582-827882538.png"
+    ]
+  },
+  "latestTag": "origin/main",
+  "files": {
+    "about": "<span>diff --git a/about.md b/about.md</span><br><span>index adf29fb..0c1b0b7 100644</span><br><span>--- a/about.md</span><br><span>+++ b/about.md</span><br><span style=\"color:orange;\">@@ -5,8 +5,6 @@ order: 2</span><br><span> ---</span><br><span> </span><br><span> </span><br><span style=\"color:red;\">-## About page</span><br><span> </span><br><span style=\"color:red;\">-TEST FOR UPDDATE MERGE</span><br><span style=\"color:green;\">+## About page</span><br><span> </span><br><span style=\"color:red;\">-TESTING ....</span><br><span>\\ No newline at end of file</span><br><span></span>",
+    "blog/2025-10-17-new-art": "<span>diff --git a/blog/2025-10-17-new-art.md b/blog/2025-10-17-new-art.md</span><br><span>index 14414f4..a93e766 100644</span><br><span>--- a/blog/2025-10-17-new-art.md</span><br><span>+++ b/blog/2025-10-17-new-art.md</span><br><span style=\"color:orange;\">@@ -3,5 +3,11 @@ title: new art</span><br><span> order: 5</span><br><span> ---</span><br><span> </span><br><span style=\"color:green;\">+</span><br><span style=\"color:green;\">+</span><br><span> # NEW ARTICLE</span><br><span style=\"color:red;\">-![about9.png](./assets/2025-10-17-new-art-1760700934467-781701972.png)</span><br><span style=\"color:green;\">+</span><br><span style=\"color:green;\">+sadasdasd</span><br><span style=\"color:green;\">+`asdasdasdasdasd`</span><br><span style=\"color:green;\">+</span><br><span style=\"color:green;\">+![about.png](./assets/2025-10-17-new-art-1760815157582-827882538.png)</span><br><span></span>",
+    "": "<span>diff --git a/index.mdx b/index.mdx</span><br><span>index c932401..71adaf0 100644</span><br><span>--- a/index.mdx</span><br><span>+++ b/index.mdx</span><br><span style=\"color:orange;\">@@ -8,6 +8,6 @@ order: 1</span><br><span> </span><br><span> </span><br><span> </span><br><span style=\"color:red;\">-# UAVOS Inc Company Site</span><br><span> </span><br><span style=\"color:red;\">-testing</span><br><span style=\"color:green;\">+# UAVOS Inc Company Site</span><br><span style=\"color:green;\">+change text</span><br><span></span>"
+  }
+}
